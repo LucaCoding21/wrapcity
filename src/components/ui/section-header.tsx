@@ -1,6 +1,7 @@
 "use client";
 
-import TextReveal from "@/components/animations/text-reveal";
+import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap";
 
 interface SectionHeaderProps {
   eyebrow?: string;
@@ -8,6 +9,7 @@ interface SectionHeaderProps {
   subtitle?: string;
   align?: "left" | "center";
   className?: string;
+  light?: boolean;
 }
 
 export default function SectionHeader({
@@ -16,37 +18,52 @@ export default function SectionHeader({
   subtitle,
   align = "left",
   className,
+  light = false,
 }: SectionHeaderProps) {
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }, headerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div
+      ref={headerRef}
       className={`${align === "center" ? "text-center" : ""} ${className || ""}`}
     >
       {eyebrow && (
-        <TextReveal
-          as="p"
-          type="words"
-          className="mb-4 text-xs uppercase tracking-[0.3em] text-accent-light"
-        >
+        <p className={`label-uppercase mb-4 ${light ? "text-power-red" : "text-power-red"}`}>
           {eyebrow}
-        </TextReveal>
+        </p>
       )}
-      <TextReveal
-        as="h2"
-        type="words"
-        stagger={0.04}
-        className="font-display text-[clamp(2rem,5vw,5rem)] leading-[0.95] font-bold tracking-tight"
-      >
+      <h2 className={`heading-section ${light ? "text-near-black" : "text-white"}`}>
         {heading}
-      </TextReveal>
+      </h2>
+      <div className={`mt-4 h-1 w-24 bg-power-red ${align === "center" ? "mx-auto" : ""}`} />
       {subtitle && (
-        <TextReveal
-          as="p"
-          type="words"
-          delay={0.3}
-          className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
-        >
+        <p className={`mt-6 max-w-xl text-lg leading-relaxed ${light ? "text-charcoal" : "text-white/60"} ${align === "center" ? "mx-auto" : ""}`}>
           {subtitle}
-        </TextReveal>
+        </p>
       )}
     </div>
   );

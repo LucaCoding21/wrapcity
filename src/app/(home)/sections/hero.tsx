@@ -3,15 +3,15 @@
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { usePreloader } from "@/providers/preloader-provider";
-import Link from "next/link";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const brandRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const bottomBarRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { isLoading } = usePreloader();
 
@@ -30,33 +30,40 @@ export default function Hero() {
       });
     }
 
-    // Brand block fades in
-    if (brandRef.current) {
+    // Headline slides up with stagger
+    if (headlineRef.current) {
+      const lines = headlineRef.current.querySelectorAll("[data-line]");
       tl.fromTo(
-        brandRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        0.8
+        lines,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out"
+        },
+        0.6
       );
     }
 
-    // CTA
+    // Subheadline fades in
+    if (subheadlineRef.current) {
+      tl.fromTo(
+        subheadlineRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        1.0
+      );
+    }
+
+    // CTAs pop in
     if (ctaRef.current) {
       tl.fromTo(
         ctaRef.current,
-        { y: 15, opacity: 0 },
+        { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-        1.1
-      );
-    }
-
-    // Bottom bar
-    if (bottomBarRef.current) {
-      tl.fromTo(
-        bottomBarRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: "power3.out" },
-        1.3
+        1.2
       );
     }
 
@@ -69,6 +76,7 @@ export default function Hero() {
         1.4
       );
     }
+
   }, [isLoading]);
 
   // Scroll parallax
@@ -78,7 +86,7 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       if (videoRef.current) {
         gsap.to(videoRef.current, {
-          scale: 1.1,
+          scale: 1.15,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -89,22 +97,20 @@ export default function Hero() {
         });
       }
 
-      // Everything fades on scroll
-      const fadeEls = sectionRef.current!.querySelectorAll("[data-hero-fade]");
-      gsap.fromTo(fadeEls, {
-        y: 0,
-        opacity: 1,
-      }, {
-        y: -30,
-        opacity: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "40% top",
-          scrub: true,
-        },
-      });
+      // Content fades on scroll
+      if (contentRef.current) {
+        gsap.to(contentRef.current, {
+          y: -50,
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "40% top",
+            scrub: true,
+          },
+        });
+      }
 
       if (scrollRef.current) {
         gsap.to(scrollRef.current, {
@@ -122,12 +128,20 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  const handleScroll = (e: React.MouseEvent, target: string) => {
+    e.preventDefault();
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
       className="relative h-screen overflow-hidden"
     >
-      {/* Full-bleed video — the hero IS the video */}
+      {/* Full-bleed video background */}
       <div ref={videoRef} className="absolute inset-0">
         <video
           autoPlay
@@ -136,140 +150,117 @@ export default function Hero() {
           playsInline
           className="h-full w-full object-cover"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/wrap-city-video.mp4" type="video/mp4" />
         </video>
+
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40" />
-        {/* Bottom gradient for text + top gradient for nav */}
+        <div className="absolute inset-0 bg-black/30" />
+
+        {/* Bottom gradient for text legibility + top for nav */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 25%)",
+              "linear-gradient(to top, rgba(29,28,29,0.7) 0%, rgba(0,0,0,0) 40%), linear-gradient(to bottom, rgba(29,28,29,0.5) 0%, rgba(0,0,0,0) 20%)",
           }}
         />
       </div>
 
+
       {/* Reveal overlay */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-background"
+        className="absolute inset-0 bg-near-black"
         style={{ zIndex: 3, clipPath: "inset(0% 0% 0% 0%)" }}
       />
 
-      {/* Content — bottom-left, minimal, let the video breathe */}
-      <div className="relative z-10 mx-auto flex h-full max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-12 lg:px-16">
-        {/* Brand + location */}
-        <div ref={brandRef} data-hero-fade className="opacity-0">
-          <p className="text-[11px] uppercase tracking-[0.35em] text-white/50">
-            Premium vinyl wraps &amp; paint protection
-          </p>
-          <h1
-            className="mt-3 font-hero font-black uppercase tracking-tight text-white"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 4.5rem)", lineHeight: 1.05 }}
-          >
-            Wrap City
-          </h1>
-        </div>
+      {/* Content */}
+      <div
+        ref={contentRef}
+        className="container-wide relative z-10 flex h-full flex-col justify-center"
+      >
+        {/* Location */}
+        <p className="label-uppercase mb-6 text-white/60">
+          Located in South Surrey, B.C.
+        </p>
 
-        {/* CTA */}
-        <div
-          ref={ctaRef}
-          data-hero-fade
-          className="mt-6 flex items-center gap-6 opacity-0"
+        {/* Main headline */}
+        <h1 ref={headlineRef} className="heading-hero max-w-5xl">
+          <span data-line className="block overflow-hidden">
+            <span className="inline-block text-white">YOUR RIDE.</span>
+          </span>
+          <span data-line className="block overflow-hidden">
+            <span
+              className="inline-block bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "linear-gradient(135deg, #E8C4B8 0%, #D4A090 50%, #C08978 100%)"
+              }}
+            >REIMAGINED.</span>
+          </span>
+        </h1>
+
+        {/* Subheadline */}
+        <p
+          ref={subheadlineRef}
+          className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
-          <Link
-            href="/contact"
-            data-cursor="pointer"
-            className="group inline-flex items-center gap-3 rounded-full border border-accent/50 bg-accent/20 px-7 py-3.5 text-[12px] font-medium uppercase tracking-widest text-white backdrop-blur-sm transition-all duration-300 hover:border-accent hover:bg-accent"
+          Precision vinyl wraps, paint protection film, and ceramic coatings
+          for every vehicle. We don&apos;t just wrap cars — we transform them.
+        </p>
+
+        {/* CTAs */}
+        <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4">
+          {/* Primary CTA */}
+          <a
+            href="#contact"
+            onClick={(e) => handleScroll(e, "#contact")}
+            className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
           >
-            Get a Free Quote
+            <span>Book a Consultation</span>
             <svg
-              width="14"
-              height="14"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="transition-transform duration-300 group-hover:translate-x-1"
             >
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
-          </Link>
-          <Link
-            href="/work"
-            data-cursor="pointer"
-            className="text-[12px] font-medium uppercase tracking-widest text-white/40 transition-colors duration-300 hover:text-white/80"
+          </a>
+
+          {/* Secondary CTA */}
+          <a
+            href="#gallery"
+            onClick={(e) => handleScroll(e, "#gallery")}
+            className="inline-flex items-center gap-2 border border-white/30 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:border-power-red hover:bg-power-red/10"
           >
-            Our Work
-          </Link>
+            View Our Work
+          </a>
         </div>
       </div>
 
-      {/* Bottom bar — trust signals */}
+      {/* Scroll indicator */}
       <div
-        ref={bottomBarRef}
-        className="absolute bottom-0 right-0 left-0 z-20 border-t border-white/[0.06] opacity-0"
+        ref={scrollRef}
+        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 opacity-0"
       >
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 md:px-12 lg:px-16">
-          <div className="flex items-center gap-5">
-            <span className="text-[10px] uppercase tracking-widest text-white/25">
-              3M &amp; Avery Certified
-            </span>
-            <span className="text-white/10">|</span>
-            <span className="text-[10px] uppercase tracking-widest text-white/25">
-              500+ Vehicles
-            </span>
-            <span className="hidden text-white/10 md:inline">|</span>
-            <span className="hidden text-[10px] uppercase tracking-widest text-white/25 md:inline">
-              5-Star Rated
-            </span>
-          </div>
-
-          {/* Scroll */}
-          <div ref={scrollRef} className="flex items-center gap-3 opacity-0">
-            <div className="h-8 w-[1px] overflow-hidden bg-white/10">
-              <div
-                className="h-full w-full bg-accent-light/60"
-                style={{
-                  animation: "scrollLine 1.5s ease-in-out infinite",
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="hidden items-center gap-5 md:flex">
-            <a
-              href="#"
-              data-cursor="pointer"
-              className="text-[10px] uppercase tracking-widest text-white/25 transition-colors hover:text-white/50"
-            >
-              IG
-            </a>
-            <a
-              href="#"
-              data-cursor="pointer"
-              className="text-[10px] uppercase tracking-widest text-white/25 transition-colors hover:text-white/50"
-            >
-              TK
-            </a>
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-xs uppercase tracking-widest text-white/40">Scroll</span>
+          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/20 p-1">
+            <div className="h-2 w-1 animate-scroll-pulse rounded-full bg-power-red" />
           </div>
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes scrollLine {
-          0% {
-            transform: translateY(-100%);
-          }
-          50% {
-            transform: translateY(0%);
-          }
-          100% {
-            transform: translateY(100%);
-          }
-        }
-      `}</style>
+      {/* Angled bottom edge */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 bg-near-black"
+        style={{
+          clipPath: "polygon(0 60%, 100% 0, 100% 100%, 0 100%)",
+        }}
+      />
     </section>
   );
 }

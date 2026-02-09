@@ -12,6 +12,7 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   onClick?: () => void;
+  skewed?: boolean;
 }
 
 export default function Button({
@@ -21,16 +22,17 @@ export default function Button({
   size = "md",
   className,
   onClick,
+  skewed = false,
 }: ButtonProps) {
   const baseStyles =
-    "relative inline-flex items-center justify-center font-medium uppercase tracking-widest overflow-hidden transition-all duration-500";
+    "relative inline-flex items-center justify-center font-semibold uppercase tracking-widest overflow-hidden transition-all duration-300";
 
   const variants = {
     primary:
-      "bg-gradient-accent text-background hover:opacity-90",
+      "bg-power-red text-white hover:bg-power-red-dark",
     outline:
-      "border border-accent/30 text-accent-light hover:border-accent hover:bg-accent/10",
-    ghost: "text-foreground hover:text-accent-light",
+      "border border-power-red/50 text-power-red hover:border-power-red hover:bg-power-red/10",
+    ghost: "text-white hover:text-power-red",
   };
 
   const sizes = {
@@ -43,7 +45,7 @@ export default function Button({
     baseStyles,
     variants[variant],
     sizes[size],
-    "rounded-full",
+    skewed ? "btn-skewed" : "",
     className
   );
 
@@ -55,7 +57,7 @@ export default function Button({
           data-cursor="pointer"
           className={combinedClassName}
         >
-          {children}
+          {skewed ? <span>{children}</span> : children}
         </Link>
       ) : (
         <button
@@ -63,7 +65,7 @@ export default function Button({
           className={combinedClassName}
           onClick={onClick}
         >
-          {children}
+          {skewed ? <span>{children}</span> : children}
         </button>
       )}
     </Magnetic>

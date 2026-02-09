@@ -2,39 +2,54 @@
 
 /* ============================================
    WRAP CITY - Design System (Tailwind v4)
+   Bold, Aggressive, Premium Automotive
    ============================================ */
 
 @theme inline {
-  /* Colors */
-  --color-background: #0a0a0a;
-  --color-foreground: #f5f5f5;
-  --color-muted: #a3a3a3;
-  --color-muted-dark: #525252;
-  --color-surface: #141414;
-  --color-surface-light: #1a1a1a;
-  --color-border: #262626;
+  /* Primary Colors */
+  --color-power-red: #B87D6A;
+  --color-power-red-dark: #A66D5A;
+  --color-power-red-light: #C99485;
 
-  /* Rose Gold / Copper Accent (from brand logo) */
-  --color-accent: #c17f6e;
-  --color-accent-light: #e8a998;
-  --color-accent-dark: #9a6355;
+  /* Neutrals */
+  --color-near-black: #1D1C1D;
+  --color-charcoal: #474549;
+  --color-charcoal-light: #5A585C;
+
+  /* Accents */
+  --color-warm-coral: #ED8254;
+  --color-warm-coral-dark: #D66A3C;
+  --color-soft-sand: #E5BBAA;
+  --color-soft-sand-light: #F0D5C9;
+
+  /* Semantic */
+  --color-background: #1D1C1D;
+  --color-background-alt: #474549;
+  --color-foreground: #FFFFFF;
+  --color-foreground-muted: rgba(255, 255, 255, 0.7);
+  --color-muted: rgba(255, 255, 255, 0.5);
+  --color-muted-dark: rgba(255, 255, 255, 0.3);
+  --color-surface: #252426;
+  --color-surface-light: #2D2C2E;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-light: rgba(255, 255, 255, 0.12);
 
   /* Fonts */
-  --font-display: var(--font-clash);
-  --font-body: var(--font-inter);
+  --font-display: var(--font-reddit-sans-condensed), system-ui, sans-serif;
+  --font-body: var(--font-reddit-sans), system-ui, sans-serif;
 
   /* Font Sizes - Fluid/Clamp */
-  --font-size-display-xl: clamp(3.5rem, 10vw, 12rem);
-  --font-size-display-lg: clamp(2.5rem, 7vw, 8rem);
-  --font-size-display-md: clamp(2rem, 5vw, 5rem);
-  --font-size-display-sm: clamp(1.5rem, 3vw, 3rem);
+  --font-size-display-hero: clamp(3rem, 10vw, 6rem);
+  --font-size-display-xl: clamp(2.5rem, 7vw, 5rem);
+  --font-size-display-lg: clamp(2rem, 5vw, 4rem);
+  --font-size-display-md: clamp(1.5rem, 3vw, 2.5rem);
+  --font-size-display-sm: clamp(1.25rem, 2vw, 1.75rem);
 
   /* Z-Index Scale */
   --z-base: 1;
   --z-content: 10;
   --z-navigation: 100;
   --z-noise: 50;
-
   --z-transition: 9999;
   --z-preloader: 10000;
 }
@@ -43,49 +58,420 @@
    Base Styles
    ============================================ */
 
-
 html {
   background: var(--color-background);
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: var(--font-body);
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 ::selection {
-  background: rgba(193, 127, 110, 0.3);
+  background: rgba(184, 125, 106, 0.4);
   color: var(--color-foreground);
 }
 
 /* ============================================
-   Utility Classes
+   Typography Classes
    ============================================ */
 
-.text-gradient {
-  background: linear-gradient(135deg, #f5f5f5 0%, #a3a3a3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Display/Headlines - Reddit Sans Condensed */
+.font-display {
+  font-family: var(--font-display);
 }
 
-.text-gradient-accent {
-  background: linear-gradient(135deg, #e8a998 0%, #c17f6e 50%, #9a6355 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Body text - Reddit Sans */
+.font-body {
+  font-family: var(--font-body);
 }
 
-.bg-gradient-accent {
-  background: linear-gradient(135deg, #e8a998 0%, #c17f6e 50%, #9a6355 100%);
+/* H1 Style - Big, bold, uppercase */
+.heading-hero {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-size: var(--font-size-display-hero);
 }
 
-/* Hide scrollbar for Lenis */
+/* H2 Style */
+.heading-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-size: var(--font-size-display-xl);
+}
+
+/* H3 Style */
+.heading-card {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Label/CTA Style */
+.label-uppercase {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+/* ============================================
+   Color Utility Classes
+   ============================================ */
+
+.text-power-red {
+  color: var(--color-power-red);
+}
+
+.text-warm-coral {
+  color: var(--color-warm-coral);
+}
+
+.text-soft-sand {
+  color: var(--color-soft-sand);
+}
+
+.bg-power-red {
+  background-color: var(--color-power-red);
+}
+
+.bg-near-black {
+  background-color: var(--color-near-black);
+}
+
+.bg-charcoal {
+  background-color: var(--color-charcoal);
+}
+
+.bg-soft-sand {
+  background-color: var(--color-soft-sand);
+}
+
+/* Gradients - now flat colors */
+.text-gradient-red {
+  color: var(--color-power-red);
+}
+
+.bg-gradient-red {
+  background: var(--color-power-red);
+}
+
+.bg-gradient-coral {
+  background: var(--color-power-red);
+}
+
+/* ============================================
+   Geometric / Skewed Elements
+   ============================================ */
+
+/* Parallelogram button */
+.btn-skewed {
+  transform: skewX(-5deg);
+}
+
+.btn-skewed > * {
+  transform: skewX(5deg);
+}
+
+/* Skewed section divider */
+.divider-skewed {
+  clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+}
+
+.divider-skewed-reverse {
+  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+
+/* Angled top edge */
+.clip-angle-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.clip-angle-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+/* Diagonal section separator */
+.diagonal-separator::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: inherit;
+  transform: skewY(-2deg);
+  transform-origin: top left;
+}
+
+/* Skewed image container */
+.image-skewed {
+  transform: rotate(-3deg);
+  overflow: hidden;
+}
+
+.image-skewed img {
+  transform: rotate(3deg) scale(1.1);
+}
+
+/* ============================================
+   Animation Classes
+   ============================================ */
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Red line slide */
+@keyframes redLineSlide {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Marquee scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Scroll indicator pulse */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(8px); }
+}
+
+.animate-scroll-pulse {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+
+.btn-primary {
+  background-color: var(--color-power-red);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-power-red-dark);
+  transform: translateY(-2px);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-power-red);
+  background-color: rgba(184, 125, 106, 0.1);
+}
+
+/* ============================================
+   Form Styles
+   ============================================ */
+
+.form-input {
+  background-color: var(--color-charcoal);
+  border: 1px solid var(--color-border);
+  color: white;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-input::placeholder {
+  color: var(--color-muted);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-power-red);
+  box-shadow: 0 0 0 2px rgba(184, 125, 106, 0.2);
+}
+
+.form-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-foreground-muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ============================================
+   Card Styles
+   ============================================ */
+
+.card-service {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.card-service::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-power-red);
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+}
+
+.card-service:hover {
+  border-color: rgba(184, 125, 106, 0.3);
+  transform: translateY(-4px);
+}
+
+.card-service:hover::before {
+  transform: scaleY(1);
+}
+
+/* ============================================
+   Section Backgrounds
+   ============================================ */
+
+.section-dark {
+  background-color: var(--color-near-black);
+}
+
+.section-charcoal {
+  background-color: var(--color-charcoal);
+}
+
+.section-sand {
+  background-color: var(--color-soft-sand);
+  color: var(--color-near-black);
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: var(--z-noise);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Carbon fiber subtle pattern */
+.carbon-pattern {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 4px
+    );
+}
+
+/* ============================================
+   Lenis Smooth Scroll
+   ============================================ */
+
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -103,23 +489,7 @@ html.lenis, html.lenis body {
 }
 
 /* ============================================
-   Font Display Classes
-   ============================================ */
-
-.font-display {
-  font-family: var(--font-display), system-ui, sans-serif;
-}
-
-.font-body {
-  font-family: var(--font-body), system-ui, sans-serif;
-}
-
-.font-hero {
-  font-family: var(--font-roboto), system-ui, sans-serif;
-}
-
-/* ============================================
-   Smooth Line Mask for Text Reveals
+   Utility Classes
    ============================================ */
 
 .line-mask {
@@ -131,12 +501,58 @@ html.lenis, html.lenis body {
   display: block;
 }
 
-/* ============================================
-   Stroke Text (outline-only numbers)
-   ============================================ */
+/* Red accent underline */
+.underline-red {
+  position: relative;
+}
 
-.stroke-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+.underline-red::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-power-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.underline-red:hover::after {
+  transform: scaleX(1);
+}
+
+/* Red dot accent */
+.dot-accent::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-power-red);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+/* Container max widths */
+.container-wide {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-wide {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }

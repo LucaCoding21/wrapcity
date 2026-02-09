@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Inter, Roboto } from "next/font/google";
+import { Reddit_Sans, Reddit_Sans_Condensed } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/providers/smooth-scroll-provider";
 import PreloaderProvider from "@/providers/preloader-provider";
@@ -10,24 +9,18 @@ import Footer from "@/components/footer/footer";
 
 import NoiseOverlay from "@/components/ui/noise-overlay";
 
-const clashDisplay = localFont({
-  src: "../fonts/ClashDisplay-Variable.woff2",
-  variable: "--font-clash",
+const redditSans = Reddit_Sans({
+  subsets: ["latin"],
+  variable: "--font-reddit-sans",
   display: "swap",
-  weight: "200 700",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({
+const redditSansCondensed = Reddit_Sans_Condensed({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-reddit-sans-condensed",
   display: "swap",
-});
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: "900",
-  variable: "--font-roboto",
-  display: "swap",
+  weight: ["400", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -51,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${clashDisplay.variable} ${inter.variable} ${roboto.variable}`}>
+    <html lang="en" className={`${redditSans.variable} ${redditSansCondensed.variable}`}>
       <body className="bg-background font-body text-foreground antialiased">
         <PreloaderProvider>
           <Preloader />

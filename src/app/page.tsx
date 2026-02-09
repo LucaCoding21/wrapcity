@@ -1,23 +1,21 @@
 import Hero from "./(home)/sections/hero";
-import TrustBar from "./(home)/sections/trust-bar";
+import GoogleReviews from "./(home)/sections/google-reviews";
 import Services from "./(home)/sections/services";
-import Portfolio from "./(home)/sections/portfolio";
-import Process from "./(home)/sections/process";
-import Testimonials from "./(home)/sections/testimonials";
-import FAQ from "./(home)/sections/faq";
-import FinalCTA from "./(home)/sections/final-cta";
+import About from "./(home)/sections/about";
+import Gallery from "./(home)/sections/gallery";
+import FacebookPosts from "./(home)/sections/facebook-posts";
+import Contact from "./(home)/sections/contact";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
-      <Portfolio />
+      <GoogleReviews />
       <Services />
-      <Process />
-      <Testimonials />
-      <FAQ />
-      <FinalCTA />
+      <About />
+      <Gallery />
+      <FacebookPosts />
+      <Contact />
     </>
   );
 }
