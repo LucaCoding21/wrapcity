@@ -10,7 +10,7 @@ const faqs = [
   {
     question: "How much does a wrap cost?",
     answer:
-      "A full color change wrap typically ranges from $3,500\u2013$6,500 depending on the vehicle size and film chosen. PPF starts at $1,500 for a front-end package. We provide exact quotes during your free consultation \u2014 no hidden fees, no surprises.",
+      "A full color change wrap typically ranges from $3,500 to $6,500 depending on the vehicle size and film chosen. PPF starts at $1,500 for a front end package. We provide exact quotes during your free consultation: no hidden fees, no surprises.",
   },
   {
     question: "Will a wrap damage my paint?",
@@ -20,12 +20,12 @@ const faqs = [
   {
     question: "How long does a wrap last?",
     answer:
-      "Our color change wraps last 5\u20137 years with proper care. PPF lasts up to 10 years and comes with a manufacturer warranty. Ceramic coatings protect for 3\u20139 years depending on the package.",
+      "Our color change wraps last 5 to 7 years with proper care. PPF lasts up to 10 years and comes with a manufacturer warranty. Ceramic coatings protect for 3 to 9 years depending on the package.",
   },
   {
     question: "How long does installation take?",
     answer:
-      "Most full wraps are completed in 3\u20135 business days. Partial wraps and PPF packages can often be done in 1\u20132 days. We\u2019ll give you an exact timeline during your consultation.",
+      "Most full wraps are completed in 3 to 5 business days. Partial wraps and PPF packages can often be done in 1 to 2 days. We'll give you an exact timeline during your consultation.",
   },
   {
     question: "Do you offer financing?",
@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "What if I change my mind about the color?",
     answer:
-      "That\u2019s the beauty of wrapping \u2014 it\u2019s completely reversible. And with our digital mockup process, you\u2019ll see exactly how your car will look before we start. We don\u2019t proceed until you\u2019re 100% satisfied with the design.",
+      "That's the beauty of wrapping: it's completely reversible. And with our digital mockup process, you'll see exactly how your car will look before we start. We don't proceed until you're 100% satisfied with the design.",
   },
 ];
 
@@ -188,7 +188,7 @@ export default function FAQ() {
                 </Button>
               </div>
               <p className="mt-6 text-[11px] uppercase tracking-widest text-muted-dark">
-                Mon&ndash;Fri 8am&ndash;6pm &middot; Sat 9am&ndash;3pm
+                Mon to Fri 8am to 6pm &middot; Sat 9am to 3pm
               </p>
             </div>
           </div>

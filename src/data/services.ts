@@ -17,8 +17,8 @@ export const services: Service[] = [
     features: [
       "Matte, satin, gloss & metallic finishes",
       "Premium 3M & Avery Dennison films",
-      "5-7 year durability",
-      "Fully reversible - protects original paint",
+      "5 to 7 year durability",
+      "Fully reversible, protects original paint",
     ],
     icon: "wrap",
   },

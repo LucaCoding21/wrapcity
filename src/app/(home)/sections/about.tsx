@@ -183,10 +183,10 @@ export default function About() {
 
             <ul className="mt-4 space-y-3">
               {[
-                "Completely reversible — your original paint stays protected",
+                "Completely reversible: your original paint stays protected",
                 "Hundreds of colors and finishes to choose from",
                 "Fraction of the cost of a quality paint job",
-                "Faster turnaround — drive away in days, not weeks",
+                "Faster turnaround: drive away in days, not weeks",
                 "Protects your factory paint from UV and minor damage",
               ].map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3 text-charcoal">

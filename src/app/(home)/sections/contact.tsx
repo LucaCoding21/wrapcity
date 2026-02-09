@@ -10,7 +10,7 @@ const serviceOptions = [
   "Ceramic Coating",
   "Commercial / Fleet Wrap",
   "Custom Design",
-  "Not Sure - Need Consultation",
+  "Not Sure, Need Consultation",
 ];
 
 export default function Contact() {
@@ -329,7 +329,7 @@ export default function Contact() {
                 </h4>
                 <div className="mt-3 space-y-1 text-sm text-white/70">
                   <div className="flex justify-between">
-                    <span>Monday - Friday</span>
+                    <span>Monday to Friday</span>
                     <span className="text-white">8:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex justify-between">

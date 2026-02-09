@@ -205,7 +205,7 @@ export default function Hero() {
           className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
           Precision vinyl wraps, paint protection film, and ceramic coatings
-          for every vehicle. We don&apos;t just wrap cars — we transform them.
+          for every vehicle. We don&apos;t just wrap cars, we transform them.
         </p>
 
         {/* CTAs */}
