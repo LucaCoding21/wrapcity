@@ -1,59 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { services } from "@/data/services";
-
-function ServiceIcon({ type }: { type: string }) {
-  const iconClass = "w-8 h-8 text-power-red";
-
-  switch (type) {
-    case "wrap":
-      return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M3 9h18M9 21V9" />
-        </svg>
-      );
-    case "accent":
-      return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 3v18M3 12h18" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
-      );
-    case "shield":
-      return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <path d="M9 12l2 2 4-4" />
-        </svg>
-      );
-    case "droplet":
-      return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
-        </svg>
-      );
-    case "truck":
-      return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" />
-          <circle cx="5.5" cy="18.5" r="2.5" />
-          <circle cx="18.5" cy="18.5" r="2.5" />
-        </svg>
-      );
-    case "pencil":
-      return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
 
 export default function Services() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -126,7 +76,7 @@ export default function Services() {
           </h2>
           <div className="mt-4 h-1 w-24 bg-power-red" />
           <p className="mt-6 text-lg leading-relaxed text-white/60">
-            From full color transformations to invisible protection, we deliver precision
+            From motorcycle customization to large scale municipal projects, we deliver precision
             craftsmanship that exceeds expectations.
           </p>
         </div>
@@ -137,57 +87,45 @@ export default function Services() {
             <div
               key={service.slug}
               data-card
-              className="group relative overflow-hidden rounded-lg border border-white/10 bg-surface p-8 transition-all duration-500 hover:border-power-red/30"
+              className="group relative overflow-hidden rounded-lg border border-white/10 bg-surface transition-all duration-500 hover:border-power-red/30"
             >
-              {/* Skewed accent bar */}
-              <div
-                className="absolute left-0 top-0 h-full w-1 origin-top bg-power-red transition-transform duration-500 group-hover:scale-y-100"
-                style={{ transform: "scaleY(0)" }}
-              />
-
-              {/* Icon with skewed background */}
-              <div className="relative mb-6 inline-block">
-                <div
-                  className="absolute inset-0 -z-10 bg-power-red/10"
-                  style={{
-                    clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0 100%)",
-                    transform: "scale(1.5)",
-                  }}
+              {/* Service Image */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <ServiceIcon type={service.icon} />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
+
+                {/* Number overlay */}
+                <span className="absolute right-4 top-4 font-display text-5xl font-bold text-white/20">
+                  0{i + 1}
+                </span>
               </div>
 
-              {/* Number */}
-              <span className="absolute right-6 top-6 font-display text-6xl font-bold text-white/5">
-                0{i + 1}
-              </span>
+              <div className="relative p-6">
+                {/* Skewed accent bar */}
+                <div
+                  className="absolute left-0 top-0 h-full w-1 origin-top bg-power-red transition-transform duration-500 group-hover:scale-y-100"
+                  style={{ transform: "scaleY(0)" }}
+                />
 
-              {/* Content */}
-              <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white">
-                {service.title}
-              </h3>
-              <p className="mt-1 text-sm font-medium text-warm-coral">
-                {service.tagline}
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-white/60">
-                {service.description}
-              </p>
+                {/* Content */}
+                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white">
+                  {service.title}
+                </h3>
+                <p className="mt-1 text-sm font-medium text-warm-coral">
+                  {service.tagline}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  {service.description}
+                </p>
 
-              {/* Features */}
-              <ul className="mt-6 space-y-2">
-                {service.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-2 text-sm text-white/50"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-power-red" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Hover glow effect */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Hover glow effect */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              </div>
             </div>
           ))}
         </div>

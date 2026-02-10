@@ -21,7 +21,7 @@ const facebookPosts = [
   },
   {
     image: "/images/jeep4.jpg",
-    text: "Chrome delete + ceramic coating on this Mercedes G-Wagon. Clean, modern, and ready to turn heads.",
+    text: "Chrome delete + ceramic coating on this Mercedes G Wagon. Clean, modern, and ready to turn heads.",
     date: "1 week ago",
     likes: 312,
     comments: 45,
@@ -91,14 +91,14 @@ export default function FacebookPosts() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-charcoal py-24 md:py-32"
+      className="relative bg-white py-24 md:py-32"
     >
       <div className="container-wide">
         {/* Section Header */}
         <div ref={headerRef} className="mb-12 flex flex-col items-center justify-between gap-6 md:flex-row">
           <div>
             <p className="label-uppercase mb-4 text-warm-coral">Follow Our Work</p>
-            <h2 className="heading-section text-white">
+            <h2 className="heading-section text-near-black">
               LATEST FROM FACEBOOK
             </h2>
           </div>

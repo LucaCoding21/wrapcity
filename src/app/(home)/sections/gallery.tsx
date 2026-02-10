@@ -1,95 +1,95 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 
-const galleryImages = [
+type GalleryItem = {
+  src: string;
+  alt: string;
+  type: "image" | "video";
+  poster?: string;
+};
+
+const galleryItems: GalleryItem[] = [
   {
     src: "/images/jeep4.jpg",
-    alt: "Matte Black BMW M4",
-    vehicle: "BMW M4",
-    wrap: "Matte Black",
-    size: "large",
-    rotate: 2,
+    alt: "Metallic Green Jeep Wrangler",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "Gloss Red Porsche 911",
-    vehicle: "Porsche 911",
-    wrap: "Gloss Racing Red",
-    size: "medium",
-    rotate: -2,
+    src: "/images/1.jpg",
+    alt: "Custom Sprint Car Graphics",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "Satin Blue Tesla Model 3",
-    vehicle: "Tesla Model 3",
-    wrap: "Satin Blue",
-    size: "medium",
-    rotate: 1,
+    src: "/images/motorcycle.jpeg",
+    alt: "Harley Davidson Bagger",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "Chrome Delete Mercedes",
-    vehicle: "Mercedes G-Wagon",
-    wrap: "Chrome Delete",
-    size: "large",
-    rotate: -1,
+    src: "/images/van auto show 4.jpg",
+    alt: "Matte Gray Tesla Model Y",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "Matte Army Green Urus",
-    vehicle: "Lamborghini Urus",
-    wrap: "Matte Army Green",
-    size: "medium",
-    rotate: 2,
+    src: "/images/red-car.jpeg",
+    alt: "Glossy Red Ford Mustang",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "PPF Install GT3",
-    vehicle: "Porsche GT3",
-    wrap: "Full PPF",
-    size: "medium",
-    rotate: -2,
+    src: "/images/murals.jpeg",
+    alt: "Floral Wall Mural",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "Satin Purple Audi R8",
-    vehicle: "Audi R8",
-    wrap: "Satin Purple",
-    size: "large",
-    rotate: 1,
+    src: "/images/2.jpg",
+    alt: "Sprint Car Side View",
+    type: "image",
   },
   {
-    src: "/images/jeep4.jpg",
-    alt: "Fleet Wrap",
-    vehicle: "Commercial Fleet",
-    wrap: "Custom Branding",
-    size: "medium",
-    rotate: -1,
+    src: "/images/vehicle-wrap.jpg",
+    alt: "Steeda Mustang",
+    type: "image",
+  },
+  {
+    src: "/images/IMG_0108.jpeg",
+    alt: "Custom Harley Davidson",
+    type: "image",
+  },
+  {
+    src: "/images/commercial.jpeg",
+    alt: "Commercial Office Graphics",
+    type: "image",
+  },
+  {
+    src: "/images/jeep1.jpg",
+    alt: "Jeep Wrangler Detail",
+    type: "image",
   },
 ];
+
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Header animation
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current,
-          { y: 50, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
+            duration: 1,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: headerRef.current,
               start: "top 85%",
@@ -99,19 +99,17 @@ export default function Gallery() {
         );
       }
 
-      // Gallery items stagger animation
       if (gridRef.current) {
         const items = gridRef.current.querySelectorAll("[data-gallery-item]");
         gsap.fromTo(
           items,
-          { y: 80, opacity: 0, scale: 0.95 },
+          { y: 40, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            scale: 1,
             duration: 0.8,
             stagger: 0.1,
-            ease: "power3.out",
+            ease: "power2.out",
             scrollTrigger: {
               trigger: gridRef.current,
               start: "top 80%",
@@ -125,95 +123,155 @@ export default function Gallery() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowRight") setLightboxIndex((prev) => (prev + 1) % galleryItems.length);
+      if (e.key === "ArrowLeft") setLightboxIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = lightboxOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [lightboxOpen]);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, []);
+
   return (
     <section
       id="gallery"
       ref={sectionRef}
-      className="relative bg-near-black py-24 md:py-32"
+      className="bg-near-black py-24 md:py-32"
     >
       <div className="container-wide">
-        {/* Section Header */}
-        <div ref={headerRef} className="mb-16 text-center">
-          <p className="label-uppercase mb-4 text-power-red">Our Work</p>
-          <h2 className="heading-section text-white">
-            THE GALLERY
-          </h2>
-          <div className="mx-auto mt-4 h-1 w-24 bg-power-red" />
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-            Real wraps. Real cars. Every project represents our commitment to perfection.
+        {/* Minimal Header */}
+        <div ref={headerRef} className="mb-16 md:mb-20">
+          <p className="text-power-red text-sm font-medium tracking-widest uppercase mb-3">
+            Portfolio
           </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            My Work
+          </h2>
         </div>
 
-        {/* Masonry Grid */}
+        {/* Clean Grid - 3 columns on desktop */}
         <div
           ref={gridRef}
-          className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
         >
-          {galleryImages.map((image, i) => (
+          {galleryItems.map((item, i) => (
             <div
               key={i}
               data-gallery-item
-              className={`group relative overflow-hidden ${
-                image.size === "large"
-                  ? "col-span-2 row-span-2 aspect-square"
-                  : "aspect-[4/3]"
-              }`}
-              style={{
-                transform: `rotate(${image.rotate}deg)`,
-              }}
+              onClick={() => openLightbox(i)}
+              className="group relative aspect-[4/3] cursor-pointer overflow-hidden bg-white/5"
             >
-              {/* Image */}
-              <div className="relative h-full w-full overflow-hidden rounded-lg">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  style={{
-                    transform: `rotate(${-image.rotate}deg) scale(1.15)`,
-                  }}
-                />
-
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-near-black via-near-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                {/* Info on hover */}
-                <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-500 group-hover:translate-y-0">
-                  <p className="text-xs uppercase tracking-widest text-power-red">
-                    {image.wrap}
-                  </p>
-                  <h3 className="mt-1 font-display text-lg font-bold text-white">
-                    {image.vehicle}
-                  </h3>
-                </div>
-
-                {/* Red border on hover */}
-                <div className="absolute inset-0 rounded-lg border-2 border-power-red opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                quality={85}
+                loading="lazy"
+              />
+              {/* Subtle hover overlay */}
+              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
             </div>
           ))}
         </div>
 
-        {/* View All CTA */}
-        <div className="mt-16 text-center">
+        {/* Minimal CTA */}
+        <div className="mt-16 md:mt-20 text-center">
           <a
             href="#contact"
-            className="btn-skewed inline-flex items-center gap-3 bg-power-red px-10 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+            className="inline-flex items-center gap-3 text-white hover:text-power-red transition-colors duration-300 group"
           >
-            <span>Start Your Transformation</span>
+            <span className="text-sm font-medium tracking-widest uppercase">
+              Start Your Project
+            </span>
             <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
+              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth={2}
             >
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
         </div>
       </div>
+
+      {/* Minimal Lightbox */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          onClick={() => setLightboxOpen(false)}
+        >
+          {/* Close */}
+          <button
+            onClick={() => setLightboxOpen(false)}
+            className="absolute top-6 right-6 z-50 w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Nav */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
+            }}
+            className="absolute left-4 md:left-8 z-50 w-12 h-12 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev + 1) % galleryItems.length);
+            }}
+            className="absolute right-4 md:right-8 z-50 w-12 h-12 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Content */}
+          <div
+            className="relative max-h-[85vh] max-w-[90vw] md:max-w-[80vw]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={galleryItems[lightboxIndex]?.src || ""}
+              alt={galleryItems[lightboxIndex]?.alt || ""}
+              width={1400}
+              height={900}
+              className="max-h-[85vh] w-auto object-contain"
+              quality={90}
+            />
+          </div>
+
+          {/* Counter */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-sm font-light tracking-widest">
+            {lightboxIndex + 1} / {galleryItems.length}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
