@@ -101,12 +101,12 @@ export default function About() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left Column - Image */}
           <div ref={imageRef} className="relative">
-            <div className="relative aspect-4/3 overflow-hidden rounded-lg shadow-xl">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/images/jeep4.jpg"
-                alt="Professional vehicle wrap installation"
+                src="/images/aboutme.jpeg"
+                alt="Taylor Paige — owner of Wrap City"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </div>
