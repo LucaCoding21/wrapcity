@@ -322,8 +322,10 @@ export default function GoogleReviews() {
         {/* Read More Link - More prominent CTA */}
         <div className="mt-14 text-center">
           <a
-            href="#"
-            className="group inline-flex items-center gap-3 rounded-full border-2 border-near-black bg-near-black px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-transparent hover:text-near-black"
+            href="https://www.google.com/search?q=Wrap+City+Reviews&oq=wrap&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIOCAEQRRgnGDsYgAQYigUyDAgCEEUYORixAxiABDIGCAMQRRg9MgYIBBBFGD0yBggFEEUYPDIGCAYQRRg8MgYIBxBFGD3SAQgxNzAxajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x5485c512236ebe05:0xc0db54ad5998594e,1,,,,"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-full bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#8b1a1a]"
           >
             Read All Reviews on Google
             <svg

@@ -5,12 +5,12 @@ import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 
 const highlights = [
-  "Owner-operated with personal attention to every project",
-  "3M & Avery Dennison certified installer",
-  "Specializing in vehicle wraps, custom graphics & murals",
-  "Premium materials with manufacturer warranty",
-  "Dedicated to bringing your vision to life",
-  "100% satisfaction guarantee",
+  "Single-installer shop, no assembly line, no shortcuts",
+  "3M & Avery Dennison certified vinyl wrap installer",
+  "Specializing in color change wraps, matte black, and chrome delete",
+  "Premium materials with 5-7 year manufacturer warranty",
+  "Serving South Surrey, White Rock & Fraser Valley",
+  "100% satisfaction guarantee on every wrap",
 ];
 
 export default function About() {
@@ -21,35 +21,58 @@ export default function About() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    const isMobile = window.innerWidth < 768;
+
     const ctx = gsap.context(() => {
-      // Image animation
+      // Image animation - use vertical on mobile for smoother feel
       if (imageRef.current) {
         gsap.fromTo(
           imageRef.current,
-          { x: -50, opacity: 0 },
+          { y: isMobile ? 40 : 0, x: isMobile ? 0 : -50, opacity: 0 },
           {
+            y: 0,
             x: 0,
             opacity: 1,
             duration: 0.8,
             ease: "power3.out",
             scrollTrigger: {
               trigger: imageRef.current,
-              start: "top 80%",
+              start: "top 85%",
               once: true,
             },
           }
         );
       }
 
-      // Content animation
+      // Content animation - use vertical on mobile
       if (contentRef.current) {
         gsap.fromTo(
           contentRef.current,
-          { x: 50, opacity: 0 },
+          { y: isMobile ? 40 : 0, x: isMobile ? 0 : 50, opacity: 0 },
           {
+            y: 0,
             x: 0,
             opacity: 1,
             duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+
+        // Animate checkmarks - use vertical movement
+        const checkItems = contentRef.current.querySelectorAll("[data-check]");
+        gsap.fromTo(
+          checkItems,
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.08,
             ease: "power3.out",
             scrollTrigger: {
               trigger: contentRef.current,
@@ -59,24 +82,25 @@ export default function About() {
           }
         );
 
-        // Animate checkmarks
-        const checkItems = contentRef.current.querySelectorAll("[data-check]");
-        gsap.fromTo(
-          checkItems,
-          { x: 20, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: contentRef.current,
-              start: "top 75%",
-              once: true,
-            },
-          }
-        );
+        // Animate CTA button
+        const ctaButton = contentRef.current.querySelector("[data-cta]");
+        if (ctaButton) {
+          gsap.fromTo(
+            ctaButton,
+            { y: 20, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ctaButton,
+                start: "top 90%",
+                once: true,
+              },
+            }
+          );
+        }
       }
     }, sectionRef);
 
@@ -104,7 +128,7 @@ export default function About() {
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-xl">
               <Image
                 src="/images/aboutme.jpeg"
-                alt="Taylor Paige — owner of Wrap City"
+                alt="Taylor Paige, owner and 3M certified vinyl wrap installer at Wrap City in South Surrey BC"
                 fill
                 className="object-cover object-top"
               />
@@ -118,16 +142,21 @@ export default function About() {
               PRECISION. QUALITY. PASSION.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-charcoal">
-              Hi, I&apos;m Taylor Paige — the owner and sole artist behind Wrap City.
-              What started as a passion for transforming vehicles has grown into a
-              full-service wrap and graphics business where I personally handle every
-              project from start to finish.
+              Wrap City is a single-installer shop that takes exceptional care
+              and attention to detail with every vehicle wrap. Unlike larger shops where
+              multiple installers may rush projects to meet high volumes, we believe your
+              vehicle deserves focused, expert hands to ensure a flawless, long-lasting result.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-charcoal">
-              From custom vehicle wraps to eye-catching murals and commercial graphics,
-              I pour my creativity and attention to detail into every piece. When you work
-              with Wrap City, you work directly with me — ensuring your vision gets the
-              personal care it deserves.
+              We do not feel multiple people should handle your investment, as this can
+              increase the risk of errors or compromised quality. Our approach allows us
+              to meticulously prepare and wrap every panel, which is what truly sets us apart.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-charcoal">
+              While a full wrap typically requires approximately 7 days, this timeline
+              ensures we can work carefully and thoroughly. In some cases, your vehicle
+              may be completed sooner, depending on complexity and schedule. Our priority
+              is delivering a wrap that is stunning, durable, and built to last.
             </p>
 
             {/* Checkmark points */}
@@ -148,6 +177,30 @@ export default function About() {
                   <span className="text-charcoal">{item}</span>
                 </div>
               ))}
+            </div>
+
+            {/* CTA Button */}
+            <div data-cta className="mt-10">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+              >
+                <span>Get a Free Quote</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

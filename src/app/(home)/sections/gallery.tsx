@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 
+const MOBILE_GALLERY_LIMIT = 4;
+
 type GalleryItem = {
   src: string;
   alt: string;
@@ -14,57 +16,57 @@ type GalleryItem = {
 const galleryItems: GalleryItem[] = [
   {
     src: "/images/jeep4.jpg",
-    alt: "Metallic Green Jeep Wrangler",
+    alt: "Metallic green Jeep Wrangler full color change wrap by Wrap City in South Surrey BC",
     type: "image",
   },
   {
     src: "/images/1.jpg",
-    alt: "Custom Sprint Car Graphics",
+    alt: "Custom sprint car racing graphics and vinyl wrap installation in Surrey BC",
     type: "image",
   },
   {
     src: "/images/motorcycle.jpeg",
-    alt: "Harley Davidson Bagger",
+    alt: "Harley Davidson Bagger custom motorcycle wrap with premium vinyl finish",
     type: "image",
   },
   {
     src: "/images/van auto show 4.jpg",
-    alt: "Matte Gray Tesla Model Y",
+    alt: "Matte gray Tesla Model Y vehicle wrap showcased at Vancouver auto show",
     type: "image",
   },
   {
     src: "/images/red-car.jpeg",
-    alt: "Glossy Red Ford Mustang",
+    alt: "Glossy red Ford Mustang full body color change wrap by certified installer",
     type: "image",
   },
   {
     src: "/images/murals.jpeg",
-    alt: "Floral Wall Mural",
+    alt: "Custom floral wall mural vinyl installation for interior architectural design",
     type: "image",
   },
   {
     src: "/images/2.jpg",
-    alt: "Sprint Car Side View",
+    alt: "Sprint car side profile showing detailed custom vinyl graphics and decals",
     type: "image",
   },
   {
     src: "/images/vehicle-wrap.jpg",
-    alt: "Steeda Mustang",
+    alt: "Steeda Ford Mustang with custom racing stripes and performance graphics wrap",
     type: "image",
   },
   {
     src: "/images/IMG_0108.jpeg",
-    alt: "Custom Harley Davidson",
+    alt: "Custom Harley Davidson motorcycle with matte black and chrome vinyl wrap",
     type: "image",
   },
   {
     src: "/images/commercial.jpeg",
-    alt: "Commercial Office Graphics",
+    alt: "Commercial office vinyl graphics and branded wall wrap for business interiors",
     type: "image",
   },
   {
     src: "/images/jeep1.jpg",
-    alt: "Jeep Wrangler Detail",
+    alt: "Jeep Wrangler detail shot showing precision vinyl wrap edge work and finish quality",
     type: "image",
   },
 ];
@@ -76,6 +78,18 @@ export default function Gallery() {
   const gridRef = useRef<HTMLDivElement>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check for mobile viewport
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Get displayed items based on viewport
+  const displayedItems = isMobile ? galleryItems.slice(0, MOBILE_GALLERY_LIMIT) : galleryItems;
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -84,15 +98,15 @@ export default function Gallery() {
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current,
-          { y: 40, opacity: 0 },
+          { y: 30, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            ease: "power2.out",
+            duration: 0.8,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: headerRef.current,
-              start: "top 85%",
+              start: "top 90%",
               once: true,
             },
           }
@@ -103,16 +117,16 @@ export default function Gallery() {
         const items = gridRef.current.querySelectorAll("[data-gallery-item]");
         gsap.fromTo(
           items,
-          { y: 40, opacity: 0 },
+          { y: 30, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power2.out",
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: gridRef.current,
-              start: "top 80%",
+              start: "top 90%",
               once: true,
             },
           }
@@ -140,9 +154,11 @@ export default function Gallery() {
   }, [lightboxOpen]);
 
   const openLightbox = useCallback((index: number) => {
-    setLightboxIndex(index);
+    // Map the displayed index to the full gallery index
+    const actualIndex = isMobile ? index : index;
+    setLightboxIndex(actualIndex);
     setLightboxOpen(true);
-  }, []);
+  }, [isMobile]);
 
   return (
     <section
@@ -154,19 +170,22 @@ export default function Gallery() {
         {/* Minimal Header */}
         <div ref={headerRef} className="mb-16 md:mb-20">
           <p className="text-power-red text-sm font-medium tracking-widest uppercase mb-3">
-            Portfolio
+            Car Wrap Gallery
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            My Work
+            Our Work
           </h2>
+          <p className="mt-4 max-w-xl text-white/50 text-lg">
+            Browse samples of our color change wraps, matte black finishes, chrome deletes, and motorcycle wraps.
+          </p>
         </div>
 
-        {/* Clean Grid - 3 columns on desktop */}
+        {/* Clean Grid - 3 columns on desktop, 2 on mobile */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
         >
-          {galleryItems.map((item, i) => (
+          {displayedItems.map((item, i) => (
             <div
               key={i}
               data-gallery-item
@@ -177,7 +196,7 @@ export default function Gallery() {
                 src={item.src}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 quality={85}
                 loading="lazy"

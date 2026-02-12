@@ -80,7 +80,7 @@ export default function Preloader() {
           alt="Wrap City - Luxury Vinyl Styling"
           width={400}
           height={125}
-          className="h-24 w-auto md:h-36"
+          className="h-32 w-auto md:h-36"
           priority
         />
       </div>

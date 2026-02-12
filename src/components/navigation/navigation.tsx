@@ -24,7 +24,7 @@ export default function Navigation() {
     });
 
     // Track active section
-    const sections = ["services", "about", "gallery", "contact"];
+    const sections = ["services", "about", "gallery", "faq", "contact"];
     sections.forEach((section) => {
       ScrollTrigger.create({
         trigger: `#${section}`,
@@ -173,31 +173,31 @@ export default function Navigation() {
         {/* Mobile Menu Toggle */}
         <button
           data-cursor="pointer"
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="relative flex h-10 w-10 items-center justify-center md:hidden"
+          style={{ zIndex: isMobileOpen ? 100 : 50 }}
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle menu"
         >
           <span
-            className="h-[2px] w-6 bg-white transition-all duration-300"
+            className="absolute h-[2px] w-6 bg-white transition-all duration-300"
             style={{
               transform: isMobileOpen
-                ? "rotate(45deg) translate(2px, 2px)"
-                : "none",
+                ? "rotate(45deg)"
+                : "translateY(-6px)",
             }}
           />
           <span
-            className="h-[2px] w-6 bg-white transition-all duration-300"
+            className="absolute h-[2px] w-6 bg-white transition-all duration-300"
             style={{
               opacity: isMobileOpen ? 0 : 1,
-              transform: isMobileOpen ? "translateX(10px)" : "none",
             }}
           />
           <span
-            className="h-[2px] w-6 bg-white transition-all duration-300"
+            className="absolute h-[2px] w-6 bg-white transition-all duration-300"
             style={{
               transform: isMobileOpen
-                ? "rotate(-45deg) translate(2px, -2px)"
-                : "none",
+                ? "rotate(-45deg)"
+                : "translateY(6px)",
             }}
           />
         </button>

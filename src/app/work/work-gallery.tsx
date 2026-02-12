@@ -219,7 +219,7 @@ function EditorialCard({
               <div ref={imageRef} className="absolute inset-[-15%]">
                 <Image
                   src="/images/jeep4.jpg"
-                  alt={project.title}
+                  alt={project.imageAlt}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   sizes="(max-width: 768px) 100vw, 70vw"

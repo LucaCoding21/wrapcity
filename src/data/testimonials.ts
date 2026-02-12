@@ -8,7 +8,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "The attention to detail is unreal. My Huracán looks like it rolled out of a custom factory. Every edge, every curve — flawless.",
+      "The attention to detail is unreal. My Huracán looks like it rolled out of a custom factory. Every edge, every curve, flawless.",
     author: "Marcus Chen",
     car: "Lamborghini Huracán",
     service: "Color Change Wrap",

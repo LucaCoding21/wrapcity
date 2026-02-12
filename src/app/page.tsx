@@ -4,6 +4,7 @@ import Services from "./(home)/sections/services";
 import About from "./(home)/sections/about";
 import Gallery from "./(home)/sections/gallery";
 import FacebookPosts from "./(home)/sections/facebook-posts";
+import FAQ from "./(home)/sections/faq";
 import Contact from "./(home)/sections/contact";
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <About />
       <Gallery />
       <FacebookPosts />
+      <FAQ />
       <Contact />
     </>
   );

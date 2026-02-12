@@ -5,6 +5,7 @@ export interface Project {
   category: string;
   description: string;
   image: string;
+  imageAlt: string;
   year: string;
 }
 
@@ -16,6 +17,8 @@ export const projects: Project[] = [
     category: "Color Change",
     description: "Full satin black wrap with gloss black accents and chrome delete.",
     image: "/images/portfolio/project-1.jpg",
+    imageAlt:
+      "Lamborghini Huracán with full satin black vinyl wrap and chrome delete by Wrap City South Surrey",
     year: "2024",
   },
   {
@@ -25,6 +28,8 @@ export const projects: Project[] = [
     category: "Color Change",
     description: "Custom rose gold metallic wrap with PPF on high-impact areas.",
     image: "/images/portfolio/project-2.jpg",
+    imageAlt:
+      "Mercedes G-Wagon rose gold metallic color change wrap with paint protection film",
     year: "2024",
   },
   {
@@ -34,6 +39,8 @@ export const projects: Project[] = [
     category: "PPF",
     description: "Full body XPEL Stealth PPF for a satin finish over factory paint.",
     image: "/images/portfolio/project-3.jpg",
+    imageAlt:
+      "Porsche 911 GT3 with XPEL Stealth paint protection film for matte satin finish",
     year: "2024",
   },
   {
@@ -43,6 +50,8 @@ export const projects: Project[] = [
     category: "Commercial",
     description: "Complete fleet branding for 25 vehicles with custom graphics.",
     image: "/images/portfolio/project-4.jpg",
+    imageAlt:
+      "Commercial fleet vehicle wrap branding project with custom business graphics in Surrey BC",
     year: "2023",
   },
   {
@@ -52,6 +61,8 @@ export const projects: Project[] = [
     category: "Color Change",
     description: "Matte army green wrap with carbon fiber hood and mirror caps.",
     image: "/images/portfolio/project-5.jpg",
+    imageAlt:
+      "Lamborghini Urus matte army green vinyl wrap with carbon fiber accents",
     year: "2023",
   },
   {
@@ -61,6 +72,8 @@ export const projects: Project[] = [
     category: "Chrome Delete",
     description: "Full chrome delete with satin black trim and tinted taillights.",
     image: "/images/portfolio/project-6.jpg",
+    imageAlt:
+      "Tesla Model S chrome delete with satin black vinyl trim wrap in Vancouver area",
     year: "2023",
   },
 ];

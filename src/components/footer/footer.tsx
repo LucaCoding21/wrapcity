@@ -14,9 +14,9 @@ export default function Footer() {
             <Image
               src="/images/logo.png"
               alt="Wrap City"
-              width={160}
-              height={50}
-              className="h-12 w-auto"
+              width={250}
+              height={78}
+              className="h-20 w-auto"
             />
           </Link>
 
@@ -30,6 +30,9 @@ export default function Footer() {
             </a>
             <a href="#gallery" className="transition-colors hover:text-white">
               Gallery
+            </a>
+            <a href="#faq" className="transition-colors hover:text-white">
+              FAQ
             </a>
             <a href="#contact" className="transition-colors hover:text-white">
               Contact
@@ -49,7 +52,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/wrapcity604?fbclid=IwY2xjawP3bYJleHRuA2FlbQIxMABicmlkETEzSnpxNU9TdjVFUFVScGl3c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHui00MJ3KLiiLlBW44NJ0U8wlWeePpM4NKRQIxWxFf_6D6kNGTRN43DbLiA-_aem_nsKKnJICwtUSmzOIYetQKQ"
+              href="https://www.instagram.com/wrapcity604"
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-power-red hover:text-power-red"
@@ -67,6 +70,17 @@ export default function Footer() {
         <div className="container-wide text-center text-xs text-white/40">
           <p>
             &copy; {new Date().getFullYear()} Wrap City. Premium Vinyl Wrapping. All rights reserved.
+          </p>
+          <p className="mt-2 text-white/60">
+            Crafted with care by{" "}
+            <a
+              href="https://cloverfield.studio/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-power-red transition-colors"
+            >
+              cloverfield.studio
+            </a>
           </p>
         </div>
       </div>

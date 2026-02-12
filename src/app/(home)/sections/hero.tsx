@@ -7,8 +7,8 @@ import { usePreloader } from "@/providers/preloader-provider";
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLParagraphElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -19,61 +19,57 @@ export default function Hero() {
   useEffect(() => {
     if (isLoading) return;
 
-    const tl = gsap.timeline({ delay: 0.1 });
+    const tl = gsap.timeline();
 
-    // Video overlay wipes down to reveal
-    if (overlayRef.current) {
-      tl.to(overlayRef.current, {
-        clipPath: "inset(0% 0% 100% 0%)",
-        duration: 1.4,
-        ease: "power4.inOut",
-      });
+    // Location fades in
+    if (locationRef.current) {
+      tl.to(
+        locationRef.current,
+        { opacity: 1, duration: 0.4, ease: "power3.out" },
+        0.1
+      );
     }
 
     // Headline slides up with stagger
     if (headlineRef.current) {
       const lines = headlineRef.current.querySelectorAll("[data-line]");
-      tl.fromTo(
+      tl.to(
         lines,
-        { y: 100, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          stagger: 0.15,
+          duration: 0.6,
+          stagger: 0.1,
           ease: "power3.out"
         },
-        0.6
+        0.2
       );
     }
 
     // Subheadline fades in
     if (subheadlineRef.current) {
-      tl.fromTo(
+      tl.to(
         subheadlineRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        1.0
+        { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+        0.5
       );
     }
 
     // CTAs pop in
     if (ctaRef.current) {
-      tl.fromTo(
+      tl.to(
         ctaRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-        1.2
+        { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
+        0.6
       );
     }
 
     // Scroll indicator
     if (scrollRef.current) {
-      tl.fromTo(
+      tl.to(
         scrollRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5 },
-        1.4
+        { opacity: 1, duration: 0.3 },
+        0.8
       );
     }
 
@@ -82,6 +78,7 @@ export default function Hero() {
   // Scroll parallax
   useEffect(() => {
     if (!sectionRef.current) return;
+    if (isLoading) return;
 
     const ctx = gsap.context(() => {
       if (videoRef.current) {
@@ -126,7 +123,8 @@ export default function Hero() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   const handleScroll = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -166,30 +164,22 @@ export default function Hero() {
         />
       </div>
 
-
-      {/* Reveal overlay */}
-      <div
-        ref={overlayRef}
-        className="absolute inset-0 bg-near-black"
-        style={{ zIndex: 3, clipPath: "inset(0% 0% 0% 0%)" }}
-      />
-
       {/* Content */}
       <div
         ref={contentRef}
         className="container-wide relative z-10 flex h-full flex-col justify-center"
       >
         {/* Location */}
-        <p className="label-uppercase mb-6 text-white/60">
-          Located in South Surrey, B.C.
+        <p ref={locationRef} className="label-uppercase mb-6 text-white/60 opacity-0">
+          Single-Installer Wrap Shop in South Surrey, B.C.
         </p>
 
         {/* Main headline */}
         <h1 ref={headlineRef} className="heading-hero max-w-5xl">
-          <span data-line className="block overflow-hidden">
+          <span data-line className="block overflow-hidden opacity-0">
             <span className="inline-block text-white">YOUR RIDE.</span>
           </span>
-          <span data-line className="block overflow-hidden">
+          <span data-line className="block overflow-hidden opacity-0">
             <span
               className="inline-block bg-clip-text text-transparent"
               style={{
@@ -202,14 +192,14 @@ export default function Hero() {
         {/* Subheadline */}
         <p
           ref={subheadlineRef}
-          className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl"
+          className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl opacity-0"
         >
-          Precision vinyl wraps, paint protection film, and ceramic coatings
-          for every vehicle. We don&apos;t just wrap cars, we transform them.
+          Single-installer precision for color change wraps, matte black finishes, and chrome deletes.
+          Your vehicle deserves focused, expert hands, not a rushed assembly line.
         </p>
 
         {/* CTAs */}
-        <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4">
+        <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4 opacity-0">
           {/* Primary CTA */}
           <a
             href="#contact"

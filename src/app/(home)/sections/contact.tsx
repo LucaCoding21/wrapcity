@@ -75,19 +75,22 @@ export default function Contact() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    const isMobile = window.innerWidth < 768;
+
     const ctx = gsap.context(() => {
       if (formRef.current) {
         gsap.fromTo(
           formRef.current,
-          { x: -50, opacity: 0 },
+          { y: isMobile ? 40 : 0, x: isMobile ? 0 : -50, opacity: 0 },
           {
+            y: 0,
             x: 0,
             opacity: 1,
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 70%",
+              start: "top 80%",
               once: true,
             },
           }
@@ -97,15 +100,16 @@ export default function Contact() {
       if (mapRef.current) {
         gsap.fromTo(
           mapRef.current,
-          { x: 50, opacity: 0 },
+          { y: isMobile ? 40 : 0, x: isMobile ? 0 : 50, opacity: 0 },
           {
+            y: 0,
             x: 0,
             opacity: 1,
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 70%",
+              start: "top 80%",
               once: true,
             },
           }
@@ -589,15 +593,113 @@ export default function Contact() {
             {/* Red accent bar */}
             <div className="absolute left-0 top-0 hidden h-32 w-1 bg-power-red lg:block" />
 
-            {/* Contact Info */}
+            {/* Contact Info - Reorganized */}
             <div className="mb-8">
               <h3 className="font-display text-xl font-bold uppercase text-white">
-                Visit My Shop
+                Get In Touch
               </h3>
-              <div className="mt-4 space-y-4 text-white/70">
-                <div className="flex items-start gap-4">
+              <p className="mt-2 text-sm text-white/50">
+                By appointment only
+              </p>
+
+              {/* Primary CTA - Call */}
+              <a
+                href="tel:+16045102400"
+                className="mt-6 flex items-center gap-4 rounded-lg bg-power-red p-4 transition-all duration-300 hover:bg-power-red-dark"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/20">
                   <svg
-                    className="mt-1 h-5 w-5 shrink-0 text-power-red"
+                    className="h-6 w-6 text-white"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-white/70">Call Now</p>
+                  <p className="text-lg font-bold text-white">(604) 510-2400</p>
+                </div>
+              </a>
+
+              {/* Secondary CTAs - Text & Email */}
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                <a
+                  href="sms:+16045005391"
+                  className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition-all duration-300 hover:border-power-red/50 hover:bg-white/10"
+                >
+                  <svg
+                    className="h-5 w-5 shrink-0 text-power-red"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  <div className="min-w-0">
+                    <p className="text-xs text-white/50">Text</p>
+                    <p className="truncate text-sm font-medium text-white">604-500-5391</p>
+                  </div>
+                </a>
+                <a
+                  href="mailto:taylor@wrapcity.co"
+                  className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition-all duration-300 hover:border-power-red/50 hover:bg-white/10"
+                >
+                  <svg
+                    className="h-5 w-5 shrink-0 text-power-red"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  <div className="min-w-0">
+                    <p className="text-xs text-white/50">Email</p>
+                    <p className="text-sm font-medium text-white">taylor@wrapcity.co</p>
+                  </div>
+                </a>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-6 flex items-center gap-3">
+                <span className="text-xs text-white/40">Follow us</span>
+                <div className="flex gap-2">
+                  <a
+                    href="https://www.facebook.com/p/Wrap-City-100091623488082/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-power-red hover:bg-power-red/10 hover:text-power-red"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/wrapcity604"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-power-red hover:bg-power-red/10 hover:text-power-red"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Location & Map */}
+            <div className="relative">
+              {/* Address overlay on top of map */}
+              <div className="flex items-center justify-between rounded-t-lg bg-white/5 px-4 py-3">
+                <div className="flex items-center gap-3">
+                  <svg
+                    className="h-5 w-5 shrink-0 text-power-red"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -607,112 +709,31 @@ export default function Contact() {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   <div>
-                    <p className="font-medium text-white">1312 184 St</p>
-                    <p>Langley Twp, BC V2Z 1K2</p>
-                    <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=1312+184+St,+Langley+Twp,+BC+V2Z+1K2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 inline-flex items-center gap-1 text-sm text-power-red hover:underline"
-                    >
-                      Get Directions
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7V17" />
-                      </svg>
-                    </a>
+                    <p className="text-sm font-medium text-white">1312 184 St, Langley Twp, BC</p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <svg
-                    className="mt-1 h-5 w-5 shrink-0 text-power-red"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                  <div>
-                    <a
-                      href="mailto:taylor@wrapcity.co"
-                      className="font-medium text-white hover:text-power-red"
-                    >
-                      taylor@wrapcity.co
-                    </a>
-                    <p>I reply within 24 hours</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="mt-8">
-                <h4 className="font-display text-lg font-bold uppercase text-white">
-                  Business Hours
-                </h4>
-                <div className="mt-3 space-y-1 text-sm text-white/70">
-                  <div className="flex justify-between">
-                    <span>Monday to Friday</span>
-                    <span className="text-white">8:00 AM to 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="text-white">9:00 AM to 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="text-white/40">Closed</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-8 flex gap-4">
                 <a
-                  href="https://www.facebook.com/p/Wrap-City-100091623488082/"
+                  href="https://www.google.com/maps/dir/?api=1&destination=1312+184+St,+Langley+Twp,+BC+V2Z+1K2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-warm-coral hover:bg-warm-coral/10 hover:text-warm-coral"
+                  className="shrink-0 rounded bg-power-red px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-power-red-dark"
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.instagram.com/wrapcity604?fbclid=IwY2xjawP3bYJleHRuA2FlbQIxMABicmlkETEzSnpxNU9TdjVFUFVScGl3c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHui00MJ3KLiiLlBW44NJ0U8wlWeePpM4NKRQIxWxFf_6D6kNGTRN43DbLiA-_aem_nsKKnJICwtUSmzOIYetQKQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-warm-coral hover:bg-warm-coral/10 hover:text-warm-coral"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
+                  Get Directions
                 </a>
               </div>
-            </div>
-
-            {/* Map */}
-            <div className="relative mt-8 h-64 overflow-hidden rounded-lg lg:h-80">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2614.5!2d-122.6756!3d49.0234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d0e7e7c9f0e1%3A0x0!2s1312%20184%20St%2C%20Langley%20Twp%2C%20BC%20V2Z%201K2!5e0!3m2!1sen!2sca!4v1699999999999!5m2!1sen!2sca"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: "grayscale(100%) invert(92%) contrast(83%)" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Wrap City Location - 1312 184 St, Langley Twp, BC"
-              />
-              {/* Red accent border */}
-              <div className="absolute inset-0 rounded-lg border-2 border-power-red/30 pointer-events-none" />
+              {/* Map */}
+              <div className="relative h-56 overflow-hidden rounded-b-lg lg:h-64">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2614.5!2d-122.6756!3d49.0234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d0e7e7c9f0e1%3A0x0!2s1312%20184%20St%2C%20Langley%20Twp%2C%20BC%20V2Z%201K2!5e0!3m2!1sen!2sca!4v1699999999999!5m2!1sen!2sca"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Wrap City Location - 1312 184 St, Langley Twp, BC"
+                />
+              </div>
             </div>
           </div>
         </div>
