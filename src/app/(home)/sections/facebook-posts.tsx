@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "@/lib/gsap";
 
-const MOBILE_POSTS_LIMIT = 3;
-
 const facebookPosts = [
   {
     embedUrl: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto%2F%3Ffbid%3D717736144623829%26set%3Dpb.100091623488082.-2207520000&show_text=false&width=500",
@@ -41,19 +39,15 @@ const facebookPosts = [
 function FacebookPostCard({
   post,
   index,
-  isMobile,
 }: {
   post: (typeof facebookPosts)[number];
   index: number;
-  isMobile: boolean;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   useEffect(() => {
-    if (isMobile) return;
-
     const el = cardRef.current;
     if (!el) return;
 
@@ -69,7 +63,7 @@ function FacebookPostCard({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, []);
 
   const handleIframeLoad = useCallback(() => {
     setIframeLoaded(true);
@@ -88,62 +82,36 @@ function FacebookPostCard({
         )}
 
         <div className="aspect-square overflow-hidden">
-          {isMobile ? (
-            <a
-              href={post.postUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 p-6 text-center"
-            >
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1877F2]/10">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="#1877F2">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </div>
-              <p className="text-sm font-semibold text-near-black">
-                {post.type === "reel" ? "Watch Reel" : "View Post"}
-              </p>
-              <p className="mt-1 text-xs text-charcoal/60">Tap to open on Facebook</p>
-              <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#1877F2] px-4 py-2 text-xs font-medium text-white">
-                Open on Facebook
-              </div>
-            </a>
-          ) : (
-            <>
-              {(!isVisible || !iframeLoaded) && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100">
-                  <div className="mb-3 h-10 w-10 animate-pulse rounded-full bg-neutral-200" />
-                  <div className="h-3 w-24 animate-pulse rounded bg-neutral-200" />
-                </div>
-              )}
-              {isVisible && (
-                <iframe
-                  src={post.embedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: "none", overflow: "hidden", minHeight: "500px", pointerEvents: "none" }}
-                  scrolling="no"
-                  frameBorder="0"
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  title={`Facebook ${post.type} ${index + 1}`}
-                  loading="lazy"
-                  onLoad={handleIframeLoad}
-                />
-              )}
-            </>
+          {(!isVisible || !iframeLoaded) && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100">
+              <div className="mb-3 h-10 w-10 animate-pulse rounded-full bg-neutral-200" />
+              <div className="h-3 w-24 animate-pulse rounded bg-neutral-200" />
+            </div>
+          )}
+          {isVisible && (
+            <iframe
+              src={post.embedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: "none", overflow: "hidden", minHeight: "500px", pointerEvents: "none" }}
+              scrolling="no"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title={`Facebook ${post.type} ${index + 1}`}
+              loading="lazy"
+              onLoad={handleIframeLoad}
+            />
           )}
         </div>
 
-        {!isMobile && (
-          <a
-            href={post.postUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute inset-0 z-10"
-            aria-label={`View Facebook ${post.type} ${index + 1}`}
-          />
-        )}
+        <a
+          href={post.postUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10"
+          aria-label={`View Facebook ${post.type} ${index + 1}`}
+        />
 
         <div className="absolute inset-0 bg-gradient-to-t from-near-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
@@ -159,15 +127,11 @@ export default function FacebookPosts() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
     setHasMounted(true);
   }, []);
-
-  const displayedPosts = isMobile ? facebookPosts.slice(0, MOBILE_POSTS_LIMIT) : facebookPosts;
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -230,20 +194,19 @@ export default function FacebookPosts() {
 
         <div
           ref={cardsRef}
-          className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="hidden gap-6 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           {hasMounted &&
-            displayedPosts.map((post, i) => (
+            facebookPosts.map((post, i) => (
               <FacebookPostCard
                 key={i}
                 post={post}
                 index={i}
-                isMobile={isMobile}
               />
             ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-0 text-center md:mt-16">
           <a
             href="https://www.facebook.com/p/Wrap-City-100091623488082/"
             target="_blank"

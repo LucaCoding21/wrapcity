@@ -13,14 +13,14 @@ const redditSans = Reddit_Sans({
   subsets: ["latin"],
   variable: "--font-reddit-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const redditSansCondensed = Reddit_Sans_Condensed({
   subsets: ["latin"],
   variable: "--font-reddit-sans-condensed",
   display: "swap",
-  weight: ["400", "700", "800", "900"],
+  weight: ["700", "800", "900"],
 });
 
 export const metadata: Metadata = {

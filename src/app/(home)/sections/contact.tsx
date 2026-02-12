@@ -660,7 +660,7 @@ export default function Contact() {
                   </svg>
                   <div className="min-w-0">
                     <p className="text-xs text-white/50">Email</p>
-                    <p className="text-sm font-medium text-white">taylor@wrapcity.co</p>
+                    <p className="truncate text-sm font-medium text-white">taylor@wrapcity.co</p>
                   </div>
                 </a>
               </div>

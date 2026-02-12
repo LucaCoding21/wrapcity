@@ -11,7 +11,6 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
   const linksRef = useRef<HTMLAnchorElement[]>([]);
   const socialsRef = useRef<HTMLDivElement>(null);
 
@@ -24,14 +23,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         duration: 0.8,
         ease: "power4.inOut",
       });
-      // Animate close button
-      if (closeRef.current) {
-        gsap.fromTo(
-          closeRef.current,
-          { scale: 0.8, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)", delay: 0.4 }
-        );
-      }
       // Animate nav links
       gsap.fromTo(
         linksRef.current,
@@ -83,26 +74,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         clipPath: "inset(0% 0% 100% 0%)",
       }}
     >
-      {/* Close button - positioned in safe area */}
-      <div className="flex justify-end px-6 pt-6">
-        <button
-          ref={closeRef}
-          onClick={onClose}
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white opacity-0 transition-colors duration-300 active:bg-white/10"
-          aria-label="Close menu"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
+      {/* Spacer to account for nav height */}
+      <div className="pt-24" />
 
       {/* Menu content - centered */}
       <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6">

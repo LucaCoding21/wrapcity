@@ -26,11 +26,13 @@ export default function AnimatedCounter({
     if (!ref.current) return;
 
     const counter = { value: from };
+    const mobile = window.innerWidth < 768;
+    const effectiveDuration = mobile ? Math.min(duration, 1) : duration;
 
     const ctx = gsap.context(() => {
       gsap.to(counter, {
         value: to,
-        duration,
+        duration: effectiveDuration,
         ease: "power2.out",
         snap: { value: 1 },
         scrollTrigger: {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, ReactNode } from "react";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
+import { isMobile } from "@/lib/utils";
 
 interface TextRevealProps {
   children: ReactNode;
@@ -31,11 +32,15 @@ export default function TextReveal({
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const mobile = isMobile();
+    // On mobile, force line-level splits to reduce DOM node count
+    const effectiveType = mobile ? "lines" : type;
+
     const split = SplitText.create(containerRef.current, {
       type:
-        type === "chars"
+        effectiveType === "chars"
           ? "chars,words,lines"
-          : type === "words"
+          : effectiveType === "words"
           ? "words,lines"
           : "lines",
       linesClass: "line-mask",
@@ -44,9 +49,9 @@ export default function TextReveal({
     });
 
     const targets =
-      type === "chars"
+      effectiveType === "chars"
         ? split.chars
-        : type === "words"
+        : effectiveType === "words"
         ? split.words
         : split.lines;
 
@@ -56,12 +61,12 @@ export default function TextReveal({
         { opacity: 0.15 },
         {
           opacity: 1,
-          stagger: 0.1,
+          stagger: mobile ? 0.05 : 0.1,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 80%",
             end: "bottom 30%",
-            scrub: true,
+            scrub: mobile ? false : true,
           },
         }
       );
@@ -71,10 +76,10 @@ export default function TextReveal({
         { y: "100%" },
         {
           y: "0%",
-          duration,
-          stagger,
+          duration: mobile ? 0.5 : duration,
+          stagger: mobile ? 0.03 : stagger,
           delay,
-          ease: "power3.out",
+          ease: mobile ? "power2.out" : "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 85%",

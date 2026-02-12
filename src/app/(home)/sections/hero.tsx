@@ -225,10 +225,10 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Subheadline */}
+        {/* Subheadline - hidden on mobile to keep hero clean */}
         <p
           ref={subheadlineRef}
-          className="mt-8 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl opacity-0"
+          className="mt-8 hidden max-w-xl text-lg leading-relaxed text-white/70 opacity-0 md:block md:text-xl"
         >
           Single-installer precision for color change wraps, matte black finishes, and chrome deletes.
           Your vehicle deserves focused, expert hands, not a rushed assembly line.

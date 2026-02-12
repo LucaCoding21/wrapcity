@@ -131,6 +131,8 @@ export default function About() {
                 alt="Taylor Paige, owner and 3M certified vinyl wrap installer at Wrap City in South Surrey BC"
                 fill
                 className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
             </div>
           </div>

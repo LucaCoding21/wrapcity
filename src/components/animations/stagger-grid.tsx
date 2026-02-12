@@ -21,21 +21,31 @@ export default function StaggerGrid({
   useEffect(() => {
     if (!ref.current) return;
 
+    const mobile = window.innerWidth < 768;
     const items = ref.current.querySelectorAll(itemSelector);
     if (!items.length) return;
 
-    gsap.set(items, { y: 60, opacity: 0 });
+    const yOffset = mobile ? 30 : 60;
+    gsap.set(items, { y: yOffset, opacity: 0 });
 
     const ctx = gsap.context(() => {
       ScrollTrigger.batch(items, {
         onEnter: (batch) => {
-          gsap.to(batch, {
+          // On mobile, cap animated items to 6 — rest snap into place
+          const animBatch = mobile ? batch.slice(0, 6) : batch;
+          const restBatch = mobile ? batch.slice(6) : [];
+
+          gsap.to(animBatch, {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            stagger,
-            ease: "power3.out",
+            duration: mobile ? 0.5 : 0.8,
+            stagger: mobile ? 0.06 : stagger,
+            ease: mobile ? "power2.out" : "power3.out",
           });
+
+          if (restBatch.length > 0) {
+            gsap.set(restBatch, { y: 0, opacity: 1 });
+          }
         },
         start: "top 85%",
         once: true,

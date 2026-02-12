@@ -28,6 +28,28 @@ export default function Marquee({
     if (!firstItem) return;
 
     const itemWidth = firstItem.offsetWidth;
+
+    // On mobile, use CSS animation instead of JS — runs on compositor thread
+    if (window.innerWidth < 768) {
+      const durationSec = itemWidth / speed;
+      const translateX = direction === "left" ? -itemWidth : itemWidth;
+      track.style.animation = `marquee-scroll ${durationSec}s linear infinite`;
+      track.style.setProperty("--marquee-translate", `${translateX}px`);
+
+      if (!document.getElementById("marquee-keyframes")) {
+        const style = document.createElement("style");
+        style.id = "marquee-keyframes";
+        style.textContent = `
+          @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(var(--marquee-translate)); }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      return () => { track.style.animation = ""; };
+    }
+
     const duration = itemWidth / speed;
 
     const ctx = gsap.context(() => {
