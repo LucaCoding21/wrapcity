@@ -62,7 +62,7 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative bg-near-black py-24 md:py-32"
+      className="relative bg-near-black py-24 md:py-32 mobile-cv-auto"
     >
       {/* Subtle carbon fiber pattern */}
       <div className="carbon-pattern absolute inset-0 opacity-50" />

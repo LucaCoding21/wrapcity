@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 interface HorizontalScrollProps {
@@ -15,9 +15,16 @@ export default function HorizontalScroll({
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current || !trackRef.current) return;
+    // On mobile, skip the pinned horizontal scroll entirely — too expensive
+    if (isMobile) return;
 
     const track = trackRef.current;
 
@@ -44,7 +51,7 @@ export default function HorizontalScroll({
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   return (
     <div ref={sectionRef} className={`relative overflow-hidden ${className || ""}`}>
@@ -57,8 +64,8 @@ export default function HorizontalScroll({
         />
       </div>
 
-      {/* Track */}
-      <div ref={trackRef} className="flex h-screen items-center">
+      {/* On mobile: vertical stack. On desktop: horizontal scroll */}
+      <div ref={trackRef} className={isMobile ? "flex flex-col" : "flex h-screen items-center"}>
         {children}
       </div>
     </div>

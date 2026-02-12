@@ -111,7 +111,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative bg-white py-24 text-near-black md:py-32"
+      className="relative bg-white py-24 text-near-black md:py-32 mobile-cv-auto"
     >
       {/* Diagonal top separator */}
       <div

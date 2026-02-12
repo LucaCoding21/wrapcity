@@ -56,51 +56,72 @@ export default function ImageReveal({
       },
     };
 
+    const mobile = window.innerWidth < 768;
+
     const ctx = gsap.context(() => {
-      // Reveal animation
-      gsap.fromTo(
-        containerRef.current,
-        { clipPath: clipPaths[revealDirection].from },
-        {
-          clipPath: clipPaths[revealDirection].to,
-          duration: 1.2,
-          ease: "power4.inOut",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        }
-      );
+      if (mobile) {
+        // Mobile: simple opacity fade instead of expensive clip-path + scale
+        gsap.fromTo(
+          containerRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 90%",
+              once: true,
+            },
+          }
+        );
+      } else {
+        // Desktop: full reveal animation
+        gsap.fromTo(
+          containerRef.current,
+          { clipPath: clipPaths[revealDirection].from },
+          {
+            clipPath: clipPaths[revealDirection].to,
+            duration: 1.2,
+            ease: "power4.inOut",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
 
-      // Counter-scale (Ken Burns)
-      gsap.fromTo(
-        imageRef.current,
-        { scale: 1.3 },
-        {
-          scale: 1,
-          duration: 1.4,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        }
-      );
+        // Counter-scale (Ken Burns)
+        gsap.fromTo(
+          imageRef.current,
+          { scale: 1.3 },
+          {
+            scale: 1,
+            duration: 1.4,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
 
-      // Parallax
-      if (parallax) {
-        gsap.to(imageRef.current, {
-          yPercent: parallaxSpeed * 100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
+        // Parallax (desktop only)
+        if (parallax) {
+          gsap.to(imageRef.current, {
+            yPercent: parallaxSpeed * 100,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        }
       }
     }, containerRef);
 

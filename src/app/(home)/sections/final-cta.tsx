@@ -70,7 +70,7 @@ export default function FinalCTA() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-32 md:px-12"
+      className="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-32 md:px-12 mobile-cv-auto"
     >
       {/* Background glow */}
       <div

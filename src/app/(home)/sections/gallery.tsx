@@ -164,7 +164,7 @@ export default function Gallery() {
     <section
       id="gallery"
       ref={sectionRef}
-      className="bg-near-black py-24 md:py-32"
+      className="bg-near-black py-24 md:py-32 mobile-cv-auto"
     >
       <div className="container-wide">
         {/* Minimal Header */}

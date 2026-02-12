@@ -26,7 +26,7 @@ function StarRating() {
 
 export default function Testimonials() {
   return (
-    <section className="relative py-32">
+    <section className="relative py-32 mobile-cv-auto">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <SectionHeader
           eyebrow="Client Reviews"

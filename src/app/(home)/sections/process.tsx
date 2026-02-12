@@ -151,7 +151,7 @@ export default function Process() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-surface py-32">
+    <section ref={sectionRef} className="relative bg-surface py-32 mobile-cv-auto">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <SectionHeader
           eyebrow="How It Works"

@@ -15,6 +15,13 @@ export default function Preloader() {
     if (!containerRef.current || !counterRef.current || !logoRef.current)
       return;
 
+    // Shorter preloader on mobile to reduce time-to-interactive
+    const mobile = window.innerWidth < 768;
+    const counterDur = mobile ? 1.0 : 2.0;
+    const logoStart = mobile ? 0.15 : 0.3;
+    const wipeOutStart = mobile ? 1.0 : 2.0;
+    const wipeStart = mobile ? 1.1 : 2.2;
+
     const tl = gsap.timeline({
       onComplete: () => {
         setComplete();
@@ -25,7 +32,7 @@ export default function Preloader() {
     const counter = { value: 0 };
     tl.to(counter, {
       value: 100,
-      duration: 2,
+      duration: counterDur,
       ease: "power2.inOut",
       onUpdate: () => {
         if (counterRef.current) {
@@ -38,18 +45,18 @@ export default function Preloader() {
         logoRef.current,
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-        0.3
+        logoStart
       )
       // Wipe out
       .to(
         logoRef.current,
         { y: -30, opacity: 0, duration: 0.4, ease: "power3.in" },
-        2.0
+        wipeOutStart
       )
       .to(
         counterRef.current,
         { opacity: 0, duration: 0.3, ease: "power3.in" },
-        2.0
+        wipeOutStart
       )
       .to(
         containerRef.current,
@@ -58,7 +65,7 @@ export default function Preloader() {
           duration: 0.8,
           ease: "power4.inOut",
         },
-        2.2
+        wipeStart
       );
   }, [setComplete]);
 

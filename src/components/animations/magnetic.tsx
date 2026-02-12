@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, ReactNode } from "react";
+import { useRef, useEffect, useState, ReactNode } from "react";
 import { gsap } from "@/lib/gsap";
 
 interface MagneticProps {
@@ -15,9 +15,14 @@ export default function Magnetic({
   className,
 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (isTouch || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
@@ -31,7 +36,7 @@ export default function Magnetic({
   };
 
   const handleMouseLeave = () => {
-    if (!ref.current) return;
+    if (isTouch || !ref.current) return;
     gsap.to(ref.current, {
       x: 0,
       y: 0,

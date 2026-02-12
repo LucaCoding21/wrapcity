@@ -94,7 +94,7 @@ export default function Navigation() {
       />
       <nav
         ref={navRef}
-        className="fixed top-0 right-0 left-0 flex items-center justify-between overflow-visible px-6 py-4 transition-all duration-500 md:px-12"
+        className="fixed top-0 right-0 left-0 flex items-center justify-between overflow-visible px-6 py-4 transition-all duration-500 md:px-12 mobile-no-backdrop"
         style={{
           zIndex: "var(--z-navigation)",
           backgroundColor: isScrolled ? "rgba(29, 28, 29, 0.95)" : "transparent",

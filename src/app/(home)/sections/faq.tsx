@@ -76,7 +76,7 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section id="faq" ref={sectionRef} className="relative bg-surface py-32">
+    <section id="faq" ref={sectionRef} className="relative bg-surface py-32 mobile-cv-auto">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
           {/* FAQ Column */}

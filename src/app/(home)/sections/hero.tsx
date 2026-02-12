@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { usePreloader } from "@/providers/preloader-provider";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
+  const videoElementRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLParagraphElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -14,6 +15,31 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { isLoading } = usePreloader();
+  const [isMobile, setIsMobile] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  // Detect mobile
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  // Lazy-load video only after preloader finishes
+  useEffect(() => {
+    if (isLoading) return;
+    const videoEl = videoElementRef.current;
+    if (!videoEl) return;
+
+    videoEl.src = "/videos/wrap-city-video.mp4";
+    videoEl.load();
+
+    const handleCanPlay = () => {
+      setVideoLoaded(true);
+      videoEl.play().catch(() => {});
+    };
+
+    videoEl.addEventListener("canplay", handleCanPlay);
+    return () => videoEl.removeEventListener("canplay", handleCanPlay);
+  }, [isLoading]);
 
   // Entrance animations
   useEffect(() => {
@@ -75,13 +101,14 @@ export default function Hero() {
 
   }, [isLoading]);
 
-  // Scroll parallax
+  // Scroll parallax — disabled on mobile for GPU performance
   useEffect(() => {
     if (!sectionRef.current) return;
     if (isLoading) return;
 
     const ctx = gsap.context(() => {
-      if (videoRef.current) {
+      // Skip expensive parallax scale on mobile
+      if (videoRef.current && !isMobile) {
         gsap.to(videoRef.current, {
           scale: 1.15,
           ease: "none",
@@ -124,7 +151,7 @@ export default function Hero() {
 
     return () => ctx.revert();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [isLoading, isMobile]);
 
   const handleScroll = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -142,14 +169,23 @@ export default function Hero() {
       {/* Full-bleed video background */}
       <div ref={videoRef} className="absolute inset-0">
         <video
-          autoPlay
+          ref={videoElementRef}
           loop
           muted
           playsInline
-          className="h-full w-full object-cover"
-        >
-          <source src="/videos/wrap-city-video.mp4" type="video/mp4" />
-        </video>
+          preload="none"
+          poster="/images/jeep4.jpg"
+          className="h-full w-full object-cover transition-opacity duration-700"
+          style={{ opacity: videoLoaded ? 1 : 0 }}
+        />
+        {/* Poster fallback visible while video loads */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+          style={{
+            backgroundImage: "url('/images/jeep4.jpg')",
+            opacity: videoLoaded ? 0 : 1,
+          }}
+        />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/30" />

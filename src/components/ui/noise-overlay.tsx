@@ -1,6 +1,17 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function NoiseOverlay() {
+  const [isTouch, setIsTouch] = useState(true);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none)").matches || window.innerWidth < 768);
+  }, []);
+
+  // Skip rendering entirely on mobile — SVG feTurbulence is a GPU killer
+  if (isTouch) return null;
+
   return (
     <div
       className="pointer-events-none fixed inset-0"

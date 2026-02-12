@@ -162,7 +162,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative bg-near-black py-24 md:py-32"
+      className="relative bg-near-black py-24 md:py-32 mobile-cv-auto"
     >
       {/* Diagonal top separator */}
       <div

@@ -9,10 +9,12 @@ export default function CustomCursor() {
   const labelRef = useRef<HTMLDivElement>(null);
   const [label, setLabel] = useState("");
   const [isBlend, setIsBlend] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(true); // default true to prevent flash on mobile
 
   useEffect(() => {
-    // Skip on touch devices
-    if (window.matchMedia("(hover: none)").matches) return;
+    const isTouch = window.matchMedia("(hover: none)").matches;
+    setIsTouchDevice(isTouch);
+    if (isTouch) return;
 
     const dot = dotRef.current;
     const follower = followerRef.current;
@@ -104,7 +106,9 @@ export default function CustomCursor() {
     };
   }, []);
 
-  // Don't render on touch devices (SSR safe)
+  // Render nothing on touch devices — no DOM elements, no compositing layers
+  if (isTouchDevice) return null;
+
   return (
     <>
       {/* Dot */}

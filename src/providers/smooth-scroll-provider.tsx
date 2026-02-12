@@ -20,11 +20,14 @@ export default function SmoothScrollProvider({
   }, []);
 
   useEffect(() => {
+    // Disable Lenis smooth scroll on mobile — native momentum scrolling is smoother
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     const lenis = new Lenis({
       lerp: 0.1,
       duration: 1.2,
       smoothWheel: true,
-      touchMultiplier: 1.5,
       wheelMultiplier: 1,
     });
 
