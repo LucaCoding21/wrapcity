@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 
@@ -229,8 +230,8 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Minimal Lightbox */}
-      {lightboxOpen && (
+      {/* Lightbox rendered via portal to escape mobile-cv-auto containment */}
+      {lightboxOpen && createPortal(
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
           onClick={() => setLightboxOpen(false)}
@@ -289,7 +290,8 @@ export default function Gallery() {
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-sm font-light tracking-widest">
             {lightboxIndex + 1} / {galleryItems.length}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
