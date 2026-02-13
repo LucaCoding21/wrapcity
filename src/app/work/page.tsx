@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/wrapcity-thumbnail.jpg",
+        width: 1920,
+        height: 1080,
         alt: "Wrap City Portfolio - Premium Vehicle Wraps in South Surrey BC",
       },
     ],
