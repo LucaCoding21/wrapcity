@@ -150,8 +150,19 @@ export default function Gallery() {
   }, [lightboxOpen]);
 
   useEffect(() => {
-    document.body.style.overflow = lightboxOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (lightboxOpen) {
+      document.body.style.overflow = "hidden";
+      // Disable content-visibility containment on mobile when lightbox is open
+      // to prevent rendering issues with fixed positioning
+      document.body.classList.add("lightbox-open");
+    } else {
+      document.body.style.overflow = "";
+      document.body.classList.remove("lightbox-open");
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("lightbox-open");
+    };
   }, [lightboxOpen]);
 
   const openLightbox = useCallback((index: number) => {

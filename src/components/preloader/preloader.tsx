@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { usePreloader } from "@/providers/preloader-provider";
@@ -9,7 +9,8 @@ export default function Preloader() {
   const containerRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
-  const { isLoading, setComplete } = usePreloader();
+  const { isLoading, setComplete, isVideoReady, setAnimationDone } = usePreloader();
+  const [wipeTimeline, setWipeTimeline] = useState<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!containerRef.current || !counterRef.current || !logoRef.current)
@@ -20,11 +21,14 @@ export default function Preloader() {
     const counterDur = mobile ? 1.0 : 2.0;
     const logoStart = mobile ? 0.15 : 0.3;
     const wipeOutStart = mobile ? 1.0 : 2.0;
-    const wipeStart = mobile ? 1.1 : 2.2;
 
     const tl = gsap.timeline({
       onComplete: () => {
-        setComplete();
+        setAnimationDone();
+        // On mobile, complete immediately. On desktop, wait for video.
+        if (mobile) {
+          setComplete();
+        }
       },
     });
 
@@ -47,7 +51,7 @@ export default function Preloader() {
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
         logoStart
       )
-      // Wipe out
+      // Wipe out logo and counter
       .to(
         logoRef.current,
         { y: -30, opacity: 0, duration: 0.4, ease: "power3.in" },
@@ -57,17 +61,40 @@ export default function Preloader() {
         counterRef.current,
         { opacity: 0, duration: 0.3, ease: "power3.in" },
         wipeOutStart
-      )
-      .to(
+      );
+
+    // On desktop, create a separate timeline for the final wipe that waits for video
+    if (!mobile) {
+      const wipeTl = gsap.timeline({ paused: true, onComplete: () => setComplete() });
+      wipeTl.to(
+        containerRef.current,
+        {
+          clipPath: "inset(0% 0% 100% 0%)",
+          duration: 0.8,
+          ease: "power4.inOut",
+        }
+      );
+      setWipeTimeline(wipeTl);
+    } else {
+      // On mobile, add the wipe to the main timeline
+      tl.to(
         containerRef.current,
         {
           clipPath: "inset(0% 0% 100% 0%)",
           duration: 0.8,
           ease: "power4.inOut",
         },
-        wipeStart
+        mobile ? 1.1 : 2.2
       );
-  }, [setComplete]);
+    }
+  }, [setComplete, setAnimationDone]);
+
+  // On desktop: play the wipe when video is ready and animation is done
+  useEffect(() => {
+    if (wipeTimeline && isVideoReady) {
+      wipeTimeline.play();
+    }
+  }, [wipeTimeline, isVideoReady]);
 
   if (!isLoading) return null;
 

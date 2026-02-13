@@ -194,10 +194,10 @@ export default function FacebookPosts() {
 
         <div
           ref={cardsRef}
-          className="hidden gap-6 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-4"
         >
           {hasMounted &&
-            facebookPosts.map((post, i) => (
+            facebookPosts.slice(0, 4).map((post, i) => (
               <FacebookPostCard
                 key={i}
                 post={post}
@@ -206,7 +206,7 @@ export default function FacebookPosts() {
             ))}
         </div>
 
-        <div className="mt-0 text-center md:mt-16">
+        <div className="mt-12 text-center md:mt-16">
           <a
             href="https://www.facebook.com/p/Wrap-City-100091623488082/"
             target="_blank"

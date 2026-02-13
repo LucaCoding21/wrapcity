@@ -14,7 +14,7 @@ export default function Hero() {
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { isLoading } = usePreloader();
+  const { isLoading, setVideoReady } = usePreloader();
   const [isMobile, setIsMobile] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
@@ -23,23 +23,30 @@ export default function Hero() {
     setIsMobile(window.innerWidth < 768);
   }, []);
 
-  // Lazy-load video only after preloader finishes
+  // For desktop: start loading video immediately (during preloader)
+  // For mobile: wait until preloader finishes
   useEffect(() => {
-    if (isLoading) return;
     const videoEl = videoElementRef.current;
     if (!videoEl) return;
+
+    const isMobileDevice = window.innerWidth < 768;
+
+    // On mobile, wait for preloader to finish
+    if (isMobileDevice && isLoading) return;
 
     videoEl.src = "/videos/wrap-city-video.mp4";
     videoEl.load();
 
     const handleCanPlay = () => {
       setVideoLoaded(true);
+      // Tell preloader the video is ready (desktop will wait for this)
+      setVideoReady();
       videoEl.play().catch(() => {});
     };
 
     videoEl.addEventListener("canplay", handleCanPlay);
     return () => videoEl.removeEventListener("canplay", handleCanPlay);
-  }, [isLoading]);
+  }, [isLoading, setVideoReady]);
 
   // Entrance animations
   useEffect(() => {
@@ -174,13 +181,13 @@ export default function Hero() {
           muted
           playsInline
           preload="none"
-          poster="/images/jeep4.jpg"
-          className="h-full w-full object-cover transition-opacity duration-700"
-          style={{ opacity: videoLoaded ? 1 : 0 }}
+          poster={isMobile ? "/images/jeep4.jpg" : undefined}
+          className="h-full w-full object-cover"
+          style={{ opacity: isMobile ? (videoLoaded ? 1 : 0) : 1 }}
         />
-        {/* Poster fallback visible while video loads */}
+        {/* Poster fallback visible while video loads - mobile only */}
         <div
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 md:hidden"
           style={{
             backgroundImage: "url('/images/jeep4.jpg')",
             opacity: videoLoaded ? 0 : 1,

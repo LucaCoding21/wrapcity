@@ -574,6 +574,12 @@ html.lenis, html.lenis body {
     contain-intrinsic-size: auto 600px;
   }
 
+  /* Disable content-visibility containment when lightbox is open to fix fixed positioning */
+  body.lightbox-open .mobile-cv-auto {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
+
   /* Disable expensive backdrop-filter on mobile */
   .mobile-no-backdrop {
     backdrop-filter: none !important;

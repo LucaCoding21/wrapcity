@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/wrapcity-thumbnail.webp",
         width: 1200,
         height: 630,
         alt: "Wrap City - Premium Vehicle Wraps in South Surrey BC",
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     title: "Wrap City | Premium Vehicle Wraps in South Surrey, BC",
     description:
       "Transform your vehicle with premium vinyl wraps. 3M & Avery Dennison certified installer serving South Surrey & Vancouver.",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/wrapcity-thumbnail.webp"],
   },
   robots: {
     index: true,
