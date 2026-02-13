@@ -1,11 +1,11 @@
 # Robots.txt for Wrap City
-# https://wrapcity.co
+# https://wrapcity.vercel.app
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://wrapcity.co/sitemap.xml
+Sitemap: https://wrapcity.vercel.app/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1

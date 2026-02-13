@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://wrapcity.co/work",
+    canonical: "https://wrapcity.vercel.app/work",
   },
 };
 
