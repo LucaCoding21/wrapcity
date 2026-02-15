@@ -17,6 +17,7 @@ export default function Hero() {
   const { isLoading, setVideoReady } = usePreloader();
   const [isMobile, setIsMobile] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoInitializedRef = useRef(false);
 
   // Detect mobile
   useEffect(() => {
@@ -29,10 +30,16 @@ export default function Hero() {
     const videoEl = videoElementRef.current;
     if (!videoEl) return;
 
+    // Prevent re-initialization when isLoading changes
+    if (videoInitializedRef.current) return;
+
     const isMobileDevice = window.innerWidth < 768;
 
     // On mobile, wait for preloader to finish
     if (isMobileDevice && isLoading) return;
+
+    // Mark as initialized before loading
+    videoInitializedRef.current = true;
 
     videoEl.src = "/videos/wrap-city-video.mp4";
     videoEl.load();

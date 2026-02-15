@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { navLinks } from "@/data/navigation";
@@ -103,22 +102,26 @@ export default function Navigation() {
       >
         {/* Logo */}
         <div className="relative flex-shrink-0">
-          <Link
+          <a
             href="/"
             data-nav-logo
             data-cursor="pointer"
             className="block opacity-0"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.reload();
+            }}
           >
             <Image
               src="/images/logo.png"
               alt="Wrap City"
               width={280}
               height={88}
-              className="h-20 w-auto md:h-24"
+              className="h-24 w-auto md:h-32"
               style={{ marginTop: "calc(-1.5rem + 20px)", marginBottom: "calc(-1.5rem - 20px)" }}
               priority
             />
-          </Link>
+          </a>
         </div>
 
         {/* Desktop Nav Links */}
@@ -148,16 +151,16 @@ export default function Navigation() {
           ))}
         </div>
 
-        {/* CTA Button - Skewed for aggressive look */}
+        {/* CTA Button */}
         <Magnetic strength={0.15}>
           <a
             href="#contact"
             data-nav-cta
             data-cursor="pointer"
             onClick={(e) => handleNavClick(e, "#contact")}
-            className="btn-skewed hidden bg-power-red px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white opacity-0 transition-all duration-300 hover:bg-power-red-dark md:block"
+            className="hidden rounded bg-power-red px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white opacity-0 transition-all duration-300 hover:bg-power-red-dark md:block"
           >
-            <span>Book Now</span>
+            Get a Free Quote
           </a>
         </Magnetic>
 

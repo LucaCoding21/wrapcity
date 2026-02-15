@@ -111,7 +111,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative bg-white py-24 text-near-black md:py-32 mobile-cv-auto"
+      className="relative bg-gray-100 py-24 text-near-black md:py-32 mobile-cv-auto"
     >
       {/* Diagonal top separator */}
       <div
@@ -208,13 +208,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Diagonal bottom separator */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-20 bg-near-black"
-        style={{
-          clipPath: "polygon(0 100%, 100% 0%, 100% 100%, 0 100%)",
-        }}
-      />
     </section>
   );
 }

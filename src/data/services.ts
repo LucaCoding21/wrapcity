@@ -11,10 +11,10 @@ export interface Service {
 export const services: Service[] = [
   {
     slug: "motorcycle-wraps",
-    title: "Motorcycle Wraps",
+    title: "Motorcycles, Toys & Boats",
     tagline: "Harley Davidson & Sport Bike Specialists",
     description:
-      "Custom motorcycle wraps for Harley Davidsons, sport bikes, and cruisers. Our single-installer approach ensures every curve and detail is wrapped with precision. Serving South Surrey and the Fraser Valley.",
+      "Custom wraps for motorcycles, toys, and boats. From Harley Davidsons and sport bikes to ATVs, jet skis, and watercraft. Our single-installer approach ensures every curve and detail is wrapped with precision. Serving South Surrey and the Fraser Valley.",
     icon: "motorcycle",
     image: "/images/motorcycle.jpeg",
     imageAlt:

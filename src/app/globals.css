@@ -64,6 +64,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -72,6 +73,7 @@ body {
   font-family: var(--font-body);
   overflow-x: hidden;
   line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
 }
 
 ::selection {
@@ -178,13 +180,13 @@ body {
    Geometric / Skewed Elements
    ============================================ */
 
-/* Parallelogram button */
+/* Button style (regular, no skew) */
 .btn-skewed {
-  transform: skewX(-5deg);
+  border-radius: 4px;
 }
 
 .btn-skewed > * {
-  transform: skewX(5deg);
+  /* No transform needed */
 }
 
 /* Skewed section divider */

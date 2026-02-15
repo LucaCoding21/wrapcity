@@ -9,7 +9,7 @@ export default function Preloader() {
   const containerRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
-  const { isLoading, setComplete, isVideoReady, setAnimationDone } = usePreloader();
+  const { isLoading, setComplete, isVideoReady, isAnimationDone, setAnimationDone } = usePreloader();
   const [wipeTimeline, setWipeTimeline] = useState<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
@@ -89,12 +89,12 @@ export default function Preloader() {
     }
   }, [setComplete, setAnimationDone]);
 
-  // On desktop: play the wipe when video is ready and animation is done
+  // On desktop: play the wipe when video is ready AND animation is done (counter reached 100)
   useEffect(() => {
-    if (wipeTimeline && isVideoReady) {
+    if (wipeTimeline && isVideoReady && isAnimationDone) {
       wipeTimeline.play();
     }
-  }, [wipeTimeline, isVideoReady]);
+  }, [wipeTimeline, isVideoReady, isAnimationDone]);
 
   if (!isLoading) return null;
 

@@ -25,10 +25,12 @@ export default function SmoothScrollProvider({
     if (isMobile) return;
 
     const lenis = new Lenis({
-      lerp: 0.1,
-      duration: 1.2,
+      lerp: 0.12,
+      duration: 1.0,
       smoothWheel: true,
       wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+      infinite: false,
     });
 
     // Ensure we're at the top when Lenis initializes

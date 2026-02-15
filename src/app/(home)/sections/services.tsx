@@ -75,10 +75,6 @@ export default function Services() {
             WHAT WE DO
           </h2>
           <div className="mt-4 h-1 w-24 bg-power-red" />
-          <p className="mt-6 text-lg leading-relaxed text-white/60">
-            From motorcycle customization to large scale municipal projects, we deliver precision
-            craftsmanship that exceeds expectations.
-          </p>
         </div>
 
         {/* Service Cards Grid */}
