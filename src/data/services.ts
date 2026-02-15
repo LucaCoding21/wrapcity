@@ -10,69 +10,80 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    slug: "vehicle-wraps",
+    title: "Vehicle Wraps",
+    tagline: "Color Change Vinyl & Custom Automotive Wraps",
+    description:
+      "Color change vinyl, custom automotive wraps, printed graphics, chrome deletes, decals, and personal styling. Your vehicle, your vision — wrapped with precision.",
+    icon: "wrap",
+    image: "/images/jeep4.jpg",
+    imageAlt:
+      "Custom color change vehicle wrap with vinyl graphics by Wrap City",
+  },
+  {
     slug: "motorcycle-wraps",
-    title: "Motorcycles, Toys & Boats",
+    title: "Motorcycle Wraps",
     tagline: "Harley Davidson & Sport Bike Specialists",
     description:
-      "Custom wraps for motorcycles, toys, and boats. From Harley Davidsons and sport bikes to ATVs, jet skis, and watercraft. Our single-installer approach ensures every curve and detail is wrapped with precision. Serving South Surrey and the Fraser Valley.",
+      "Harley Davidson baggers, sport bikes, cruisers, and custom stickers. Every curve and detail wrapped with precision by a single dedicated installer.",
     icon: "motorcycle",
     image: "/images/motorcycle.jpeg",
     imageAlt:
-      "Custom Harley Davidson motorcycle wrap with glossy black and chrome finish in South Surrey BC",
+      "Custom Harley Davidson motorcycle wrap with glossy finish by Wrap City",
   },
   {
-    slug: "vehicle-wraps",
-    title: "Vehicle Wraps",
-    tagline: "Color Change & Matte Black Specialists",
+    slug: "fleet-graphics",
+    title: "Fleet Graphics & Commercial Vehicle Branding",
+    tagline: "Vans, Trucks, Semis & Service Fleets",
     description:
-      "Full color change wraps in matte black, satin, gloss, and specialty finishes. Unlike larger shops, we're a single-installer wrap shop. Your vehicle gets our complete attention, not an assembly line.",
-    icon: "wrap",
-    image: "/images/vehicle-wrap.jpg",
-    imageAlt:
-      "Full vehicle wrap on Ford Mustang with custom vinyl graphics by Wrap City",
-  },
-  {
-    slug: "commercial-fleet-wraps",
-    title: "Commercial Fleet Wraps",
-    tagline: "South Surrey Fleet Graphics",
-    description:
-      "Commercial fleet wraps that turn your vehicles into mobile billboards. We serve businesses throughout South Surrey and the Fraser Valley with 3M and Avery Dennison certified installations.",
+      "Commercial fleet wraps for vans, trucks, semis, service fleets, and heavy equipment. Turn your vehicles into mobile billboards with professional, durable graphics.",
     icon: "truck",
-    image: "/images/commercial.jpeg",
+    image: "/images/commercial-fleet.jpg",
     imageAlt:
-      "Commercial fleet van wrap with branded graphics for business advertising in Surrey BC",
+      "Monster Energy commercial fleet van wrap with branded graphics by Wrap City",
   },
   {
     slug: "architectural-vinyl",
-    title: "Architectural Vinyl",
-    tagline: "Interior & Exterior Surfaces",
+    title: "Architectural Vinyl & Interior Graphics",
+    tagline: "Surface Transformations for Any Space",
     description:
-      "Architectural vinyl for walls, furniture, countertops, and accent features. A cost-effective alternative to painting or replacement with professional installation in South Surrey and surrounding areas.",
+      "Surface transformations, murals, wall graphics, wayfinding, window film, and floor graphics. Beneficial for homes, businesses, events, and venues.",
     icon: "building",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    image: "/images/murals.jpeg",
     imageAlt:
-      "Modern office interior with architectural vinyl film applied to walls and surfaces",
+      "Architectural vinyl and interior graphics for walls and surfaces",
+  },
+  {
+    slug: "municipal-installations",
+    title: "Municipal & Public Installations",
+    tagline: "Public-Sector Ready",
+    description:
+      "City electric vehicles, civic buildings, wayfinding signage, community murals, and anti-graffiti film. Built with durable outdoor laminates, anti-graffiti overlaminates, and long-term weather resistance. Professional coordination for public-sector projects.",
+    icon: "city",
+    image: "/images/municpality.JPG",
+    imageAlt:
+      "Municipal vinyl wrap and public installation project by Wrap City",
   },
   {
     slug: "storefront-advertising",
-    title: "Storefront Vinyl Graphics",
-    tagline: "Window & Storefront Advertising",
+    title: "Storefront & Window Advertising",
+    tagline: "Cut Vinyl, Window Perf & Frosting",
     description:
-      "Storefront vinyl graphics, window decals, and perforated vinyl that maximize your business visibility. Professional installation for South Surrey and White Rock businesses.",
+      "Cut vinyl lettering, window perf, window frosting, and promotional displays. Maximize your storefront visibility with professional signage.",
     icon: "storefront",
-    image: "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&q=80",
+    image: "/images/commercial.jpeg",
     imageAlt:
-      "Storefront window graphics and vinyl signage for retail business advertising",
+      "Storefront window graphics and vinyl lettering for business advertising",
   },
   {
-    slug: "municipal-projects",
-    title: "Municipal Projects",
-    tagline: "Community & Public Art",
+    slug: "business-branding",
+    title: "Complete Business Branding Packages",
+    tagline: "Fleet + Storefront + Interior + Signage",
     description:
-      "Large scale wraps for municipal vehicles and public art installations. We partner with cities and organizations throughout the Fraser Valley to beautify public spaces with durable, warrantied vinyl.",
-    icon: "city",
-    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80",
+      "End-to-end branding solutions combining fleet graphics, storefront signage, interior graphics, and complete signage packages. One team, one cohesive brand across every touchpoint.",
+    icon: "brand",
+    image: "/images/architectural.jpg",
     imageAlt:
-      "Large scale municipal vinyl wrap project for public art installation in Greater Vancouver",
+      "Complete business branding package with fleet wraps and storefront graphics",
   },
 ];

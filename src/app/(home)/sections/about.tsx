@@ -144,21 +144,22 @@ export default function About() {
               PRECISION. QUALITY. PASSION.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-charcoal">
-              Wrap City is a single-installer shop that takes exceptional care
-              and attention to detail with every vehicle wrap. Unlike larger shops where
-              multiple installers may rush projects to meet high volumes, we believe your
-              vehicle deserves focused, expert hands to ensure a flawless, long-lasting result.
+              Wrap City is a South Surrey-based visual branding studio specializing in
+              custom vehicle wraps, commercial fleet graphics, architectural vinyl
+              installations, and municipal surface transformations.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-charcoal">
-              We do not feel multiple people should handle your investment, as this can
-              increase the risk of errors or compromised quality. Our approach allows us
-              to meticulously prepare and wrap every panel, which is what truly sets us apart.
+              From personal vehicle customization to full-scale business branding and
+              public installations, we combine precision installation with high-impact
+              design to help brands stand out everywhere they appear.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-charcoal">
-              While a full wrap typically requires approximately 7 days, this timeline
-              ensures we can work carefully and thoroughly. In some cases, your vehicle
-              may be completed sooner, depending on complexity and schedule. Our priority
-              is delivering a wrap that is stunning, durable, and built to last.
+              Wrap City takes pride in being able to design, print and install
+              high-impact graphics for vehicles, businesses, public spaces and
+              everything in between — in house.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-charcoal">
+              We don&apos;t just wrap surfaces — we elevate visibility.
             </p>
 
             {/* Checkmark points */}

@@ -221,7 +221,7 @@ export default function Hero() {
       >
         {/* Location */}
         <p ref={locationRef} className="label-uppercase mb-6 text-white/60 opacity-0">
-          Single-Installer Wrap Shop in South Surrey, B.C.
+          Visual Branding Studio in South Surrey, B.C.
         </p>
 
         {/* Main headline */}
@@ -244,8 +244,8 @@ export default function Hero() {
           ref={subheadlineRef}
           className="mt-8 hidden max-w-xl text-lg leading-relaxed text-white/70 opacity-0 md:block md:text-xl"
         >
-          Single-installer precision for color change wraps, matte black finishes, and chrome deletes.
-          Your vehicle deserves focused, expert hands, not a rushed assembly line.
+          Commercial wrap &amp; graphics company specializing in color change wraps, matte finishes, and chrome deletes.
+          Surface graphics specialists — your vehicle deserves focused, expert hands.
         </p>
 
         {/* CTAs */}
@@ -256,7 +256,7 @@ export default function Hero() {
             onClick={(e) => handleScroll(e, "#contact")}
             className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
           >
-            <span>Book a Consultation</span>
+            <span>Get an Instant Estimate</span>
             <svg
               width="16"
               height="16"
@@ -276,7 +276,7 @@ export default function Hero() {
             onClick={(e) => handleScroll(e, "#gallery")}
             className="inline-flex items-center gap-2 border border-white/30 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:border-power-red hover:bg-power-red/10"
           >
-            View Our Work
+            View Our Portfolio
           </a>
         </div>
       </div>

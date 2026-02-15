@@ -80,6 +80,12 @@ const galleryItems: GalleryItem[] = [
     title: "Trail Blazer",
     category: "Color Change",
   },
+  {
+    src: "/images/commercial-fleet.jpg",
+    alt: "Monster Energy commercial fleet van wrap with branded graphics by Wrap City",
+    title: "Monster Fleet",
+    category: "Commercial Fleet",
+  },
 ];
 
 /* ── Coverflow Card ── */

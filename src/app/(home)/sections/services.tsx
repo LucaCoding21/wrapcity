@@ -77,50 +77,95 @@ export default function Services() {
           <div className="mt-4 h-1 w-24 bg-power-red" />
         </div>
 
-        {/* Service Cards Grid */}
-        <div ref={cardsRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+        {/* Service Cards */}
+        <div ref={cardsRef} className="space-y-6">
+          {/* Featured Hero Card - Vehicle Wraps */}
+          {services[0] && (
             <div
-              key={service.slug}
               data-card
               className="group relative overflow-hidden rounded-lg border border-white/10 bg-surface transition-all duration-500 hover:border-power-red/30"
             >
-              {/* Service Image */}
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
-              </div>
+              <div className="grid md:grid-cols-2">
+                {/* Hero Image */}
+                <div className="relative h-64 w-full overflow-hidden md:h-full md:min-h-[320px]">
+                  <Image
+                    src={services[0].image}
+                    alt={services[0].imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface/80 max-md:bg-gradient-to-t max-md:from-surface max-md:via-surface/50 max-md:to-transparent" />
+                </div>
 
-              <div className="relative p-6">
-                {/* Skewed accent bar */}
-                <div
-                  className="absolute left-0 top-0 h-full w-1 origin-top bg-power-red transition-transform duration-500 group-hover:scale-y-100"
-                  style={{ transform: "scaleY(0)" }}
-                />
-
-                {/* Content */}
-                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-1 text-sm font-medium text-warm-coral">
-                  {service.tagline}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  {service.description}
-                </p>
-
-                {/* Hover glow effect */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Hero Content */}
+                <div className="relative flex flex-col justify-center p-8 md:p-12">
+                  <div
+                    className="absolute left-0 top-0 h-full w-1 origin-top bg-power-red transition-transform duration-500 group-hover:scale-y-100"
+                    style={{ transform: "scaleY(0)" }}
+                  />
+                  <p className="label-uppercase mb-2 text-power-red">Featured Service</p>
+                  <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
+                    {services[0].title}
+                  </h3>
+                  <p className="mt-2 text-base font-medium text-warm-coral">
+                    {services[0].tagline}
+                  </p>
+                  <p className="mt-4 leading-relaxed text-white/60">
+                    {services[0].description}
+                  </p>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </div>
               </div>
             </div>
-          ))}
+          )}
+
+          {/* Remaining 6 Service Cards - 3x2 Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {services.slice(1).map((service) => (
+              <div
+                key={service.slug}
+                data-card
+                className="group relative overflow-hidden rounded-lg border border-white/10 bg-surface transition-all duration-500 hover:border-power-red/30"
+              >
+                {/* Service Image */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
+                </div>
+
+                <div className="relative p-6">
+                  {/* Skewed accent bar */}
+                  <div
+                    className="absolute left-0 top-0 h-full w-1 origin-top bg-power-red transition-transform duration-500 group-hover:scale-y-100"
+                    style={{ transform: "scaleY(0)" }}
+                  />
+
+                  {/* Content */}
+                  <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-warm-coral">
+                    {service.tagline}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                    {service.description}
+                  </p>
+
+                  {/* Hover glow effect */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CTA Row */}
