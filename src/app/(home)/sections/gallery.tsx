@@ -57,12 +57,6 @@ const galleryItems: GalleryItem[] = [
     category: "Racing Graphics",
   },
   {
-    src: "/images/vehicle-wrap.jpg",
-    alt: "Steeda Ford Mustang with custom racing stripes and performance graphics wrap",
-    title: "Track Ready",
-    category: "Performance",
-  },
-  {
     src: "/images/IMG_0108.jpeg",
     alt: "Custom Harley Davidson motorcycle with matte black and chrome vinyl wrap",
     title: "Dark Knight",
