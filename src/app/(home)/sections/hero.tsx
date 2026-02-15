@@ -220,7 +220,7 @@ export default function Hero() {
         className="container-wide relative z-10 flex h-full flex-col justify-center"
       >
         {/* Location */}
-        <p ref={locationRef} className="label-uppercase mb-6 text-white/60 opacity-0">
+        <p ref={locationRef} className="label-uppercase mb-6 mt-16 text-white/60 opacity-0">
           Visual Branding Studio in South Surrey, B.C.
         </p>
 
