@@ -72,14 +72,14 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Wrap City. Premium Vinyl Wrapping. All rights reserved.
           </p>
           <p className="mt-2 text-white/60">
-            Crafted with care by{" "}
+            built with care by{" "}
             <a
               href="https://cloverfield.studio/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-power-red transition-colors"
             >
-              cloverfield.studio
+              cloverfield
             </a>
           </p>
         </div>
