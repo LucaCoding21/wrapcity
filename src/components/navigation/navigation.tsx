@@ -160,7 +160,7 @@ export default function Navigation() {
             onClick={(e) => handleNavClick(e, "#contact")}
             className="hidden rounded bg-power-red px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white opacity-0 transition-all duration-300 hover:bg-power-red-dark md:block"
           >
-            Get a Free Quote
+            Request a Quote
           </a>
         </Magnetic>
 

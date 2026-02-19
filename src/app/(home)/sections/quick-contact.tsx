@@ -13,6 +13,7 @@ export default function QuickContact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -47,15 +48,25 @@ export default function QuickContact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError("");
+
+    try {
+      const res = await fetch("/api/quick-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
       setIsSubmitted(true);
-      console.log("Quick contact submitted:", formData);
-    }, 1000);
+    } catch {
+      setError("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const canSubmit = formData.name && formData.email;
@@ -76,6 +87,10 @@ export default function QuickContact() {
               <h3 className="text-center font-display text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
                 Have an idea for a project?
               </h3>
+
+              {error && (
+                <p className="text-sm text-red-400">{error}</p>
+              )}
 
               <div className="flex w-full flex-col gap-3 md:flex-row md:items-center md:justify-center">
                 <input

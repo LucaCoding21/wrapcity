@@ -221,13 +221,13 @@ export default function Hero() {
       >
         {/* Location */}
         <p ref={locationRef} className="label-uppercase mb-6 mt-16 text-white/60 opacity-0">
-          Visual Branding Studio in South Surrey, B.C.
+          Premium Vinyl &amp; Visual Branding Studio in South Surrey BC
         </p>
 
         {/* Main headline */}
         <h1 ref={headlineRef} className="heading-hero max-w-5xl">
           <span data-line className="block overflow-hidden opacity-0">
-            <span className="inline-block text-white">YOUR RIDE.</span>
+            <span className="inline-block text-white">TRANSFORM THE</span>
           </span>
           <span data-line className="block overflow-hidden opacity-0">
             <span
@@ -235,17 +235,16 @@ export default function Hero() {
               style={{
                 backgroundImage: "linear-gradient(135deg, #E8C4B8 0%, #D4A090 50%, #C08978 100%)"
               }}
-            >REIMAGINED.</span>
+            >ORDINARY.</span>
           </span>
         </h1>
 
-        {/* Subheadline - hidden on mobile to keep hero clean */}
+        {/* Small print */}
         <p
           ref={subheadlineRef}
-          className="mt-8 hidden max-w-xl text-lg leading-relaxed text-white/70 opacity-0 md:block md:text-xl"
+          className="mt-6 text-sm uppercase tracking-widest text-white/50 opacity-0 md:text-base"
         >
-          Commercial wrap &amp; graphics company specializing in color change wraps, matte finishes, and chrome deletes.
-          Surface graphics specialists — your vehicle deserves focused, expert hands.
+          Architectural. Commercial. Automotive.
         </p>
 
         {/* CTAs */}

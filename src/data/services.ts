@@ -21,11 +21,11 @@ export const services: Service[] = [
       "Custom color change vehicle wrap with vinyl graphics by Wrap City",
   },
   {
-    slug: "motorcycle-wraps",
-    title: "Motorcycle Wraps",
-    tagline: "Harley Davidson & Sport Bike Specialists",
+    slug: "recreational-vehicle-wraps",
+    title: "Recreational Vehicle Wraps",
+    tagline: "Motorcycles, Trailers & Boats",
     description:
-      "Harley Davidson baggers, sport bikes, cruisers, and custom stickers. Every curve and detail wrapped with precision by a single dedicated installer.",
+      "Vinyl wraps for motorcycles, sport bikes, Harley\u2019s, trailers, and boats, providing durable protection and long-lasting performance.",
     icon: "motorcycle",
     image: "/images/motorcycle.jpeg",
     imageAlt:
@@ -36,7 +36,7 @@ export const services: Service[] = [
     title: "Fleet Graphics & Commercial Vehicle Branding",
     tagline: "Vans, Trucks, Semis & Service Fleets",
     description:
-      "Commercial fleet wraps for vans, trucks, semis, service fleets, and heavy equipment. Turn your vehicles into mobile billboards with professional, durable graphics.",
+      "Mobile branding for businesses to increase visibility, maintain a professional appearance, and maximize ROI through effective on-the-go marketing.",
     icon: "truck",
     image: "/images/commercial-fleet.jpg",
     imageAlt:
@@ -47,7 +47,7 @@ export const services: Service[] = [
     title: "Architectural Vinyl & Interior Graphics",
     tagline: "Surface Transformations for Any Space",
     description:
-      "Surface transformations, murals, wall graphics, wayfinding, window film, and floor graphics. Beneficial for homes, businesses, events, and venues.",
+      "Murals, floor/wall graphics, wayfinding, and window film for homes, businesses, events, and venues.",
     icon: "building",
     image: "/images/murals.jpeg",
     imageAlt:
@@ -58,7 +58,7 @@ export const services: Service[] = [
     title: "Municipal & Public Installations",
     tagline: "Public-Sector Ready",
     description:
-      "City electric vehicles, civic buildings, wayfinding signage, community murals, and anti-graffiti film. Built with durable outdoor laminates, anti-graffiti overlaminates, and long-term weather resistance. Professional coordination for public-sector projects.",
+      "Durable, weather-resistant vinyl for public spaces including electrical boxes, park features, civic buildings, wayfinding signage, and community murals. Available with anti-graffiti protection.",
     icon: "city",
     image: "/images/municpality.JPG",
     imageAlt:

@@ -180,7 +180,7 @@ export default function Services() {
             href="#contact"
             className="btn-skewed inline-flex items-center justify-center bg-power-red px-6 py-3 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
           >
-            <span>Get a Free Quote</span>
+            <span>Cost Calculator</span>
           </a>
         </div>
       </div>

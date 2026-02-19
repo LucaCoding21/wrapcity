@@ -133,7 +133,7 @@ export default function BeforeAfter() {
             The Transformation
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Before & After
+            BEFORE & AFTER
           </h2>
           <p className="mt-4 max-w-xl mx-auto text-white/50 text-lg">
             Drag the slider to see the full transformation — from plain to
@@ -154,8 +154,8 @@ export default function BeforeAfter() {
           >
             {/* After image (full, bottom layer) */}
             <Image
-              src="/images/before.jpeg"
-              alt="Trailer after professional vinyl wrap by Wrap City — BC Columbus Contracting branded"
+              src="/images/after-new.jpg"
+              alt="Subaru Crosstrek after baby blue color change vinyl wrap by Wrap City"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
@@ -169,8 +169,8 @@ export default function BeforeAfter() {
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
               <Image
-                src="/images/after.png"
-                alt="Plain silver trailer before vinyl wrap transformation"
+                src="/images/before-new.jpg"
+                alt="Subaru Crosstrek before wrap in original silver paint with bumper damage"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"

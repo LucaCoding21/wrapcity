@@ -144,7 +144,7 @@ export default function About() {
               PRECISION. QUALITY. PASSION.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-charcoal">
-              Wrap City is a South Surrey-based visual branding studio specializing in
+              Wrap City is a premium vinyl &amp; visual branding studio in South Surrey BC specializing in
               custom vehicle wraps, commercial fleet graphics, architectural vinyl
               installations, and municipal surface transformations.
             </p>
@@ -192,7 +192,7 @@ export default function About() {
                 }}
                 className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
               >
-                <span>Get a Free Quote</span>
+                <span>Request a Quote</span>
                 <svg
                   width="16"
                   height="16"

@@ -154,12 +154,11 @@ export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   const [currentStep, setCurrentStep] = useState(0); // 0 = category select
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [submitted, setSubmitted] = useState(false);
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const stepTitles = getStepTitles(formData.category);
   const totalSteps = stepTitles.length;
@@ -207,16 +206,9 @@ export default function Contact() {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setUploadedFiles(Array.from(e.target.files));
-    }
-  };
-
   const selectCategory = (cat: Category) => {
     setFormData({ ...initialFormData, category: cat });
     setCurrentStep(1);
-    setUploadedFiles([]);
   };
 
   const nextStep = () => {
@@ -233,10 +225,25 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData, "Files:", uploadedFiles);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // ── validation ──
@@ -555,19 +562,6 @@ export default function Contact() {
         </select>
       </div>
       <div>
-        <label htmlFor="photos" className="form-label">Upload Photos</label>
-        <div
-          onClick={() => fileInputRef.current?.click()}
-          className="form-input flex cursor-pointer items-center justify-center gap-3 border-dashed py-8 text-center text-white/50 hover:border-power-red/50 hover:text-white/70 transition-all"
-        >
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
-          </svg>
-          <span>{uploadedFiles.length > 0 ? `${uploadedFiles.length} file(s) selected` : "Click to upload photos"}</span>
-        </div>
-        <input ref={fileInputRef} type="file" multiple accept="image/*" onChange={handleFileChange} className="hidden" />
-      </div>
-      <div>
         <label htmlFor="businessName" className="form-label">Business Name (optional)</label>
         <input type="text" id="businessName" name="businessName" value={formData.businessName} onChange={handleChange} className="form-input" placeholder="Your business name" />
       </div>
@@ -675,7 +669,7 @@ export default function Contact() {
             </p>
             <button
               type="button"
-              onClick={() => { setSubmitted(false); setCurrentStep(0); setFormData(initialFormData); setUploadedFiles([]); }}
+              onClick={() => { setSubmitted(false); setCurrentStep(0); setFormData(initialFormData); }}
               className="mt-8 inline-flex items-center gap-2 border border-white/20 px-6 py-3 text-sm font-medium uppercase tracking-widest text-white transition-all hover:border-power-red hover:bg-power-red/10"
             >
               Submit Another Request
@@ -756,6 +750,10 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               {renderStep()}
 
+              {error && (
+                <p className="text-sm text-red-400">{error}</p>
+              )}
+
               {/* Navigation Buttons */}
               {currentStep > 0 && (
                 <div className="flex gap-4 pt-4">
@@ -769,10 +767,10 @@ export default function Contact() {
                   {isLastStep ? (
                     <button
                       type="submit"
-                      disabled={!canProceed()}
+                      disabled={!canProceed() || isSubmitting}
                       className="flex-1 md:flex-none btn-skewed bg-power-red py-3 px-8 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <span>Submit Request</span>
+                      <span>{isSubmitting ? "Sending..." : "Submit Request"}</span>
                     </button>
                   ) : (
                     <button
@@ -797,7 +795,6 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="mb-8">
               <h3 className="font-display text-xl font-bold uppercase text-white">Get In Touch</h3>
-              <p className="mt-2 text-sm text-white/50">By appointment only</p>
 
               {/* Primary CTA - Call */}
               <a href="tel:+16045102400" className="mt-6 flex items-center gap-4 rounded-lg bg-power-red p-4 transition-all duration-300 hover:bg-power-red-dark">
@@ -851,6 +848,15 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
+            </div>
+
+            {/* Appointment Note */}
+            <div className="mb-6 flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
+              <svg className="h-5 w-5 shrink-0 text-power-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <p className="text-sm font-semibold uppercase tracking-wide text-white">By Appointment Only</p>
             </div>
 
             {/* Location & Map */}
