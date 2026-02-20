@@ -67,6 +67,12 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Fix double-tap delay on mobile touch devices */
+a, button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
@@ -570,17 +576,10 @@ html.lenis, html.lenis body {
    ============================================ */
 
 @media (max-width: 767px) {
-  /* Skip rendering of below-fold sections until near viewport */
-  .mobile-cv-auto {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 600px;
-  }
-
-  /* Disable content-visibility containment when lightbox is open to fix fixed positioning */
-  body.lightbox-open .mobile-cv-auto {
-    content-visibility: visible;
-    contain-intrinsic-size: none;
-  }
+  /* content-visibility: auto disabled — it caused anchor links (#contact, #gallery)
+     to scroll to wrong positions because estimated section heights (600px) differ
+     from actual heights, accumulating scroll offset errors on mobile.
+     Images already use loading="lazy" for perf. */
 
   /* Disable expensive backdrop-filter on mobile */
   .mobile-no-backdrop {

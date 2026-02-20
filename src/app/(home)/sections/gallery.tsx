@@ -439,7 +439,7 @@ function ArrowButton({
   );
 }
 
-/* ── Dot Indicators ── */
+/* ── Dot Indicators (windowed – shows max 7 dots) ── */
 function DotIndicators({
   total,
   current,
@@ -449,21 +449,72 @@ function DotIndicators({
   current: number;
   onSelect: (index: number) => void;
 }) {
+  const maxDots = 7;
+
+  // If few enough items, show all dots
+  if (total <= maxDots) {
+    return (
+      <div className="mt-10 flex flex-col items-center gap-3">
+        <div className="flex items-center justify-center gap-2">
+          {Array.from({ length: total }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => onSelect(i)}
+              className={cn(
+                "h-2 rounded-full transition-all duration-300",
+                i === current
+                  ? "w-10 bg-power-red"
+                  : "w-2 bg-white/20 hover:bg-white/40"
+              )}
+              aria-label={`Go to image ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Windowed dots: show maxDots centered around current
+  const half = Math.floor(maxDots / 2);
+  let start = Math.max(0, current - half);
+  let end = start + maxDots - 1;
+
+  if (end >= total) {
+    end = total - 1;
+    start = end - maxDots + 1;
+  }
+
   return (
-    <div className="mt-10 flex justify-center gap-2">
-      {Array.from({ length: total }).map((_, i) => (
-        <button
-          key={i}
-          onClick={() => onSelect(i)}
-          className={cn(
-            "h-2 rounded-full transition-all duration-300",
-            i === current
-              ? "w-10 bg-power-red"
-              : "w-2 bg-white/20 hover:bg-white/40"
-          )}
-          aria-label={`Go to image ${i + 1}`}
-        />
-      ))}
+    <div className="mt-10 flex flex-col items-center gap-3">
+      <div className="flex items-center justify-center gap-1.5">
+        {Array.from({ length: maxDots }).map((_, i) => {
+          const dotIndex = start + i;
+          const distFromActive = Math.abs(dotIndex - current);
+          const isActive = dotIndex === current;
+          const isEdge = (i === 0 && start > 0) || (i === maxDots - 1 && end < total - 1);
+
+          return (
+            <button
+              key={dotIndex}
+              onClick={() => onSelect(dotIndex)}
+              className={cn(
+                "rounded-full transition-all duration-300",
+                isActive
+                  ? "h-2 w-8 bg-power-red"
+                  : isEdge
+                    ? "h-1.5 w-1.5 bg-white/15"
+                    : distFromActive > 2
+                      ? "h-1.5 w-1.5 bg-white/20 hover:bg-white/40"
+                      : "h-2 w-2 bg-white/20 hover:bg-white/40"
+              )}
+              aria-label={`Go to image ${dotIndex + 1}`}
+            />
+          );
+        })}
+      </div>
+      <span className="text-xs tracking-widest text-white/30">
+        {current + 1} / {total}
+      </span>
     </div>
   );
 }
@@ -708,6 +759,10 @@ export default function Gallery() {
       <div className="mt-16 md:mt-20 text-center">
         <a
           href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+          }}
           className="inline-flex items-center gap-3 text-white hover:text-power-red transition-colors duration-300 group"
         >
           <span className="text-sm font-medium tracking-widest uppercase">

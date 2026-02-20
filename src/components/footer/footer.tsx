@@ -22,21 +22,25 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-8 text-sm text-white/60">
-            <a href="#services" className="transition-colors hover:text-white">
-              Services
-            </a>
-            <a href="#about" className="transition-colors hover:text-white">
-              About
-            </a>
-            <a href="#gallery" className="transition-colors hover:text-white">
-              Gallery
-            </a>
-            <a href="#faq" className="transition-colors hover:text-white">
-              FAQ
-            </a>
-            <a href="#contact" className="transition-colors hover:text-white">
-              Contact
-            </a>
+            {[
+              { label: "Services", href: "#services" },
+              { label: "About", href: "#about" },
+              { label: "Gallery", href: "#gallery" },
+              { label: "FAQ", href: "#faq" },
+              { label: "Contact", href: "#contact" },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="transition-colors hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
           {/* Socials */}
