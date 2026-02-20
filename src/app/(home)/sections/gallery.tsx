@@ -291,6 +291,24 @@ const galleryItems: GalleryItem[] = [
     title: "Pink Roller",
     category: "Custom Graphics",
   },
+  {
+    src: "/images/gallery/honda-civic-before-clear-coat.jpg",
+    alt: "Honda Civic before clear coat restoration showing peeling paint on roof and trunk at Wrap City shop",
+    title: "Civic Revival - Before",
+    category: "Paint Correction",
+  },
+  {
+    src: "/images/gallery/honda-civic-after-window-tint-rear.jpg",
+    alt: "Honda Civic after window tint and clear coat restoration rear view by Wrap City luxury automotive styling",
+    title: "Civic Revival - After",
+    category: "Paint Correction",
+  },
+  {
+    src: "/images/gallery/honda-civic-window-tint-side.jpg",
+    alt: "Honda Civic with professional window tint and paint restoration side profile by Wrap City South Surrey BC",
+    title: "Civic Revival",
+    category: "Window Tint",
+  },
 ];
 
 /* ── Coverflow Card ── */
@@ -788,10 +806,13 @@ export default function Gallery() {
         >
           {/* Close */}
           <button
-            onClick={() => setLightboxOpen(false)}
-            className="absolute top-6 right-6 z-50 w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxOpen(false);
+            }}
+            className="absolute top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-power-red hover:border-power-red transition-all duration-300"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>

@@ -24,7 +24,7 @@ const redditSansCondensed = Reddit_Sans_Condensed({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wrapcity.vercel.app"),
+  metadataBase: new URL("https://wrapcity.co"),
   title: {
     default: "Wrap City | Premium Vehicle Wraps & Vinyl Graphics in South Surrey, BC",
     template: "%s | Wrap City - Vehicle Wraps South Surrey BC",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     "how long does car wrap last",
     "will car wrap damage paint",
   ],
-  authors: [{ name: "Wrap City", url: "https://wrapcity.vercel.app" }],
+  authors: [{ name: "Wrap City", url: "https://wrapcity.co" }],
   creator: "Wrap City",
   publisher: "Wrap City",
   formatDetection: {
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "Wrap City | Premium Vehicle Wraps & Vinyl Graphics in South Surrey, BC",
     description:
       "Transform your vehicle with premium vinyl wraps from Wrap City. Serving South Surrey and the Greater Vancouver area. 3M & Avery Dennison certified.",
-    url: "https://wrapcity.vercel.app",
+    url: "https://wrapcity.co",
     siteName: "Wrap City",
     locale: "en_CA",
     type: "website",
@@ -109,7 +109,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://wrapcity.vercel.app",
+    canonical: "https://wrapcity.co",
   },
   category: "Automotive Services",
 };
@@ -120,12 +120,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "@id": "https://wrapcity.vercel.app/#business",
+      "@id": "https://wrapcity.co/#business",
       name: "Wrap City",
-      image: "https://wrapcity.vercel.app/images/logo.png",
+      image: "https://wrapcity.co/images/logo.png",
       description:
         "Wrap City is a single-installer vehicle wrapping shop specializing in premium vinyl wraps, motorcycle wraps, commercial fleet graphics, and architectural vinyl. 3M & Avery Dennison certified installer serving South Surrey and Greater Vancouver.",
-      url: "https://wrapcity.vercel.app",
+      url: "https://wrapcity.co",
       telephone: "+1-604-510-2400",
       email: "taylor@wrapcity.co",
       address: {
@@ -171,7 +171,7 @@ const jsonLd = {
     },
     {
       "@type": "AutoRepair",
-      "@id": "https://wrapcity.vercel.app/#autorepair",
+      "@id": "https://wrapcity.co/#autorepair",
       name: "Wrap City Vehicle Wraps",
       serviceType: [
         "Vehicle Wraps",
@@ -184,14 +184,14 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://wrapcity.vercel.app/#website",
-      url: "https://wrapcity.vercel.app",
+      "@id": "https://wrapcity.co/#website",
+      url: "https://wrapcity.co",
       name: "Wrap City",
-      publisher: { "@id": "https://wrapcity.vercel.app/#business" },
+      publisher: { "@id": "https://wrapcity.co/#business" },
     },
     {
       "@type": "FAQPage",
-      "@id": "https://wrapcity.vercel.app/#faq",
+      "@id": "https://wrapcity.co/#faq",
       mainEntity: [
         {
           "@type": "Question",
