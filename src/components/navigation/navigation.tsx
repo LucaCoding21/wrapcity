@@ -114,7 +114,7 @@ export default function Navigation() {
           >
             <Image
               src="/images/logo.png"
-              alt="Wrap City"
+              alt="Wrap City - Vehicle Wraps South Surrey BC"
               width={280}
               height={88}
               className="h-24 w-auto md:h-32"

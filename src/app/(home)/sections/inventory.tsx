@@ -170,7 +170,7 @@ export default function Inventory() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src="/colour2.jpg"
-                  alt="3M Wrap Film Series 2080 color chart showing Gloss, Satin, Matte, Textures, Colour Flips, and Chrome finishes"
+                  alt="3M Wrap Film Series 2080 color chart showing Gloss, Satin, Matte, Textures, Colour Flips, and Chrome finishes available at Wrap City South Surrey BC"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -226,7 +226,7 @@ export default function Inventory() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src="/images/notpdf.jpg"
-                  alt="Full color catalog showing all available vinyl film colors and finishes"
+                  alt="Full color catalog showing all available vinyl film colors and finishes stocked at our South Surrey location"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"

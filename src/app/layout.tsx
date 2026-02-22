@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reddit_Sans, Reddit_Sans_Condensed } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import SmoothScrollProvider from "@/providers/smooth-scroll-provider";
 import PreloaderProvider from "@/providers/preloader-provider";
@@ -26,11 +27,11 @@ const redditSansCondensed = Reddit_Sans_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wrapcity.co"),
   title: {
-    default: "Wrap City | Premium Vehicle Wraps & Vinyl Graphics in South Surrey, BC",
+    default: "Vehicle Wraps & Vinyl Graphics | Wrap City South Surrey",
     template: "%s | Wrap City - Vehicle Wraps South Surrey BC",
   },
   description:
-    "Wrap City offers premium vehicle wraps, motorcycle wraps, commercial fleet graphics, and architectural vinyl in South Surrey, BC. 3M & Avery Dennison certified installer. Get a free quote today!",
+    "Premium car wraps, fleet graphics & vinyl installations in South Surrey, BC. 3M & Avery Dennison certified installer. Get a free quote!",
   keywords: [
     // Low volume, low competition (880-1,900 monthly searches)
     "car wrap vs painting",
@@ -59,6 +60,15 @@ export const metadata: Metadata = {
     // Question-based long-tail
     "how long does car wrap last",
     "will car wrap damage paint",
+    // Additional low-competition, location-specific
+    "vinyl wrap near me South Surrey",
+    "best car wrap shop Surrey BC",
+    "Tesla wrap Surrey BC",
+    "truck wrap South Surrey",
+    "van wrap Surrey BC",
+    "paint protection film South Surrey",
+    "window tint South Surrey BC",
+    "boat wrap Fraser Valley",
   ],
   authors: [{ name: "Wrap City", url: "https://wrapcity.co" }],
   creator: "Wrap City",
@@ -74,7 +84,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: "Wrap City | Premium Vehicle Wraps & Vinyl Graphics in South Surrey, BC",
+    title: "Vehicle Wraps & Vinyl Graphics | Wrap City South Surrey",
     description:
       "Transform your vehicle with premium vinyl wraps from Wrap City. Serving South Surrey and the Greater Vancouver area. 3M & Avery Dennison certified.",
     url: "https://wrapcity.co",
@@ -92,7 +102,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wrap City | Premium Vehicle Wraps in South Surrey, BC",
+    title: "Vehicle Wraps & Vinyl Graphics | Wrap City South Surrey",
     description:
       "Transform your vehicle with premium vinyl wraps. 3M & Avery Dennison certified installer serving South Surrey & Vancouver.",
     images: ["/images/wrapcity-thumbnail.jpg"],
@@ -246,6 +256,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${redditSans.variable} ${redditSansCondensed.variable}`}>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-H3X4SFKGXC"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-H3X4SFKGXC');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

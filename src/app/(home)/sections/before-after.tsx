@@ -155,7 +155,7 @@ export default function BeforeAfter() {
             {/* After image (full, bottom layer) */}
             <Image
               src="/images/after-new.jpg"
-              alt="Subaru Crosstrek after baby blue color change vinyl wrap by Wrap City"
+              alt="Subaru Crosstrek after baby blue color change vinyl wrap completed in South Surrey"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
@@ -170,7 +170,7 @@ export default function BeforeAfter() {
             >
               <Image
                 src="/images/before-new.jpg"
-                alt="Subaru Crosstrek before wrap in original silver paint with bumper damage"
+                alt="Subaru Crosstrek before wrap in original silver paint with bumper damage at Wrap City South Surrey BC"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"

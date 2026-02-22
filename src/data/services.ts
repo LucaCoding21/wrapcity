@@ -18,7 +18,7 @@ export const services: Service[] = [
     icon: "wrap",
     image: "/images/jeep4.jpg",
     imageAlt:
-      "Custom color change vehicle wrap with vinyl graphics by Wrap City",
+      "Custom color change vehicle wrap with vinyl graphics installed in South Surrey BC",
   },
   {
     slug: "recreational-vehicle-wraps",
@@ -29,7 +29,7 @@ export const services: Service[] = [
     icon: "motorcycle",
     image: "/images/motorcycle.jpeg",
     imageAlt:
-      "Custom Harley Davidson motorcycle wrap with glossy finish by Wrap City",
+      "Custom Harley Davidson motorcycle wrap with glossy finish near White Rock BC",
   },
   {
     slug: "fleet-graphics",
@@ -40,7 +40,7 @@ export const services: Service[] = [
     icon: "truck",
     image: "/images/commercial-fleet.jpg",
     imageAlt:
-      "Monster Energy commercial fleet van wrap with branded graphics by Wrap City",
+      "Monster Energy commercial fleet van wrap with branded graphics serving Greater Vancouver",
   },
   {
     slug: "architectural-vinyl",
@@ -51,7 +51,7 @@ export const services: Service[] = [
     icon: "building",
     image: "/images/murals.jpeg",
     imageAlt:
-      "Architectural vinyl and interior graphics for walls and surfaces",
+      "Architectural vinyl and interior graphics for walls and surfaces by Wrap City South Surrey",
   },
   {
     slug: "municipal-installations",
@@ -62,7 +62,7 @@ export const services: Service[] = [
     icon: "city",
     image: "/images/municpality.JPG",
     imageAlt:
-      "Municipal vinyl wrap and public installation project by Wrap City",
+      "Municipal vinyl wrap and public installation project in the Fraser Valley",
   },
   {
     slug: "storefront-advertising",
@@ -73,7 +73,7 @@ export const services: Service[] = [
     icon: "storefront",
     image: "/images/commercial.jpeg",
     imageAlt:
-      "Storefront window graphics and vinyl lettering for business advertising",
+      "Storefront window graphics and vinyl lettering for business advertising in Surrey BC",
   },
   {
     slug: "business-branding",
@@ -84,6 +84,6 @@ export const services: Service[] = [
     icon: "brand",
     image: "/images/architectural.jpg",
     imageAlt:
-      "Complete business branding package with fleet wraps and storefront graphics",
+      "Complete business branding package with fleet wraps and storefront graphics by Wrap City",
   },
 ];

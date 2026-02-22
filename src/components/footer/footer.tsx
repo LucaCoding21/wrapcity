@@ -13,7 +13,7 @@ export default function Footer() {
           <Link href="/" className="block">
             <Image
               src="/images/logo.png"
-              alt="Wrap City"
+              alt="Wrap City - Vehicle Wraps South Surrey BC"
               width={250}
               height={78}
               className="h-20 w-auto"

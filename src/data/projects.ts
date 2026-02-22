@@ -29,7 +29,7 @@ export const projects: Project[] = [
     description: "Custom rose gold metallic wrap with PPF on high-impact areas.",
     image: "/images/portfolio/project-2.jpg",
     imageAlt:
-      "Mercedes G-Wagon rose gold metallic color change wrap with paint protection film",
+      "Mercedes G-Wagon rose gold metallic color change wrap with paint protection film installed near White Rock BC",
     year: "2024",
   },
   {
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     description: "Full body XPEL Stealth PPF for a satin finish over factory paint.",
     image: "/images/portfolio/project-3.jpg",
     imageAlt:
-      "Porsche 911 GT3 with XPEL Stealth paint protection film for matte satin finish",
+      "Porsche 911 GT3 with XPEL Stealth paint protection film for matte satin finish by Wrap City South Surrey BC",
     year: "2024",
   },
   {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     description: "Matte army green wrap with carbon fiber hood and mirror caps.",
     image: "/images/portfolio/project-5.jpg",
     imageAlt:
-      "Lamborghini Urus matte army green vinyl wrap with carbon fiber accents",
+      "Lamborghini Urus matte army green vinyl wrap with carbon fiber accents wrapped at our South Surrey shop",
     year: "2023",
   },
   {
