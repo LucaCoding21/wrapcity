@@ -1,11 +1,17 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { isLikelyBot } from "@/lib/form-guard";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone } = await request.json();
+    const { name, email, phone, website, token } = await request.json();
+
+    // Fake success so bots don't learn they were filtered
+    if (isLikelyBot({ website, token })) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!name || !email) {
       return NextResponse.json(

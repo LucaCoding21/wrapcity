@@ -1,9 +1,13 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { isLikelyBot } from "@/lib/form-guard";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 type ContactBody = {
+  website?: string;
+  token?: string;
+
   category: string;
   name: string;
   email: string;
@@ -102,6 +106,11 @@ function getCategoryLabel(category: string) {
 export async function POST(request: Request) {
   try {
     const data: ContactBody = await request.json();
+
+    // Fake success so bots don't learn they were filtered
+    if (isLikelyBot(data)) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!data.name || !data.email || !data.category) {
       return NextResponse.json(

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
+import { useFormToken } from "@/hooks/use-form-token";
+import HoneypotField from "@/components/ui/honeypot-field";
 
 export default function QuickContact() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -10,7 +12,9 @@ export default function QuickContact() {
     name: "",
     email: "",
     phone: "",
+    website: "", // honeypot — hidden from real users
   });
+  const token = useFormToken();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -57,7 +61,7 @@ export default function QuickContact() {
       const res = await fetch("/api/quick-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, token }),
       });
 
       if (!res.ok) throw new Error("Failed to send");
@@ -82,6 +86,10 @@ export default function QuickContact() {
           onSubmit={handleSubmit}
           className="mx-auto max-w-4xl"
         >
+          <HoneypotField
+            value={formData.website}
+            onChange={(v) => setFormData({ ...formData, website: v })}
+          />
           {!isSubmitted ? (
             <div className="flex flex-col items-center gap-4">
               <h3 className="text-center font-display text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">

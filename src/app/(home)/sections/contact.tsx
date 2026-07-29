@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
+import { useFormToken } from "@/hooks/use-form-token";
+import HoneypotField from "@/components/ui/honeypot-field";
 
 // ── Option lists ──────────────────────────────────────────────
 
@@ -71,6 +73,7 @@ type FormData = {
   name: string;
   email: string;
   phone: string;
+  website: string; // honeypot — hidden from real users
 
   // automotive
   serviceType: string;
@@ -107,6 +110,7 @@ const initialFormData: FormData = {
   name: "",
   email: "",
   phone: "",
+  website: "",
 
   serviceType: "",
   vehicleYear: "",
@@ -159,6 +163,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const token = useFormToken();
 
   const stepTitles = getStepTitles(formData.category);
   const totalSteps = stepTitles.length;
@@ -234,7 +239,7 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, token }),
       });
 
       if (!res.ok) throw new Error("Failed to send");
@@ -748,6 +753,10 @@ export default function Contact() {
             )}
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+              <HoneypotField
+                value={formData.website}
+                onChange={(v) => setFormData({ ...formData, website: v })}
+              />
               {renderStep()}
 
               {error && (
