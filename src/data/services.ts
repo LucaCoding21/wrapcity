@@ -14,22 +14,44 @@ export const services: Service[] = [
     title: "Vehicle Wraps",
     tagline: "Color Change Vinyl & Custom Automotive Wraps",
     description:
-      "Color change vinyl, custom automotive wraps, printed graphics, chrome deletes, decals, and personal styling. Your vehicle, your vision — wrapped with precision.",
+      "Color change vinyl, custom automotive wraps, printed graphics, chrome deletes, decals, and personal styling. Your vehicle, your vision, wrapped with precision.",
     icon: "wrap",
     image: "/images/jeep4.jpg",
     imageAlt:
-      "Custom color change vehicle wrap with vinyl graphics installed in South Surrey BC",
+      "Custom color change vehicle wrap with vinyl graphics installed in Langley BC",
   },
   {
-    slug: "recreational-vehicle-wraps",
-    title: "Recreational Vehicle Wraps",
-    tagline: "Motorcycles, Trailers & Boats",
+    slug: "paint-protection-film",
+    title: "Paint Protection Film (PPF)",
+    tagline: "Invisible, Self-Healing Protection",
     description:
-      "Vinyl wraps for motorcycles, sport bikes, Harley\u2019s, trailers, and boats, providing durable protection and long-lasting performance.",
+      "Transparent, self-healing urethane film that shields your paint from rock chips, road debris, scratches, and UV damage. A real physical barrier that preserves factory paint and resale value, invisible once installed.",
+    icon: "shield",
+    image: "/images/ppf-install.webp",
+    imageAlt:
+      "Paint protection film being applied to a black Jaguar F-Type at Wrap City in Langley BC",
+  },
+  {
+    slug: "ceramic-coating",
+    title: "Ceramic Coating",
+    tagline: "Gloss, Protection & Easy Cleaning",
+    description:
+      "Professional nano-ceramic coating that bonds to paint, vinyl, PPF, and marine surfaces. Repels water and grime, resists UV, deepens gloss, and makes washing dramatically easier. Available in 1, 3, and 5-year packages for vehicles and boats.",
+    icon: "sparkle",
+    image: "/images/ceramic.webp",
+    imageAlt:
+      "Red Corvette with deep gloss finish after professional ceramic coating at Wrap City in Langley BC",
+  },
+  {
+    slug: "marine-recreational",
+    title: "Marine & Recreational",
+    tagline: "Boats, Motorcycles & Trailers",
+    description:
+      "Vinyl wraps and protection for boats, personal watercraft, motorcycles, and trailers. Durable, UV-resistant finishes built for the water and the road.",
     icon: "motorcycle",
     image: "/images/motorcycle.jpeg",
     imageAlt:
-      "Custom Harley Davidson motorcycle wrap with glossy finish near White Rock BC",
+      "Custom Harley Davidson motorcycle wrap with glossy finish by Wrap City Langley BC",
   },
   {
     slug: "fleet-graphics",
@@ -51,18 +73,7 @@ export const services: Service[] = [
     icon: "building",
     image: "/images/murals.jpeg",
     imageAlt:
-      "Architectural vinyl and interior graphics for walls and surfaces by Wrap City South Surrey",
-  },
-  {
-    slug: "municipal-installations",
-    title: "Municipal & Public Installations",
-    tagline: "Public-Sector Ready",
-    description:
-      "Durable, weather-resistant vinyl for public spaces including electrical boxes, park features, civic buildings, wayfinding signage, and community murals. Available with anti-graffiti protection.",
-    icon: "city",
-    image: "/images/municpality.JPG",
-    imageAlt:
-      "Municipal vinyl wrap and public installation project in the Fraser Valley",
+      "Architectural vinyl and interior graphics for walls and surfaces by Wrap City Langley",
   },
   {
     slug: "storefront-advertising",

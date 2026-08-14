@@ -10,7 +10,7 @@ const steps = [
     number: "01",
     title: "Free Consultation",
     description:
-      "Tell us about your vision. We\u2019ll discuss materials, finishes, and colors \u2014 and give you a transparent quote the same day. No obligation.",
+      "Tell us about your vision. We\u2019ll discuss materials, finishes, and colors, and give you a transparent quote the same day. No obligation.",
     icon: (
       <svg
         width="24"

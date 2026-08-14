@@ -18,7 +18,7 @@ export const projects: Project[] = [
     description: "Full satin black wrap with gloss black accents and chrome delete.",
     image: "/images/portfolio/project-1.jpg",
     imageAlt:
-      "Lamborghini Huracán with full satin black vinyl wrap and chrome delete by Wrap City South Surrey",
+      "Lamborghini Huracán with full satin black vinyl wrap and chrome delete by Wrap City Langley",
     year: "2024",
   },
   {
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     description: "Full body XPEL Stealth PPF for a satin finish over factory paint.",
     image: "/images/portfolio/project-3.jpg",
     imageAlt:
-      "Porsche 911 GT3 with XPEL Stealth paint protection film for matte satin finish by Wrap City South Surrey BC",
+      "Porsche 911 GT3 with XPEL Stealth paint protection film for matte satin finish by Wrap City Langley BC",
     year: "2024",
   },
   {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     description: "Matte army green wrap with carbon fiber hood and mirror caps.",
     image: "/images/portfolio/project-5.jpg",
     imageAlt:
-      "Lamborghini Urus matte army green vinyl wrap with carbon fiber accents wrapped at our South Surrey shop",
+      "Lamborghini Urus matte army green vinyl wrap with carbon fiber accents wrapped at our Langley shop",
     year: "2023",
   },
   {

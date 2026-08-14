@@ -221,7 +221,7 @@ export default function Hero() {
       >
         {/* Location */}
         <p ref={locationRef} className="label-uppercase mb-6 mt-16 text-white/60 opacity-0">
-          Premium Vinyl &amp; Visual Branding Studio in South Surrey BC
+          Premium Vinyl, PPF &amp; Ceramic Studio in Langley BC
         </p>
 
         {/* Main headline */}
@@ -233,7 +233,7 @@ export default function Hero() {
             <span
               className="inline-block bg-clip-text text-transparent"
               style={{
-                backgroundImage: "linear-gradient(135deg, #E8C4B8 0%, #D4A090 50%, #C08978 100%)"
+                backgroundImage: "linear-gradient(135deg, #FF6EB3 0%, #FF2D95 45%, #00E5FF 100%)"
               }}
             >ORDINARY.</span>
           </span>
@@ -244,7 +244,7 @@ export default function Hero() {
           ref={subheadlineRef}
           className="mt-6 text-sm uppercase tracking-widest text-white/50 opacity-0 md:text-base"
         >
-          Architectural. Commercial. Automotive.
+          Automotive. Marine. Architectural.
         </p>
 
         {/* CTAs */}
@@ -253,7 +253,7 @@ export default function Hero() {
           <a
             href="#contact"
             onClick={(e) => handleScroll(e, "#contact")}
-            className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+            className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark"
           >
             <span>Get an Instant Estimate</span>
             <svg

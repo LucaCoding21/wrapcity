@@ -7,9 +7,9 @@ import { gsap } from "@/lib/gsap";
 const highlights = [
   "Single-installer shop, no assembly line, no shortcuts",
   "3M & Avery Dennison certified vinyl wrap installer",
-  "Specializing in color change wraps, matte black, and chrome delete",
+  "Specializing in color change wraps, PPF, ceramic coating, and chrome delete",
   "Premium materials with 5-7 year manufacturer warranty",
-  "Serving South Surrey, White Rock & Fraser Valley",
+  "Serving Langley, Surrey, White Rock & the Fraser Valley",
   "100% satisfaction guarantee on every wrap",
 ];
 
@@ -127,10 +127,10 @@ export default function About() {
           <div ref={imageRef} className="relative">
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/images/aboutme.jpeg"
-                alt="Taylor Paige, owner and 3M certified vinyl wrap installer at Wrap City in South Surrey BC"
+                src="/images/ppf.jpg"
+                alt="Taylor Paige, owner of Wrap City, applying paint protection film at the Langley BC studio"
                 fill
-                className="object-cover object-top"
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
               />
@@ -144,22 +144,23 @@ export default function About() {
               PRECISION. QUALITY. PASSION.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-charcoal">
-              Wrap City is a premium vinyl &amp; visual branding studio in South Surrey BC specializing in
-              custom vehicle wraps, commercial fleet graphics, architectural vinyl
-              installations, and municipal surface transformations.
+              Wrap City is a premium vinyl &amp; visual branding studio in Langley BC specializing in
+              custom vehicle wraps, paint protection film, ceramic coating, commercial
+              fleet graphics, and architectural vinyl installations, proudly serving
+              Langley, Surrey, White Rock, South Surrey &amp; the Fraser Valley.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-charcoal">
               From personal vehicle customization to full-scale business branding and
-              public installations, we combine precision installation with high-impact
+              marine protection, we combine precision installation with high-impact
               design to help brands stand out everywhere they appear.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-charcoal">
               Wrap City takes pride in being able to design, print and install
               high-impact graphics for vehicles, businesses, public spaces and
-              everything in between — in house.
+              everything in between, all in house.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-charcoal">
-              We don&apos;t just wrap surfaces — we elevate visibility.
+              We don&apos;t just wrap surfaces. We elevate visibility.
             </p>
 
             {/* Checkmark points */}
@@ -190,7 +191,7 @@ export default function About() {
                   e.preventDefault();
                   document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+                className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark"
               >
                 <span>Request a Quote</span>
                 <svg

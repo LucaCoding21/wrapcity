@@ -136,7 +136,7 @@ export default function BeforeAfter() {
             BEFORE & AFTER
           </h2>
           <p className="mt-4 max-w-xl mx-auto text-white/50 text-lg">
-            Drag the slider to see the full transformation — from plain to
+            Drag the slider to see the full transformation, from plain to
             professionally branded.
           </p>
         </div>
@@ -155,7 +155,7 @@ export default function BeforeAfter() {
             {/* After image (full, bottom layer) */}
             <Image
               src="/images/after-new.jpg"
-              alt="Subaru Crosstrek after baby blue color change vinyl wrap completed in South Surrey"
+              alt="Subaru Crosstrek after baby blue color change vinyl wrap completed in Langley"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
@@ -170,7 +170,7 @@ export default function BeforeAfter() {
             >
               <Image
                 src="/images/before-new.jpg"
-                alt="Subaru Crosstrek before wrap in original silver paint with bumper damage at Wrap City South Surrey BC"
+                alt="Subaru Crosstrek before wrap in original silver paint with bumper damage at Wrap City Langley BC"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
@@ -186,7 +186,7 @@ export default function BeforeAfter() {
               </span>
             </div>
             <div className="pointer-events-none absolute top-5 right-5 z-10">
-              <span className="inline-block rounded-full bg-power-red/90 backdrop-blur-md px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
+              <span className="inline-block rounded-full bg-power-red/90 backdrop-blur-md px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-near-black">
                 After
               </span>
             </div>

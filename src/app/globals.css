@@ -6,21 +6,23 @@
    ============================================ */
 
 @theme inline {
-  /* Primary Colors */
-  --color-power-red: #B87D6A;
-  --color-power-red-dark: #A66D5A;
-  --color-power-red-light: #C99485;
+  /* Primary Colors — neon pink (token keeps legacy "power-red" name) */
+  --color-power-red: #FF2D95;
+  --color-power-red-dark: #D91F7C;
+  --color-power-red-light: #FF6EB3;
 
   /* Neutrals */
   --color-near-black: #1D1C1D;
   --color-charcoal: #474549;
   --color-charcoal-light: #5A585C;
 
-  /* Accents */
-  --color-warm-coral: #ED8254;
-  --color-warm-coral-dark: #D66A3C;
-  --color-soft-sand: #E5BBAA;
-  --color-soft-sand-light: #F0D5C9;
+  /* Accents — secondary brand cyan (legacy "warm-coral"/"soft-sand" names) */
+  --color-warm-coral: #00E5FF;
+  --color-warm-coral-dark: #00B8D4;
+  --color-soft-sand: #A5F3FF;
+  --color-soft-sand-light: #D6FAFF;
+  --color-accent: #FF2D95;
+  --color-accent-light: #FF6EB3;
 
   /* Semantic */
   --color-background: #1D1C1D;
@@ -83,7 +85,7 @@ body {
 }
 
 ::selection {
-  background: rgba(184, 125, 106, 0.4);
+  background: rgba(255, 45, 149, 0.4);
   color: var(--color-foreground);
 }
 
@@ -180,6 +182,11 @@ body {
 
 .bg-gradient-coral {
   background: var(--color-power-red);
+}
+
+/* Brand pink-to-cyan gradient (loading line, accents) */
+.bg-gradient-accent {
+  background: linear-gradient(90deg, #FF2D95 0%, #00E5FF 100%);
 }
 
 /* ============================================
@@ -320,7 +327,7 @@ body {
 
 .btn-primary {
   background-color: var(--color-power-red);
-  color: white;
+  color: var(--color-near-black);
   font-family: var(--font-body);
   font-weight: 600;
   text-transform: uppercase;
@@ -365,7 +372,7 @@ body {
 
 .btn-ghost:hover {
   border-color: var(--color-power-red);
-  background-color: rgba(184, 125, 106, 0.1);
+  background-color: rgba(255, 45, 149, 0.1);
 }
 
 /* ============================================
@@ -389,7 +396,7 @@ body {
 .form-input:focus {
   outline: none;
   border-color: var(--color-power-red);
-  box-shadow: 0 0 0 2px rgba(184, 125, 106, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 45, 149, 0.2);
 }
 
 .form-label {
@@ -426,7 +433,7 @@ body {
 }
 
 .card-service:hover {
-  border-color: rgba(184, 125, 106, 0.3);
+  border-color: rgba(255, 45, 149, 0.3);
   transform: translateY(-4px);
 }
 

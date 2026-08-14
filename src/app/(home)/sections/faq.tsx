@@ -82,7 +82,7 @@ const categoryMeta: CategoryMeta[] = [
   },
   {
     id: "Commercial",
-    label: "Commercial & Municipal",
+    label: "Commercial & Fleet",
     description: "Fleet branding, insurance, and project coordination",
     icon: (
       <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -115,7 +115,7 @@ const faqs: FaqItem[] = [
         "Vinyl wrap is a premium, high-performance film professionally applied to vehicles, architectural surfaces, storefront glass, and commercial assets to transform appearance, protect original finishes, and elevate branding."
       ),
       text(
-        "At Wrap City, we install commercial-grade films designed for long-term durability, color depth, and precision finish — whether for custom vehicles, fleet branding, storefront advertising, or architectural transformations in Surrey and the Lower Mainland."
+        "At Wrap City, we install commercial-grade films designed for long-term durability, color depth, and precision finish, whether for custom vehicles, fleet branding, storefront advertising, or architectural transformations in Surrey and the Lower Mainland."
       ),
     ],
   },
@@ -136,7 +136,7 @@ const faqs: FaqItem[] = [
     question: "Does vinyl wrap damage the surface?",
     answer: [
       text(
-        "No — when installed and removed correctly on a properly prepared surface, vinyl wrap does not damage factory paint or structurally sound walls."
+        "No. When installed and removed correctly on a properly prepared surface, vinyl wrap does not damage factory paint or structurally sound walls."
       ),
       text(
         "In fact, wrap can help preserve OEM paint from UV exposure and minor surface wear."
@@ -149,7 +149,7 @@ const faqs: FaqItem[] = [
     answer: [
       text("Yes. Vinyl wrap is completely removable."),
       text(
-        "When removed professionally, it restores the original surface beneath — provided the surface was in good condition prior to installation."
+        "When removed professionally, it restores the original surface beneath, provided the surface was in good condition prior to installation."
       ),
     ],
   },
@@ -170,7 +170,7 @@ const faqs: FaqItem[] = [
     category: "Vinyl Basics",
     question: "Will vinyl wrap hide surface damage?",
     answer: [
-      text("Vinyl is a conformable film — not a filler."),
+      text("Vinyl is a conformable film, not a filler."),
       text("It will not conceal:"),
       list([
         "Deep scratches",
@@ -206,7 +206,7 @@ const faqs: FaqItem[] = [
         "Retail interiors",
         "Residential upgrades",
         "Wayfinding systems",
-        "Municipal wall graphics",
+        "Community wall graphics",
       ]),
       text(
         "Architectural vinyl offers a cost-effective alternative to renovation while delivering a refined, modern finish."
@@ -218,19 +218,19 @@ const faqs: FaqItem[] = [
     question: "Do you offer PPF or ceramic coating?",
     answer: [
       text(
-        "We currently offer select Paint Protection Film (PPF) installations."
+        "Yes. Both are now offered in-house at our Langley studio."
       ),
       text(
-        "Window tint and ceramic coating services will be introduced following advanced training."
+        "Paint Protection Film (PPF) is a transparent, self-healing urethane film that shields your paint from rock chips, road debris, and scratches."
       ),
       text(
-        "We will also be offering front windshield tempered protective film designed to help reduce cracking and rock chip damage."
+        "Our professional ceramic coating bonds to paint, vinyl, PPF, and marine surfaces. Packages are available in 1, 3, and 5-year options for vehicles and boats."
       ),
     ],
   },
   {
     category: "Services",
-    question: "Paint vs Wrap — Which is better?",
+    question: "Paint vs Wrap: Which is better?",
     answer: [
       heading("Wrap Advantages:"),
       list([
@@ -285,7 +285,7 @@ const faqs: FaqItem[] = [
     question: "How long will it take to complete a project?",
     answer: [
       text(
-        "Wrap City is a single-installer shop that takes exceptional care and attention to detail with every vehicle wrap. Unlike larger shops with multiple installers that rush projects to meet high volumes — we believe your vehicle deserves preparation and focus to ensure a flawless, long-lasting result. We plan our schedule with proper time allotment to ensure your project gets done properly."
+        "Wrap City is a single-installer shop that takes exceptional care and attention to detail with every vehicle wrap. Unlike larger shops with multiple installers that rush projects to meet high volumes, we believe your vehicle deserves preparation and focus to ensure a flawless, long-lasting result. We plan our schedule with proper time allotment to ensure your project gets done properly."
       ),
       text(
         "Commercial wraps can take anywhere from 1–3 days, depending on the size and complexity of the project."
@@ -365,7 +365,7 @@ const faqs: FaqItem[] = [
         "Vehicle installations",
         "Commercial properties",
         "Fleet projects",
-        "Municipal applications",
+        "Marine installations",
       ]),
     ],
   },
@@ -403,13 +403,14 @@ const faqs: FaqItem[] = [
     question: "Where are you located?",
     answer: [
       text(
-        "Wrap City is based in South Surrey, near 184th Street & 16th Avenue."
+        "Wrap City is located at 106-20058 Industrial Ave in Langley, BC."
       ),
       text("We serve:"),
       list([
+        "Langley",
         "Surrey",
         "White Rock",
-        "Langley",
+        "South Surrey",
         "Cloverdale",
         "Port Kells",
         "Maple Ridge",
@@ -423,9 +424,6 @@ const faqs: FaqItem[] = [
         "The Lower Mainland",
       ]),
       text("All installations are by appointment only."),
-      text(
-        "We operate on private farmland property — please be respectful of this when visiting."
-      ),
     ],
   },
 ];
@@ -692,7 +690,7 @@ export default function FAQ() {
               <div className="flex flex-col gap-3">
                 <a
                   href="tel:+16045102400"
-                  className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent to-accent/80 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-[1.02]"
+                  className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent to-accent/80 py-4 text-sm font-bold uppercase tracking-widest text-near-black shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-[1.02]"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                   <svg
@@ -743,7 +741,7 @@ export default function FAQ() {
                   <a
                     href="tel:+16045102400"
                     data-cursor="pointer"
-                    className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent to-accent/80 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-[1.02]"
+                    className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent to-accent/80 py-4 text-sm font-bold uppercase tracking-widest text-near-black shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-[1.02]"
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                     <svg

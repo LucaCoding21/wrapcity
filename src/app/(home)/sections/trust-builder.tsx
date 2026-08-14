@@ -161,7 +161,7 @@ export default function TrustBuilder() {
               e.preventDefault();
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-skewed inline-flex shrink-0 items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+            className="btn-skewed inline-flex shrink-0 items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark"
           >
             <span>Get Your Free Quote</span>
             <svg

@@ -38,7 +38,7 @@ type ContactBody = {
   archReferral: string;
   archAdditionalInfo: string;
 
-  // municipal
+  // marine
   city: string;
   projectIdea: string;
 };
@@ -56,7 +56,7 @@ function row(label: string, value: string | boolean | undefined) {
 
 function buildAutomotiveHtml(data: ContactBody) {
   return `
-    <h2 style="color: #e63946; margin: 0 0 16px;">Automotive Wrap Request</h2>
+    <h2 style="color: #FF2D95; margin: 0 0 16px;">Automotive Wrap Request</h2>
     <table style="width: 100%; border-collapse: collapse;">
       ${row("Service Type", data.serviceType)}
       ${row("Vehicle", `${data.vehicleYear} ${data.vehicleMake} ${data.vehicleModel}`)}
@@ -74,7 +74,7 @@ function buildAutomotiveHtml(data: ContactBody) {
 
 function buildArchitecturalHtml(data: ContactBody) {
   return `
-    <h2 style="color: #e63946; margin: 0 0 16px;">Architectural Project Request</h2>
+    <h2 style="color: #FF2D95; margin: 0 0 16px;">Architectural Project Request</h2>
     <table style="width: 100%; border-collapse: collapse;">
       ${row("Project Type", data.projectType)}
       ${row("Surface Type", data.surfaceType)}
@@ -87,19 +87,19 @@ function buildArchitecturalHtml(data: ContactBody) {
     </table>`;
 }
 
-function buildMunicipalHtml(data: ContactBody) {
+function buildMarineHtml(data: ContactBody) {
   return `
-    <h2 style="color: #e63946; margin: 0 0 16px;">Municipal Project Inquiry</h2>
+    <h2 style="color: #FF2D95; margin: 0 0 16px;">Marine Project Inquiry</h2>
     <table style="width: 100%; border-collapse: collapse;">
       ${row("City", data.city)}
-      ${row("Project Idea", data.projectIdea)}
+      ${row("Project Details", data.projectIdea)}
     </table>`;
 }
 
 function getCategoryLabel(category: string) {
   if (category === "automotive") return "Automotive";
   if (category === "architectural") return "Architectural";
-  if (category === "municipal") return "Municipal";
+  if (category === "marine") return "Marine";
   return category;
 }
 
@@ -122,23 +122,23 @@ export async function POST(request: Request) {
     let detailsHtml = "";
     if (data.category === "automotive") detailsHtml = buildAutomotiveHtml(data);
     else if (data.category === "architectural") detailsHtml = buildArchitecturalHtml(data);
-    else if (data.category === "municipal") detailsHtml = buildMunicipalHtml(data);
+    else if (data.category === "marine") detailsHtml = buildMarineHtml(data);
 
     await resend.emails.send({
       from: "Wrap City <wrapcity@cloverfield.studio>",
       to: ["nguyen.william0121@gmail.com", "taylor@wrapcity.co"],
-      subject: `New ${getCategoryLabel(data.category)} Estimate Request — ${data.name}`,
+      subject: `New ${getCategoryLabel(data.category)} Estimate Request from ${data.name}`,
       replyTo: data.email,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #1a1a1a; padding: 24px; border-radius: 8px 8px 0 0;">
-            <h1 style="color: #e63946; margin: 0; font-size: 24px;">
+            <h1 style="color: #FF2D95; margin: 0; font-size: 24px;">
               New ${getCategoryLabel(data.category)} Estimate Request
             </h1>
             <p style="color: #999; margin: 8px 0 0; font-size: 14px;">from ${data.name}</p>
           </div>
           <div style="background: #f9f9f9; padding: 24px;">
-            <h3 style="color: #333; margin: 0 0 12px; border-bottom: 2px solid #e63946; padding-bottom: 8px;">Contact Info</h3>
+            <h3 style="color: #333; margin: 0 0 12px; border-bottom: 2px solid #FF2D95; padding-bottom: 8px;">Contact Info</h3>
             <table style="width: 100%; border-collapse: collapse;">
               ${row("Name", data.name)}
               ${row("Email", `<a href="mailto:${data.email}">${data.email}</a>`)}
@@ -146,7 +146,7 @@ export async function POST(request: Request) {
             </table>
           </div>
           <div style="background: #fff; padding: 24px; border-radius: 0 0 8px 8px;">
-            <h3 style="color: #333; margin: 0 0 12px; border-bottom: 2px solid #e63946; padding-bottom: 8px;">Project Details</h3>
+            <h3 style="color: #333; margin: 0 0 12px; border-bottom: 2px solid #FF2D95; padding-bottom: 8px;">Project Details</h3>
             ${detailsHtml}
           </div>
         </div>

@@ -283,7 +283,7 @@ export default function GoogleReviews() {
                   {/* Author */}
                   <div className="relative mt-8 flex items-center gap-4 border-t border-gray-100 pt-6">
                     {/* Avatar placeholder */}
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-power-red text-lg font-bold text-white">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-power-red text-lg font-bold text-near-black">
                       {review.author.charAt(0)}
                     </div>
                     <div>
@@ -325,7 +325,7 @@ export default function GoogleReviews() {
             href="https://www.google.com/search?q=Wrap+City+Reviews&oq=wrap&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIOCAEQRRgnGDsYgAQYigUyDAgCEEUYORixAxiABDIGCAMQRRg9MgYIBBBFGD0yBggFEEUYPDIGCAYQRRg8MgYIBxBFGD3SAQgxNzAxajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x5485c512236ebe05:0xc0db54ad5998594e,1,,,,"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-full bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#8b1a1a]"
+            className="group inline-flex items-center gap-3 rounded-full bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark"
           >
             Read All Reviews on Google
             <svg

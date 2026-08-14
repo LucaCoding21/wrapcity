@@ -65,7 +65,7 @@ const referralOptions = [
 
 // ── Types ─────────────────────────────────────────────────────
 
-type Category = "" | "automotive" | "architectural" | "municipal";
+type Category = "" | "automotive" | "architectural" | "marine";
 
 type FormData = {
   // shared
@@ -100,7 +100,7 @@ type FormData = {
   archReferral: string;
   archAdditionalInfo: string;
 
-  // municipal
+  // marine
   city: string;
   projectIdea: string;
 };
@@ -143,12 +143,12 @@ const initialFormData: FormData = {
 
 const autoStepTitles = ["Service Type", "Vehicle Details", "Preferences", "Your Info"];
 const archStepTitles = ["Project Details", "Additional Info", "Your Info"];
-const muniStepTitles = ["Your Info"];
+const marineStepTitles = ["Your Info"];
 
 function getStepTitles(category: Category) {
   if (category === "automotive") return autoStepTitles;
   if (category === "architectural") return archStepTitles;
-  if (category === "municipal") return muniStepTitles;
+  if (category === "marine") return marineStepTitles;
   return [];
 }
 
@@ -268,7 +268,7 @@ export default function Contact() {
       if (currentStep === 3) return !!formData.name && !!formData.email;
     }
 
-    if (category === "municipal") {
+    if (category === "marine") {
       if (currentStep === 1) return !!formData.name && !!formData.email && !!formData.phone && !!formData.city;
     }
 
@@ -306,12 +306,14 @@ export default function Contact() {
             ),
           },
           {
-            id: "municipal" as Category,
-            title: "Municipal",
-            desc: "City projects, public works, community installations",
+            id: "marine" as Category,
+            title: "Marine",
+            desc: "Boat wraps, marine protection, watercraft",
             icon: (
               <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                <circle cx="12" cy="5" r="3" />
+                <path d="M12 8v14" />
+                <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
               </svg>
             ),
           },
@@ -600,8 +602,8 @@ export default function Contact() {
     </div>
   );
 
-  // ── MUNICIPAL STEP ──
-  const renderMuniStep1 = () => (
+  // ── MARINE STEP ──
+  const renderMarineStep1 = () => (
     <div className="space-y-5 animate-fadeIn">
       <div>
         <label htmlFor="name" className="form-label">Your Name *</label>
@@ -620,8 +622,8 @@ export default function Contact() {
         <input type="text" id="city" name="city" required value={formData.city} onChange={handleChange} className="form-input" placeholder="Vancouver" />
       </div>
       <div>
-        <label htmlFor="projectIdea" className="form-label">Project Idea (optional)</label>
-        <textarea id="projectIdea" name="projectIdea" rows={4} value={formData.projectIdea} onChange={handleChange} className="form-input resize-none" placeholder="Describe your project idea..." />
+        <label htmlFor="projectIdea" className="form-label">Project Details (optional)</label>
+        <textarea id="projectIdea" name="projectIdea" rows={4} value={formData.projectIdea} onChange={handleChange} className="form-input resize-none" placeholder="Tell us about your boat, watercraft, motorcycle, or trailer..." />
       </div>
       <p className="text-xs text-white/40 italic">
         We will contact you within 24 hours. We respect your privacy. Your information will only be used to respond to your inquiry.
@@ -648,8 +650,8 @@ export default function Contact() {
       if (currentStep === 3) return renderArchStep3();
     }
 
-    if (category === "municipal") {
-      if (currentStep === 1) return renderMuniStep1();
+    if (category === "marine") {
+      if (currentStep === 1) return renderMarineStep1();
     }
 
     return null;
@@ -703,7 +705,7 @@ export default function Contact() {
             <p className="mt-6 text-lg text-white/60">
               {currentStep === 0
                 ? "Select your project category to get started."
-                : `Step ${currentStep} of ${totalSteps} \u2014 ${stepTitles[currentStep - 1]}`}
+                : `Step ${currentStep} of ${totalSteps}: ${stepTitles[currentStep - 1]}`}
             </p>
 
             {/* Step Indicator (only when category is selected) */}
@@ -724,7 +726,7 @@ export default function Contact() {
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-1 transition-all duration-300 ${
                           index + 1 === currentStep
-                            ? "bg-power-red text-white"
+                            ? "bg-power-red text-near-black"
                             : index + 1 < currentStep
                             ? "bg-white/20 text-white"
                             : "bg-white/10 text-white/40"
@@ -777,7 +779,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={!canProceed() || isSubmitting}
-                      className="flex-1 md:flex-none btn-skewed bg-power-red py-3 px-8 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 md:flex-none btn-skewed bg-power-red py-3 px-8 text-sm font-bold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span>{isSubmitting ? "Sending..." : "Submit Request"}</span>
                     </button>
@@ -786,7 +788,7 @@ export default function Contact() {
                       type="button"
                       onClick={nextStep}
                       disabled={!canProceed()}
-                      className="flex-1 md:flex-none btn-skewed bg-power-red py-3 px-8 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 md:flex-none btn-skewed bg-power-red py-3 px-8 text-sm font-bold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span>Continue</span>
                     </button>
@@ -807,14 +809,14 @@ export default function Contact() {
 
               {/* Primary CTA - Call */}
               <a href="tel:+16045102400" className="mt-6 flex items-center gap-4 rounded-lg bg-power-red p-4 transition-all duration-300 hover:bg-power-red-dark">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/20">
-                  <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black/15">
+                  <svg className="h-6 w-6 text-near-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-white/70">Call Now</p>
-                  <p className="text-lg font-bold text-white">(604) 510-2400</p>
+                  <p className="text-xs font-medium uppercase tracking-wider text-near-black/70">Call Now</p>
+                  <p className="text-lg font-bold text-near-black">(604) 510-2400</p>
                 </div>
               </a>
 
@@ -860,12 +862,22 @@ export default function Contact() {
             </div>
 
             {/* Appointment Note */}
-            <div className="mb-6 flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
-              <svg className="h-5 w-5 shrink-0 text-power-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              <p className="text-sm font-semibold uppercase tracking-wide text-white">By Appointment Only</p>
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
+              <div className="flex items-center gap-3">
+                <svg className="h-5 w-5 shrink-0 text-power-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <p className="text-sm font-semibold uppercase tracking-wide text-white">By Appointment Only</p>
+              </div>
+              <a
+                href="https://calendly.com/taylor-wrapcity/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 rounded bg-power-red px-3 py-1.5 text-xs font-semibold text-near-black transition-colors hover:bg-power-red-dark"
+              >
+                Book a Consultation
+              </a>
             </div>
 
             {/* Location & Map */}
@@ -877,23 +889,23 @@ export default function Contact() {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   <div>
-                    <p className="text-sm font-medium text-white">1312 184 St, Langley Twp, BC</p>
+                    <p className="text-sm font-medium text-white">106-20058 Industrial Ave, Langley, BC</p>
                   </div>
                 </div>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=1312+184+St,+Langley+Twp,+BC+V2Z+1K2" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded bg-power-red px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-power-red-dark">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=106-20058+Industrial+Ave,+Langley,+BC" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded bg-power-red px-3 py-1.5 text-xs font-medium text-near-black transition-colors hover:bg-power-red-dark">
                   Get Directions
                 </a>
               </div>
               <div className="relative h-56 overflow-hidden rounded-b-lg lg:h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2614.5!2d-122.6756!3d49.0234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d0e7e7c9f0e1%3A0x0!2s1312%20184%20St%2C%20Langley%20Twp%2C%20BC%20V2Z%201K2!5e0!3m2!1sen!2sca!4v1699999999999!5m2!1sen!2sca"
+                  src="https://www.google.com/maps?q=106-20058+Industrial+Ave,+Langley,+BC&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Wrap City Location - 1312 184 St, Langley Twp, BC"
+                  title="Wrap City Location - 106-20058 Industrial Ave, Langley, BC"
                 />
               </div>
             </div>

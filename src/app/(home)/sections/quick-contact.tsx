@@ -133,7 +133,7 @@ export default function QuickContact() {
                 <button
                   type="submit"
                   disabled={!canSubmit || isSubmitting}
-                  className="h-11 w-full shrink-0 rounded-md bg-power-red px-6 text-sm font-semibold text-white transition-colors hover:bg-power-red-dark disabled:cursor-not-allowed disabled:opacity-50 md:w-auto"
+                  className="h-11 w-full shrink-0 rounded-md bg-power-red px-6 text-sm font-semibold text-near-black transition-colors hover:bg-power-red-dark disabled:cursor-not-allowed disabled:opacity-50 md:w-auto"
                 >
                   {isSubmitting ? "Sending..." : "Send"}
                 </button>

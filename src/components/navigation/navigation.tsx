@@ -93,8 +93,9 @@ export default function Navigation() {
       />
       <nav
         ref={navRef}
-        className="fixed top-0 right-0 left-0 flex items-center justify-between overflow-visible px-6 py-4 transition-all duration-500 md:px-12 mobile-no-backdrop"
+        className="fixed right-0 left-0 flex items-center justify-between overflow-visible px-6 py-4 transition-all duration-500 md:px-12 mobile-no-backdrop"
         style={{
+          top: "var(--announcement-offset, 0px)",
           zIndex: "var(--z-navigation)",
           backgroundColor: isScrolled ? "rgba(29, 28, 29, 0.95)" : "transparent",
           backdropFilter: isScrolled ? "blur(12px)" : "none",
@@ -113,12 +114,11 @@ export default function Navigation() {
             }}
           >
             <Image
-              src="/images/logo.png"
-              alt="Wrap City - Vehicle Wraps South Surrey BC"
+              src="/images/logo-new.png"
+              alt="Wrap City - Vehicle Wraps Langley BC"
               width={280}
-              height={88}
-              className="h-24 w-auto md:h-32"
-              style={{ marginTop: "calc(-1.5rem + 20px)", marginBottom: "calc(-1.5rem - 20px)" }}
+              height={120}
+              className="h-16 w-auto md:h-20"
               priority
             />
           </a>
@@ -158,7 +158,7 @@ export default function Navigation() {
             data-nav-cta
             data-cursor="pointer"
             onClick={(e) => handleNavClick(e, "#contact")}
-            className="hidden rounded bg-power-red px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white opacity-0 transition-all duration-300 hover:bg-power-red-dark md:block"
+            className="hidden rounded bg-power-red px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-near-black opacity-0 transition-all duration-300 hover:bg-power-red-dark md:block"
           >
             Request a Quote
           </a>

@@ -99,7 +99,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             if (el) linksRef.current[navLinks.length] = el;
           }}
           onClick={(e) => handleClick(e, "#contact")}
-          className="mt-4 bg-power-red px-8 py-4 font-display text-xl font-bold uppercase tracking-tight text-white opacity-0 transition-colors duration-300 active:bg-power-red-dark"
+          className="mt-4 bg-power-red px-8 py-4 font-display text-xl font-bold uppercase tracking-tight text-near-black opacity-0 transition-colors duration-300 active:bg-power-red-dark"
         >
           Book Now
         </a>

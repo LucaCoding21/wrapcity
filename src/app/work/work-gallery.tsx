@@ -239,7 +239,7 @@ function EditorialCard({
               data-ed-text
               className="text-[10px] uppercase tracking-[0.3em] text-accent-light/60"
             >
-              {project.category} &mdash; {project.year}
+              {project.category} &middot; {project.year}
             </span>
             <h3
               data-ed-text
@@ -248,7 +248,7 @@ function EditorialCard({
               {project.title}
             </h3>
             <p data-ed-text className="mt-1.5 max-w-md text-sm leading-relaxed text-muted">
-              {project.car} &mdash; {project.description}
+              {project.car} &middot; {project.description}
             </p>
           </div>
           <svg

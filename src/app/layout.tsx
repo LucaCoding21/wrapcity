@@ -6,6 +6,7 @@ import SmoothScrollProvider from "@/providers/smooth-scroll-provider";
 import PreloaderProvider from "@/providers/preloader-provider";
 import Preloader from "@/components/preloader/preloader";
 import Navigation from "@/components/navigation/navigation";
+import MovedAnnouncementBar from "@/components/announcement/moved-announcement-bar";
 import Footer from "@/components/footer/footer";
 
 import NoiseOverlay from "@/components/ui/noise-overlay";
@@ -27,11 +28,11 @@ const redditSansCondensed = Reddit_Sans_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wrapcity.co"),
   title: {
-    default: "Vehicle Wraps & Vinyl Graphics | Wrap City South Surrey",
-    template: "%s | Wrap City - Vehicle Wraps South Surrey BC",
+    default: "Vehicle Wraps, PPF & Ceramic Coating | Wrap City Langley BC",
+    template: "%s | Wrap City - Vehicle Wraps Langley BC",
   },
   description:
-    "Premium car wraps, fleet graphics & vinyl installations in South Surrey, BC. 3M & Avery Dennison certified installer. Get a free quote!",
+    "Premium car wraps, PPF, ceramic coating & fleet graphics in Langley, BC. 3M & Avery Dennison certified installer serving Surrey, White Rock & the Fraser Valley. Get a free quote!",
   keywords: [
     // Low volume, low competition (880-1,900 monthly searches)
     "car wrap vs painting",
@@ -40,11 +41,12 @@ export const metadata: Metadata = {
     "car wrap samples",
     "car wrap calculator",
     // Location-specific long-tail (low competition)
-    "car wrap South Surrey",
-    "vehicle wrap South Surrey",
-    "vinyl wrap installer South Surrey",
+    "car wrap Langley",
+    "vehicle wrap Langley",
+    "vinyl wrap installer Langley",
     "wrap shop Fraser Valley",
     "car wrap White Rock",
+    "car wrap Surrey",
     // Service-specific long-tail (low-medium competition)
     "matte black wrap installer",
     "color change wrap shop",
@@ -52,8 +54,14 @@ export const metadata: Metadata = {
     "motorcycle wrap BC",
     "commercial fleet wrap Vancouver",
     "Harley Davidson wrap",
+    // Protection services (new in-house offerings)
+    "paint protection film Langley",
+    "PPF installer Langley BC",
+    "ceramic coating Langley",
+    "boat wrap Fraser Valley",
+    "marine wrap BC",
     // Niche/specialty (very low competition)
-    "architectural vinyl South Surrey",
+    "architectural vinyl Langley",
     "storefront vinyl graphics Surrey",
     "single installer car wrap",
     "single installer wrap shop BC",
@@ -61,14 +69,11 @@ export const metadata: Metadata = {
     "how long does car wrap last",
     "will car wrap damage paint",
     // Additional low-competition, location-specific
-    "vinyl wrap near me South Surrey",
+    "vinyl wrap near me Langley",
     "best car wrap shop Surrey BC",
     "Tesla wrap Surrey BC",
-    "truck wrap South Surrey",
+    "truck wrap Langley BC",
     "van wrap Surrey BC",
-    "paint protection film South Surrey",
-    "window tint South Surrey BC",
-    "boat wrap Fraser Valley",
   ],
   authors: [{ name: "Wrap City", url: "https://wrapcity.co" }],
   creator: "Wrap City",
@@ -84,28 +89,28 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: "Vehicle Wraps & Vinyl Graphics | Wrap City South Surrey",
+    title: "Vehicle Wraps, PPF & Ceramic Coating | Wrap City Langley BC",
     description:
-      "Transform your vehicle with premium vinyl wraps from Wrap City. Serving South Surrey and the Greater Vancouver area. 3M & Avery Dennison certified.",
+      "Transform your vehicle with premium vinyl wraps, PPF & ceramic coating from Wrap City in Langley, BC. Serving Surrey, White Rock & the Fraser Valley. 3M & Avery Dennison certified.",
     url: "https://wrapcity.co",
     siteName: "Wrap City",
     locale: "en_CA",
     type: "website",
     images: [
       {
-        url: "/images/wrapcity-thumbnail.jpg",
+        url: "/images/og-image.jpg",
         width: 1920,
         height: 1080,
-        alt: "Wrap City - Premium Vehicle Wraps in South Surrey BC",
+        alt: "Wrap City - Vinyl Styling & Protection in Langley BC",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vehicle Wraps & Vinyl Graphics | Wrap City South Surrey",
+    title: "Vehicle Wraps, PPF & Ceramic Coating | Wrap City Langley BC",
     description:
-      "Transform your vehicle with premium vinyl wraps. 3M & Avery Dennison certified installer serving South Surrey & Vancouver.",
-    images: ["/images/wrapcity-thumbnail.jpg"],
+      "Transform your vehicle with premium vinyl wraps, PPF & ceramic coating. 3M & Avery Dennison certified installer in Langley, serving Surrey & the Fraser Valley.",
+    images: ["/images/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -132,24 +137,24 @@ const jsonLd = {
       "@type": "LocalBusiness",
       "@id": "https://wrapcity.co/#business",
       name: "Wrap City",
-      image: "https://wrapcity.co/images/logo.png",
+      image: "https://wrapcity.co/images/logo-new.png",
       description:
-        "Wrap City is a single-installer vehicle wrapping shop specializing in premium vinyl wraps, motorcycle wraps, commercial fleet graphics, and architectural vinyl. 3M & Avery Dennison certified installer serving South Surrey and Greater Vancouver.",
+        "Wrap City is a single-installer vinyl and protection studio in Langley, BC specializing in premium vehicle wraps, paint protection film, ceramic coating, marine wraps, commercial fleet graphics, and architectural vinyl. 3M & Avery Dennison certified installer proudly serving Langley, Surrey, White Rock, South Surrey and the Fraser Valley.",
       url: "https://wrapcity.co",
       telephone: "+1-604-510-2400",
       email: "taylor@wrapcity.co",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "1312 184 St",
-        addressLocality: "Langley Township",
+        streetAddress: "106-20058 Industrial Ave",
+        addressLocality: "Langley",
         addressRegion: "BC",
-        postalCode: "V2Z 1K2",
+        postalCode: "V3A 4K7",
         addressCountry: "CA",
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: 49.0456,
-        longitude: -122.7011,
+        latitude: 49.107,
+        longitude: -122.655,
       },
       areaServed: [
         { "@type": "City", name: "Langley" },
@@ -185,9 +190,11 @@ const jsonLd = {
       name: "Wrap City Vehicle Wraps",
       serviceType: [
         "Vehicle Wraps",
+        "Paint Protection Film",
+        "Ceramic Coating",
+        "Boat & Marine Wraps",
         "Motorcycle Wraps",
         "Commercial Fleet Wraps",
-        "Paint Protection Film",
         "Chrome Delete",
         "Color Change Wraps",
       ],
@@ -237,6 +244,14 @@ const jsonLd = {
         },
         {
           "@type": "Question",
+          name: "Do you offer PPF or ceramic coating?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We install paint protection film and professional ceramic coating in-house at our Langley studio. PPF is a transparent, self-healing film that shields paint from rock chips and road debris, and our ceramic coating packages are available in 1, 3, and 5-year options for vehicles and boats.",
+          },
+        },
+        {
+          "@type": "Question",
           name: "Do you offer chrome delete for Tesla and other vehicles?",
           acceptedAnswer: {
             "@type": "Answer",
@@ -279,6 +294,7 @@ export default function RootLayout({
           <SmoothScrollProvider>
             <NoiseOverlay />
 
+            <MovedAnnouncementBar />
             <Navigation />
             <main className="relative bg-background" style={{ zIndex: 1 }}>
               {children}

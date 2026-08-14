@@ -29,7 +29,7 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-power-red text-white hover:bg-power-red-dark",
+      "bg-power-red text-near-black hover:bg-power-red-dark",
     outline:
       "border border-power-red/50 text-power-red hover:border-power-red hover:bg-power-red/10",
     ghost: "text-white hover:text-power-red",

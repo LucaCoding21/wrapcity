@@ -121,7 +121,7 @@ export default function Services() {
             </div>
           )}
 
-          {/* Remaining 6 Service Cards - 3x2 Grid */}
+          {/* Remaining Service Cards - 3-Column Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.slice(1).map((service) => (
               <div
@@ -129,16 +129,21 @@ export default function Services() {
                 data-card
                 className="group relative overflow-hidden rounded-lg border border-white/10 bg-surface transition-all duration-500 hover:border-power-red/30"
               >
-                {/* Service Image */}
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
+                {/* Service Image (dark placeholder until a photo is set) */}
+                <div className="relative h-48 w-full overflow-hidden bg-near-black">
+                  {service.image && (
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
+                    />
+                  )}
+                  {!service.image && (
+                    <div className="carbon-pattern absolute inset-0 opacity-60" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
                 </div>
 
@@ -182,7 +187,7 @@ export default function Services() {
               e.preventDefault();
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-skewed inline-flex items-center justify-center bg-power-red px-6 py-3 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+            className="btn-skewed inline-flex items-center justify-center bg-power-red px-6 py-3 text-sm font-semibold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark"
           >
             <span>Cost Calculator</span>
           </a>

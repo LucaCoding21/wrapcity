@@ -12,10 +12,10 @@ export default function Footer() {
           {/* Logo */}
           <Link href="/" className="block">
             <Image
-              src="/images/logo.png"
-              alt="Wrap City - Vehicle Wraps South Surrey BC"
+              src="/images/logo-new.png"
+              alt="Wrap City - Vehicle Wraps Langley BC"
               width={250}
-              height={78}
+              height={108}
               className="h-20 w-auto"
             />
           </Link>

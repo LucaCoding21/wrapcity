@@ -110,10 +110,10 @@ export default function Preloader() {
       {/* Logo */}
       <div ref={logoRef} className="mb-8 opacity-0">
         <Image
-          src="/images/logo.png"
-          alt="Wrap City - Luxury Vinyl Styling"
+          src="/images/logo-new.png"
+          alt="Wrap City - Vinyl Styling & Protection"
           width={400}
-          height={125}
+          height={172}
           className="h-32 w-auto md:h-36"
           priority
         />

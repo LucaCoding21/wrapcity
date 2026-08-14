@@ -170,7 +170,7 @@ export default function Inventory() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src="/colour2.jpg"
-                  alt="3M Wrap Film Series 2080 color chart showing Gloss, Satin, Matte, Textures, Colour Flips, and Chrome finishes available at Wrap City South Surrey BC"
+                  alt="3M Wrap Film Series 2080 color chart showing Gloss, Satin, Matte, Textures, Colour Flips, and Chrome finishes available at Wrap City Langley BC"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -226,7 +226,7 @@ export default function Inventory() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src="/images/notpdf.jpg"
-                  alt="Full color catalog showing all available vinyl film colors and finishes stocked at our South Surrey location"
+                  alt="Full color catalog showing all available vinyl film colors and finishes stocked at our Langley location"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -283,7 +283,7 @@ export default function Inventory() {
               e.preventDefault();
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-power-red-dark"
+            className="btn-skewed inline-flex items-center gap-3 bg-power-red px-8 py-4 text-sm font-semibold uppercase tracking-widest text-near-black transition-all duration-300 hover:bg-power-red-dark"
           >
             <span>Request a Color Consultation</span>
             <svg

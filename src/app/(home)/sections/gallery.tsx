@@ -17,14 +17,26 @@ const galleryItems: GalleryItem[] = [
   // ── Existing gallery images ──
   {
     src: "/images/jeep4.jpg",
-    alt: "Metallic green Jeep Wrangler full color change wrap installed in South Surrey BC",
+    alt: "Metallic green Jeep Wrangler full color change wrap installed in Langley BC",
     title: "Forest Guardian",
+    category: "Color Change",
+  },
+  {
+    src: "/images/gallery/corvette-c8-red.jpeg",
+    alt: "Red Chevrolet Corvette C8 convertible with glossy finish by Wrap City in Langley BC",
+    title: "Scarlet C8",
     category: "Color Change",
   },
   {
     src: "/images/gallery/tesla-model-y-bronze-showroom.jpg",
     alt: "Tesla Model Y matte bronze full color change wrap displayed in showroom by Wrap City",
     title: "Bronze Stealth",
+    category: "Color Change",
+  },
+  {
+    src: "/images/gallery/porsche-911-matte-grey.jpeg",
+    alt: "Porsche 911 convertible in satin grey wrap on display at the Wrap City shop in Langley BC",
+    title: "Satin 911",
     category: "Color Change",
   },
   {
@@ -44,6 +56,12 @@ const galleryItems: GalleryItem[] = [
     alt: "Harley Davidson Bagger custom motorcycle wrap with premium vinyl finish near White Rock BC",
     title: "Road King",
     category: "Motorcycle",
+  },
+  {
+    src: "/images/gallery/premier-property-truck-wrap.jpeg",
+    alt: "Premier Property Maintenance Ford truck with green and white commercial fleet wrap by Wrap City",
+    title: "Premier Property Truck",
+    category: "Commercial Fleet",
   },
   {
     src: "/images/gallery/purple-ranger-side.jpg",
@@ -71,7 +89,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/subaru-crosstrek-blue-side.jpg",
-    alt: "Subaru Crosstrek baby blue matte color change wrap full side view wrapped in South Surrey",
+    alt: "Subaru Crosstrek baby blue matte color change wrap full side view wrapped in Langley",
     title: "Sky Blue",
     category: "Color Change",
   },
@@ -113,7 +131,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/commercial.jpeg",
-    alt: "Commercial office vinyl graphics and branded wall wrap for business interiors in South Surrey",
+    alt: "Commercial office vinyl graphics and branded wall wrap for business interiors in Langley",
     title: "Brand Forward",
     category: "Commercial",
   },
@@ -131,7 +149,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/miata-black-gloss-front.jpg",
-    alt: "Mazda Miata NA with glossy black vinyl wrap front three quarter view in South Surrey BC",
+    alt: "Mazda Miata NA with glossy black vinyl wrap front three quarter view in Langley BC",
     title: "Midnight Miata",
     category: "Color Change",
   },
@@ -179,7 +197,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/f150-chrome-delete-before.jpg",
-    alt: "Ford F-150 before chrome delete wrap showing original blue and chrome trim at South Surrey shop",
+    alt: "Ford F-150 before chrome delete wrap showing original blue and chrome trim at our Langley shop",
     title: "Before Chrome Delete",
     category: "Chrome Delete",
   },
@@ -209,7 +227,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/pro-laser-signage.jpg",
-    alt: "Pro 1 Laser illuminated vinyl signage and lettering installation in South Surrey BC",
+    alt: "Pro 1 Laser illuminated vinyl signage and lettering installation in Langley BC",
     title: "Laser Signage",
     category: "Commercial",
   },
@@ -221,7 +239,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/tesla-model-y-matte-bronze-front.jpg",
-    alt: "Tesla Model Y matte bronze color change wrap front view with headlights on at Wrap City South Surrey",
+    alt: "Tesla Model Y matte bronze color change wrap front view with headlights on at Wrap City Langley",
     title: "Bronze Front",
     category: "Color Change",
   },
@@ -233,7 +251,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/truck-bumper-white-wrap.jpg",
-    alt: "Truck front bumper being wrapped in white vinyl showing installation process at our South Surrey facility",
+    alt: "Truck front bumper being wrapped in white vinyl showing installation process at our Langley facility",
     title: "Bumper Wrap",
     category: "Partial Wrap",
   },
@@ -305,7 +323,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/honda-civic-window-tint-side.jpg",
-    alt: "Honda Civic with professional window tint and paint restoration side profile by Wrap City South Surrey BC",
+    alt: "Honda Civic with professional window tint and paint restoration side profile by Wrap City Langley BC",
     title: "Civic Revival",
     category: "Window Tint",
   },
@@ -433,7 +451,7 @@ function ArrowButton({
         "flex h-14 w-14 items-center justify-center rounded-full",
         "bg-near-black/80 backdrop-blur-sm border border-white/10",
         "text-white/60 transition-all duration-300",
-        "hover:bg-power-red hover:text-white hover:border-power-red hover:scale-110",
+        "hover:bg-power-red hover:text-near-black hover:border-power-red hover:scale-110",
         "cursor-pointer",
         "focus:outline-none focus:ring-2 focus:ring-power-red/50",
         direction === "left" ? "left-4 md:left-12 lg:left-20" : "right-4 md:right-12 lg:right-20"

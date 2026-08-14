@@ -4,7 +4,7 @@ import WorkGallery from "./work-gallery";
 export const metadata: Metadata = {
   title: "Car Wrap Gallery",
   description:
-    "Browse our car wrap gallery featuring color changes, fleet graphics & motorcycle wraps in South Surrey BC. 3M & Avery Dennison certified.",
+    "Browse our car wrap gallery featuring color changes, fleet graphics & motorcycle wraps in Langley BC. 3M & Avery Dennison certified.",
   keywords: [
     "vehicle wrap portfolio",
     "car wrap gallery",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "color change wrap before after",
     "motorcycle wrap gallery",
     "commercial fleet wrap examples",
-    "South Surrey vehicle wraps",
+    "Langley vehicle wraps",
     "Surrey car wrap shop",
     "car wrap before and after",
     "vehicle wrap portfolio BC",
@@ -20,16 +20,16 @@ export const metadata: Metadata = {
     "fleet wrap examples Surrey",
   ],
   openGraph: {
-    title: "Car Wrap Gallery | Wrap City South Surrey BC",
+    title: "Car Wrap Gallery | Wrap City Langley BC",
     description:
-      "View our gallery of premium vehicle wraps, color changes, and custom vinyl graphics. Serving South Surrey & Greater Vancouver.",
+      "View our gallery of premium vehicle wraps, color changes, and custom vinyl graphics. Serving Langley, Surrey & the Fraser Valley.",
     type: "website",
     images: [
       {
-        url: "/images/wrapcity-thumbnail.jpg",
+        url: "/images/og-image.jpg",
         width: 1920,
         height: 1080,
-        alt: "Wrap City Portfolio - Premium Vehicle Wraps in South Surrey BC",
+        alt: "Wrap City Portfolio - Premium Vehicle Wraps in Langley BC",
       },
     ],
   },
