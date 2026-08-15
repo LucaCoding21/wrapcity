@@ -112,9 +112,17 @@ export default function Services() {
                   <p className="mt-2 text-base font-medium text-warm-coral">
                     {services[0].tagline}
                   </p>
-                  <p className="mt-4 leading-relaxed text-white/60">
-                    {services[0].description}
-                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {services[0].bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="flex items-start gap-2.5 leading-relaxed text-white/60"
+                      >
+                        <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-power-red" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
               </div>
@@ -161,9 +169,17 @@ export default function Services() {
                   <p className="mt-1 text-sm font-medium text-warm-coral">
                     {service.tagline}
                   </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">
-                    {service.description}
-                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {service.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="flex items-start gap-2 text-sm leading-relaxed text-white/60"
+                      >
+                        <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-power-red" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
 
                   {/* Hover glow effect */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-power-red/0 to-power-red/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

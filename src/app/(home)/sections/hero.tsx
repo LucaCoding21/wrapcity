@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { usePreloader } from "@/providers/preloader-provider";
 
@@ -11,7 +12,6 @@ export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLParagraphElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { isLoading, setVideoReady } = usePreloader();
@@ -83,15 +83,6 @@ export default function Hero() {
           ease: "power3.out"
         },
         0.2
-      );
-    }
-
-    // Subheadline fades in
-    if (subheadlineRef.current) {
-      tl.to(
-        subheadlineRef.current,
-        { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
-        0.5
       );
     }
 
@@ -219,33 +210,33 @@ export default function Hero() {
         ref={contentRef}
         className="container-wide relative z-10 flex h-full flex-col justify-center"
       >
-        {/* Location */}
-        <p ref={locationRef} className="label-uppercase mb-6 mt-16 text-white/60 opacity-0">
-          Premium Vinyl, PPF &amp; Ceramic Studio in Langley BC
-        </p>
+        {/* Eyebrow + tagline lockup share a width so they line up */}
+        <div className="w-full max-w-2xl md:max-w-3xl">
+          {/* Location */}
+          <p
+            ref={locationRef}
+            className="label-uppercase mb-6 mt-16 text-center text-white/60 opacity-0"
+          >
+            Premium Vinyl, PPF &amp; Ceramic Studio in Langley BC
+          </p>
 
-        {/* Main headline */}
-        <h1 ref={headlineRef} className="heading-hero max-w-5xl">
-          <span data-line className="block overflow-hidden opacity-0">
-            <span className="inline-block text-white">TRANSFORM THE</span>
-          </span>
-          <span data-line className="block overflow-hidden opacity-0">
-            <span
-              className="inline-block bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #FF6EB3 0%, #FF2D95 45%, #00E5FF 100%)"
-              }}
-            >ORDINARY.</span>
-          </span>
-        </h1>
-
-        {/* Small print */}
-        <p
-          ref={subheadlineRef}
-          className="mt-6 text-sm uppercase tracking-widest text-white/50 opacity-0 md:text-base"
-        >
-          Automotive. Marine. Architectural.
-        </p>
+          {/* Main headline - brand tagline lockup in Taylor's font */}
+          <h1 ref={headlineRef}>
+            <span className="sr-only">
+              Vinyl Styling and Protection. Automotive, Marine, Architectural.
+            </span>
+            <span data-line className="block overflow-hidden opacity-0">
+              <Image
+                src="/images/hero-tagline.png"
+                alt=""
+                width={1340}
+                height={142}
+                className="w-full"
+                priority
+              />
+            </span>
+          </h1>
+        </div>
 
         {/* CTAs */}
         <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4 opacity-0">

@@ -43,7 +43,7 @@ export default function Navigation() {
     const logo = navRef.current.querySelector("[data-nav-logo]");
     const cta = navRef.current.querySelector("[data-nav-cta]");
 
-    const tl = gsap.timeline({ delay: 2.5 });
+    const tl = gsap.timeline({ delay: window.innerWidth < 768 ? 2.8 : 4.2 });
 
     tl.fromTo(
       logo,
@@ -114,11 +114,11 @@ export default function Navigation() {
             }}
           >
             <Image
-              src="/images/logo-new.png"
+              src="/images/logo-plate.png"
               alt="Wrap City - Vehicle Wraps Langley BC"
               width={280}
-              height={120}
-              className="h-16 w-auto md:h-20"
+              height={86}
+              className="h-14 w-auto md:h-16"
               priority
             />
           </a>

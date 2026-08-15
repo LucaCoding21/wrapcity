@@ -17,10 +17,10 @@
   --color-charcoal-light: #5A585C;
 
   /* Accents — secondary brand cyan (legacy "warm-coral"/"soft-sand" names) */
-  --color-warm-coral: #00E5FF;
-  --color-warm-coral-dark: #00B8D4;
-  --color-soft-sand: #A5F3FF;
-  --color-soft-sand-light: #D6FAFF;
+  --color-warm-coral: #00FFFF;
+  --color-warm-coral-dark: #00CCCC;
+  --color-soft-sand: #A5FFFF;
+  --color-soft-sand-light: #D6FFFF;
   --color-accent: #FF2D95;
   --color-accent-light: #FF6EB3;
 
@@ -186,7 +186,7 @@ body {
 
 /* Brand pink-to-cyan gradient (loading line, accents) */
 .bg-gradient-accent {
-  background: linear-gradient(90deg, #FF2D95 0%, #00E5FF 100%);
+  background: linear-gradient(90deg, #FF2D95 0%, #00FFFF 100%);
 }
 
 /* ============================================

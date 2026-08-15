@@ -18,9 +18,9 @@ export default function Preloader() {
 
     // Shorter preloader on mobile to reduce time-to-interactive
     const mobile = window.innerWidth < 768;
-    const counterDur = mobile ? 1.0 : 2.0;
+    const counterDur = mobile ? 1.8 : 3.5;
     const logoStart = mobile ? 0.15 : 0.3;
-    const wipeOutStart = mobile ? 1.0 : 2.0;
+    const wipeOutStart = mobile ? 1.8 : 3.5;
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -84,7 +84,7 @@ export default function Preloader() {
           duration: 0.8,
           ease: "power4.inOut",
         },
-        mobile ? 1.1 : 2.2
+        mobile ? 1.9 : 3.7
       );
     }
   }, [setComplete, setAnimationDone]);
@@ -110,11 +110,11 @@ export default function Preloader() {
       {/* Logo */}
       <div ref={logoRef} className="mb-8 opacity-0">
         <Image
-          src="/images/logo-new.png"
+          src="/images/logo-plate.png"
           alt="Wrap City - Vinyl Styling & Protection"
           width={400}
-          height={172}
-          className="h-32 w-auto md:h-36"
+          height={123}
+          className="h-28 w-auto md:h-36"
           priority
         />
       </div>
@@ -134,7 +134,7 @@ export default function Preloader() {
         <div
           className="bg-gradient-accent h-full origin-left"
           style={{
-            animation: "loadingLine 2s ease-in-out forwards",
+            animation: "loadingLine 3.5s ease-in-out forwards",
           }}
         />
       </div>
