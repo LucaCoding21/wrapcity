@@ -871,7 +871,7 @@ export default function Contact() {
                 <p className="text-sm font-semibold uppercase tracking-wide text-white">By Appointment Only</p>
               </div>
               <a
-                href="https://calendly.com/taylor-wrapcity/30min"
+                href="https://book.squareup.com/appointments/yjjh7j1f8ii0ky/location/LWT9QZBG0Y7F9/services"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 rounded bg-power-red px-3 py-1.5 text-xs font-semibold text-near-black transition-colors hover:bg-power-red-dark"

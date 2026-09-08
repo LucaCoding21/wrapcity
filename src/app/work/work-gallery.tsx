@@ -2,18 +2,17 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import TextReveal from "@/components/animations/text-reveal";
 import Button from "@/components/ui/button";
-import { projects, categories, type Project } from "@/data/projects";
+import { galleryItems, galleryCategories, type GalleryItem } from "@/data/gallery";
 import { cn } from "@/lib/utils";
 
 /* ─────────────────────────────────────────────
    Layout configurations — each index gets a
    unique width, alignment, aspect ratio, reveal
    direction, and parallax speed. The pattern
-   repeats for > 6 projects.
+   repeats for > 6 photos.
    ───────────────────────────────────────────── */
 interface LayoutConfig {
   widthClass: string;
@@ -79,12 +78,12 @@ const layouts: LayoutConfig[] = [
    Editorial Card
    ───────────────────────────────────────────── */
 function EditorialCard({
-  project,
+  item,
   layout,
   index,
   isActive,
 }: {
-  project: Project;
+  item: GalleryItem;
   layout: LayoutConfig;
   index: number;
   isActive: boolean;
@@ -199,11 +198,7 @@ function EditorialCard({
           : "pointer-events-none opacity-[0.12] grayscale"
       )}
     >
-      <Link
-        href={`/work/${project.slug}`}
-        className="group block"
-        data-cursor="view"
-      >
+      <div className="group block">
         {/* ── Watermark number ── */}
         <div className="relative">
           <span className="stroke-text pointer-events-none absolute -top-10 left-0 z-10 font-display text-[clamp(5rem,10vw,10rem)] font-bold leading-none md:-top-14">
@@ -218,8 +213,8 @@ function EditorialCard({
             >
               <div ref={imageRef} className="absolute inset-[-15%]">
                 <Image
-                  src="/images/jeep4.jpg"
-                  alt={project.imageAlt}
+                  src={item.src}
+                  alt={item.alt}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   sizes="(max-width: 768px) 100vw, 70vw"
@@ -232,39 +227,26 @@ function EditorialCard({
           </div>
         </div>
 
-        {/* ── Project info ── */}
-        <div className="mt-6 flex items-start justify-between gap-4">
-          <div>
+        {/* ── Photo info ── */}
+        <div className="mt-6">
+          {item.category && (
             <span
               data-ed-text
               className="text-[10px] uppercase tracking-[0.3em] text-accent-light/60"
             >
-              {project.category} &middot; {project.year}
+              {item.category}
             </span>
+          )}
+          {item.title && (
             <h3
               data-ed-text
               className="mt-2 font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-tight tracking-tight"
             >
-              {project.title}
+              {item.title}
             </h3>
-            <p data-ed-text className="mt-1.5 max-w-md text-sm leading-relaxed text-muted">
-              {project.car} &middot; {project.description}
-            </p>
-          </div>
-          <svg
-            data-ed-text
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="mt-3 shrink-0 text-muted opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
-          >
-            <path d="M7 17L17 7M17 7H7M17 7V17" />
-          </svg>
+          )}
         </div>
-      </Link>
+      </div>
     </div>
   );
 }
@@ -309,7 +291,7 @@ export default function WorkGallery() {
       {/* ── Filter Tabs ── */}
       <div className="sticky top-0 z-20 border-b border-white/[0.06] bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1440px] gap-1 overflow-x-auto px-6 py-4 md:gap-2 md:px-12">
-          {categories.map((cat) => (
+          {galleryCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -332,15 +314,15 @@ export default function WorkGallery() {
       {/* ── Editorial Grid ── */}
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
-          {projects.map((project, i) => (
+          {galleryItems.map((item, i) => (
             <EditorialCard
-              key={project.slug}
-              project={project}
+              key={item.src}
+              item={item}
               layout={layouts[i % layouts.length]}
               index={i}
               isActive={
                 activeCategory === "All" ||
-                project.category === activeCategory
+                item.category === activeCategory
               }
             />
           ))}
