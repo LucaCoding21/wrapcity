@@ -28,7 +28,7 @@ const redditSansCondensed = Reddit_Sans_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wrapcity.co"),
   title: {
-    default: "Vehicle Wraps, PPF & Ceramic Coating | Wrap City Langley BC",
+    default: "Vehicle Wraps, Paint Protection Film & Ceramic Coating | Wrap City Langley BC",
     template: "%s | Wrap City - Vehicle Wraps Langley BC",
   },
   description:
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: "Vehicle Wraps, PPF & Ceramic Coating | Wrap City Langley BC",
+    title: "Vehicle Wraps, Paint Protection Film & Ceramic Coating | Wrap City Langley BC",
     description:
       "Transform your vehicle with premium vinyl wraps, PPF & ceramic coating from Wrap City in Langley, BC. Serving Surrey, White Rock & the Fraser Valley. 3M & Avery Dennison certified.",
     url: "https://wrapcity.co",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vehicle Wraps, PPF & Ceramic Coating | Wrap City Langley BC",
+    title: "Vehicle Wraps, Paint Protection Film & Ceramic Coating | Wrap City Langley BC",
     description:
       "Transform your vehicle with premium vinyl wraps, PPF & ceramic coating. 3M & Avery Dennison certified installer in Langley, serving Surrey & the Fraser Valley.",
     images: ["/images/og-image.jpg"],

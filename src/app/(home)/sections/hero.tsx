@@ -217,7 +217,7 @@ export default function Hero() {
             ref={locationRef}
             className="label-uppercase mb-6 mt-16 text-center text-white/60 opacity-0"
           >
-            Premium Vinyl, PPF &amp; Ceramic Studio in Langley BC
+            Premium Vinyl, Paint Protection Film &amp; Ceramic Studio in Langley BC
           </p>
 
           {/* Main headline - brand tagline lockup in Taylor's font */}

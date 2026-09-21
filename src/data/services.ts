@@ -6,6 +6,8 @@ export interface Service {
   icon: string;
   image: string;
   imageAlt: string;
+  /** CSS object-position for the card crop, e.g. "center 85%" */
+  imagePosition?: string;
 }
 
 export const services: Service[] = [
@@ -40,6 +42,7 @@ export const services: Service[] = [
     image: "/images/ppf-install.webp",
     imageAlt:
       "Paint protection film being applied to a black Jaguar F-Type at Wrap City in Langley BC",
+    imagePosition: "center 100%",
   },
   {
     slug: "ceramic-coating",
@@ -54,6 +57,7 @@ export const services: Service[] = [
     image: "/images/ceramic.webp",
     imageAlt:
       "Red Corvette with deep gloss finish after professional ceramic coating at Wrap City in Langley BC",
+    imagePosition: "center 40%",
   },
   {
     slug: "marine-ppf",
@@ -65,8 +69,10 @@ export const services: Service[] = [
       "Preserves your vessel's finish & value for 10+ years",
     ],
     icon: "shield",
-    image: "",
-    imageAlt: "",
+    image: "/images/marine-ppf-stek-squeegee-stabicraft.webp",
+    imageAlt:
+      "Wrap City installer squeegeeing STEK Marine paint protection film onto a Stabicraft boat hull in White Rock BC",
+    imagePosition: "center 30%",
   },
   {
     slug: "marine-ceramic-coating",
@@ -79,8 +85,10 @@ export const services: Service[] = [
       "Faster washdowns, less time on upkeep",
     ],
     icon: "sparkle",
-    image: "",
-    imageAlt: "",
+    image: "/images/marine-ceramic-coating-stek-aqua-coat.webp",
+    imageAlt:
+      "STEK Marine Aqua Coat ceramic coating bottle held in front of a Stabicraft boat hull at Wrap City Langley BC",
+    imagePosition: "center 100%",
   },
   {
     slug: "marine-vinyl-graphics",
@@ -93,8 +101,10 @@ export const services: Service[] = [
       "Marine-grade vinyl",
     ],
     icon: "wrap",
-    image: "",
-    imageAlt: "",
+    image: "/images/marine-vinyl-graphics-express-boat-decals.webp",
+    imageAlt:
+      "White Express cabin cruiser with black hull striping decals and vinyl graphics installed by Wrap City in White Rock BC",
+    imagePosition: "center 50%",
   },
   {
     slug: "architectural-interior",

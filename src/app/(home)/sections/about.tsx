@@ -17,6 +17,7 @@ export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -101,6 +102,25 @@ export default function About() {
             }
           );
         }
+      }
+
+      // Full-width photo fade-up
+      if (photoRef.current) {
+        gsap.fromTo(
+          photoRef.current,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: photoRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
       }
     }, sectionRef);
 
@@ -208,8 +228,25 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
 
+        {/* Full-width studio photo */}
+        <div
+          ref={photoRef}
+          className="relative mt-16 overflow-hidden rounded-lg shadow-xl md:mt-24"
+        >
+          <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9]">
+            <Image
+              src="/images/ppf-install.webp"
+              alt="Taylor Paige applying paint protection film to a black Jaguar F-Type under hexagon lights at the Wrap City studio in Langley BC"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 95%" }}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

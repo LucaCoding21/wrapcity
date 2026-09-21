@@ -138,13 +138,14 @@ export default function Services() {
                 className="group relative overflow-hidden rounded-lg border border-white/10 bg-surface transition-all duration-500 hover:border-power-red/30"
               >
                 {/* Service Image (dark placeholder until a photo is set) */}
-                <div className="relative h-48 w-full overflow-hidden bg-near-black">
+                <div className="relative h-60 w-full overflow-hidden bg-near-black">
                   {service.image && (
                     <Image
                       src={service.image}
                       alt={service.imageAlt}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       loading="lazy"
                     />
