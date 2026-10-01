@@ -208,10 +208,10 @@ export default function GoogleReviews() {
 
             <div className="text-left">
               <div className="flex items-center gap-3">
-                <span className="font-display text-4xl font-bold text-near-black">4.4</span>
-                <StarRating rating={4.4} />
+                <span className="font-display text-4xl font-bold text-near-black">4.8</span>
+                <StarRating rating={4.8} />
               </div>
-              <p className="mt-1 text-sm font-medium text-charcoal">Based on 22 Google reviews</p>
+              <p className="mt-1 text-sm font-medium text-charcoal">Based on 32 Google reviews</p>
             </div>
           </div>
 

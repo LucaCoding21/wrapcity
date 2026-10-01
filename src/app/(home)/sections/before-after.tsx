@@ -160,8 +160,7 @@ export default function BeforeAfter() {
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
               quality={85}
-              priority
-            />
+                          />
 
             {/* Before image (clipped, top layer) */}
             <div
@@ -175,8 +174,7 @@ export default function BeforeAfter() {
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
                 quality={85}
-                priority
-              />
+                              />
             </div>
 
             {/* Labels */}

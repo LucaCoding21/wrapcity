@@ -178,7 +178,7 @@ const jsonLd = {
       priceRange: "$$",
       aggregateRating: {
         "@type": "AggregateRating",
-        ratingValue: "4.4",
+        ratingValue: "4.8",
         reviewCount: "50",
         bestRating: "5",
         worstRating: "1",

@@ -179,7 +179,7 @@ export default function Hero() {
           muted
           playsInline
           preload="none"
-          poster={isMobile ? "/images/jeep4.jpg" : undefined}
+          poster={isMobile ? "/images/jeep4-hero.webp" : undefined}
           className="h-full w-full object-cover"
           style={{ opacity: isMobile ? (videoLoaded ? 1 : 0) : 1 }}
         />
@@ -187,7 +187,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 md:hidden"
           style={{
-            backgroundImage: "url('/images/jeep4.jpg')",
+            backgroundImage: "url('/images/jeep4-hero.webp')",
             opacity: videoLoaded ? 0 : 1,
           }}
         />
