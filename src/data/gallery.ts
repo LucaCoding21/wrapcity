@@ -13,6 +13,96 @@ export const galleryItems: GalleryItem[] = [
     title: "Forest Guardian",
     category: "Color Change",
   },
+  // ── October 25, 2026 additions ──
+  {
+    src: "/images/gallery/audi-rs3-grey-black-red-fender-graphics.webp",
+    alt: "Grey Audi RS3 front fender with custom black and red vinyl graphics and red RS brake calipers at Wrap City Langley BC",
+    title: "RS3 Fender Graphics",
+    category: "Custom Graphics",
+  },
+  {
+    src: "/images/gallery/audi-rs3-side-profile-fender-graphics.webp",
+    alt: "Side profile of grey Audi RS3 with black and red vinyl fender graphics installed by Wrap City in the Fraser Valley BC",
+    title: "RS3 Side Profile",
+    category: "Custom Graphics",
+  },
+  {
+    src: "/images/gallery/audi-rs3-black-red-vinyl-graphics-cut.webp",
+    alt: "Custom cut black and red vinyl fender graphics on backing paper ready to install on an Audi RS3 at Wrap City",
+    title: "RS3 Graphics Kit",
+    category: "Custom Graphics",
+  },
+  {
+    src: "/images/gallery/audi-rs3-door-handles-before-chrome-delete.webp",
+    alt: "Grey Audi RS3 door handles in factory silver before a gloss black chrome delete wrap at Wrap City Langley BC",
+    title: "RS3 Before: Handles",
+    category: "Chrome Delete",
+  },
+  {
+    src: "/images/gallery/audi-rs3-door-handles-after-chrome-delete.webp",
+    alt: "Grey Audi RS3 door handles wrapped in gloss black vinyl after a chrome delete by Wrap City in Surrey BC",
+    title: "RS3 After: Handles",
+    category: "Chrome Delete",
+  },
+  {
+    src: "/images/gallery/gloss-black-door-handle-chrome-delete.webp",
+    alt: "Close-up of a door handle wrapped in gloss black vinyl for a chrome delete at Wrap City Langley BC",
+    title: "Gloss Black Handle",
+    category: "Chrome Delete",
+  },
+  {
+    src: "/images/gallery/expedia-cruises-storefront-before-window-graphics.webp",
+    alt: "Expedia Cruises Ocean Park storefront in South Surrey BC with paper posters before new window graphics by Wrap City",
+    title: "Storefront Before",
+    category: "Commercial",
+  },
+  {
+    src: "/images/gallery/expedia-cruises-storefront-after-window-graphics.webp",
+    alt: "Expedia Cruises Ocean Park storefront with full-colour Princess cruise ship window graphics installed by Wrap City in South Surrey BC",
+    title: "Storefront After",
+    category: "Commercial",
+  },
+  {
+    src: "/images/gallery/purple-ford-ranger-on-lift-wrap-city-shop.webp",
+    alt: "Purple Ford Ranger with color change wrap raised on a scissor lift inside the Wrap City shop in Langley BC",
+    title: "Ranger On The Lift",
+    category: "Color Change",
+  },
+  {
+    src: "/images/gallery/toyota-gloss-black-emblem-grille-chrome-delete.webp",
+    alt: "Toyota truck grille with emblem and trim blacked out in gloss black chrome delete vinyl at Wrap City Langley BC",
+    title: "Blacked Out Toyota",
+    category: "Chrome Delete",
+  },
+  {
+    src: "/images/gallery/carbon-fiber-vinyl-interior-door-trim.webp",
+    alt: "Interior door trim panels with red reflectors wrapped in black carbon fiber vinyl at Wrap City Langley BC",
+    title: "Carbon Door Trim",
+    category: "Interior",
+  },
+  {
+    src: "/images/gallery/carbon-fiber-vinyl-center-console-panel.webp",
+    alt: "Interior switch panel trim wrapped in textured carbon fiber vinyl before reinstall at Wrap City in Surrey BC",
+    title: "Carbon Switch Panel",
+    category: "Interior",
+  },
+  {
+    src: "/images/gallery/carbon-fiber-vinyl-console-panel-detail.webp",
+    alt: "Close-up of textured carbon fiber vinyl wrapped around the curves of an interior trim panel by Wrap City",
+    title: "Carbon Fiber Detail",
+    category: "Interior",
+  },
+  {
+    src: "/images/gallery/somo-logo-vinyl-lettering-gloss-black.webp",
+    alt: "SOMO logo in white cut vinyl lettering with a green location pin icon on a gloss black surface by Wrap City Langley BC",
+    title: "SOMO Lettering",
+    category: "Commercial",
+  },
+  {
+    src: "/images/gallery/wrap-city-installer-measuring-vinyl.webp",
+    alt: "Wrap City installer measuring with a tape measure before cutting vinyl in the Langley BC shop",
+    title: "Measure Twice",
+  },
   // ── September 20, 2026 additions ──
   {
     src: "/images/gallery/jaguar-f-type-r-black-ppf-hood-install.webp",
