@@ -1,16 +1,8 @@
 # Robots.txt for Wrap City
-# https://wrapcity.co
+# https://www.wrapcity.co
 
 User-agent: *
 Allow: /
-
-# Sitemap location
-Sitemap: https://wrapcity.co/sitemap.xml
-
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
-# Block unnecessary paths
 Disallow: /api/
-Disallow: /_next/
-Disallow: /static/
+
+Sitemap: https://www.wrapcity.co/sitemap.xml

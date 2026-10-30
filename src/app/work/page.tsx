@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://wrapcity.co/work",
+    canonical: "https://www.wrapcity.co/work",
   },
 };
 

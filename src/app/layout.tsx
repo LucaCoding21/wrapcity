@@ -26,7 +26,7 @@ const redditSansCondensed = Reddit_Sans_Condensed({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wrapcity.co"),
+  metadataBase: new URL("https://www.wrapcity.co"),
   title: {
     default: "Vehicle Wraps, Paint Protection Film & Ceramic Coating | Wrap City Langley BC",
     template: "%s | Wrap City - Vehicle Wraps Langley BC",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     "truck wrap Langley BC",
     "van wrap Surrey BC",
   ],
-  authors: [{ name: "Wrap City", url: "https://wrapcity.co" }],
+  authors: [{ name: "Wrap City", url: "https://www.wrapcity.co" }],
   creator: "Wrap City",
   publisher: "Wrap City",
   formatDetection: {
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     title: "Vehicle Wraps, Paint Protection Film & Ceramic Coating | Wrap City Langley BC",
     description:
       "Transform your vehicle with premium vinyl wraps, PPF & ceramic coating from Wrap City in Langley, BC. Serving Surrey, White Rock & the Fraser Valley. 3M & Avery Dennison certified.",
-    url: "https://wrapcity.co",
+    url: "https://www.wrapcity.co",
     siteName: "Wrap City",
     locale: "en_CA",
     type: "website",
@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://wrapcity.co",
+    canonical: "https://www.wrapcity.co",
   },
   category: "Automotive Services",
 };
@@ -135,12 +135,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "@id": "https://wrapcity.co/#business",
+      "@id": "https://www.wrapcity.co/#business",
       name: "Wrap City",
-      image: "https://wrapcity.co/images/logo-new.png",
+      image: "https://www.wrapcity.co/images/logo-new.png",
       description:
         "Wrap City is a single-installer vinyl and protection studio in Langley, BC specializing in premium vehicle wraps, paint protection film, ceramic coating, marine wraps, commercial fleet graphics, and architectural vinyl. 3M & Avery Dennison certified installer proudly serving Langley, Surrey, White Rock, South Surrey and the Fraser Valley.",
-      url: "https://wrapcity.co",
+      url: "https://www.wrapcity.co",
       telephone: "+1-604-510-2400",
       email: "taylor@wrapcity.co",
       address: {
@@ -179,14 +179,14 @@ const jsonLd = {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.8",
-        reviewCount: "50",
+        reviewCount: "32",
         bestRating: "5",
         worstRating: "1",
       },
     },
     {
       "@type": "AutoRepair",
-      "@id": "https://wrapcity.co/#autorepair",
+      "@id": "https://www.wrapcity.co/#autorepair",
       name: "Wrap City Vehicle Wraps",
       serviceType: [
         "Vehicle Wraps",
@@ -201,14 +201,14 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://wrapcity.co/#website",
-      url: "https://wrapcity.co",
+      "@id": "https://www.wrapcity.co/#website",
+      url: "https://www.wrapcity.co",
       name: "Wrap City",
-      publisher: { "@id": "https://wrapcity.co/#business" },
+      publisher: { "@id": "https://www.wrapcity.co/#business" },
     },
     {
       "@type": "FAQPage",
-      "@id": "https://wrapcity.co/#faq",
+      "@id": "https://www.wrapcity.co/#faq",
       mainEntity: [
         {
           "@type": "Question",
